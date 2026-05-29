@@ -23,10 +23,17 @@
             theme: {
                 extend: {
                     colors: {
+                        lightRoseBg: '#FCFAF9',
+                        cardBg: '#FFFFFF',
                         roseGold: '#C28E86',
                         roseAccent: '#AA746B',
-                        bgBeige: '#FCFAF9',
-                        borderRose: '#EACDCA'
+                        darkText: '#3D2D2B',
+                        borderRose: '#EACDCA',
+                        softGray: '#F5F2F1'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
                     }
                 }
             }
@@ -36,7 +43,13 @@
     <style>
         body {
             background-color: #FCFAF9;
+            color: #3D2D2B;
             font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Textura suave e luxuosa de fundo para o site */
+        .luxury-light-bg {
+            background-image: radial-gradient(circle at 50% 10%, #FFFFFF 0%, #FCFAF9 100%);
         }
         .serif { font-family: 'Playfair Display', serif; }
         .card-shadow {
@@ -50,7 +63,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen p-4 md:p-8">
+<body class="min-h-screen p-4 md:p-8 luxury-light-bg">
 
     <div class="max-w-4xl mx-auto">
 
@@ -70,12 +83,18 @@
             </div>
         </header>
 
-        <div class="flex justify-center mt-10">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full px-4">
             
-            <a href="Catálogo de Procedimentos.html" class="card-shadow bg-white p-8 rounded-lg text-center group w-full max-w-sm">
+            <a href="Catálogo de Procedimentos.html" class="flex-1 max-w-sm card-shadow bg-white p-8 rounded-lg text-center group border border-borderRose hover:border-roseGold transition-all">
                 <i class="fa-solid fa-crown text-roseGold text-3xl mb-4"></i>
                 <h2 class="serif text-xl text-gray-800 uppercase tracking-wider">Catálogo</h2>
                 <p class="text-xs text-gray-500 mt-2">Procedimentos e protocolos</p>
+            </a>
+
+            <a href="Resultados.html" class="flex-1 max-w-sm card-shadow bg-white p-8 rounded-lg text-center group border border-borderRose hover:border-roseGold transition-all">
+                <i class="fa-solid fa-image text-roseGold text-3xl mb-4"></i>
+                <h2 class="serif text-xl text-gray-800 uppercase tracking-wider">Resultados</h2>
+                <p class="text-xs text-gray-500 mt-2">Galeria de Transformações</p>
             </a>
 
         </div>
