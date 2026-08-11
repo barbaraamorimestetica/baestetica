@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Layout A4 que gera o PDF do catalogo. Nao e para ser visitada nem indexada,
+# e traz o e-mail em texto puro (o PDF precisa dele sem depender de JavaScript).
+Disallow: /baestetica/catalogo-impressao.html
+
 Sitemap: https://barbaraamorimestetica.github.io/baestetica/sitemap.xml
