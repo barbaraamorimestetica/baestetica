@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://barbaraamorimestetica.github.io/baestetica/sitemap.xml
