@@ -190,6 +190,19 @@
                 if (window.instgrm) {
                     window.instgrm.Embeds.process();
                 }
+                // Se um post do Instagram for removido ou ficar indisponível, o embed
+                // colapsa e deixa um espaço vazio na página. Mostramos um cartão no lugar.
+                setTimeout(function() {
+                    document.querySelectorAll('iframe.instagram-media').forEach(function(frame) {
+                        if (frame.getBoundingClientRect().height > 120) return;
+                        var caixa = frame.closest('.min-h-\\[500px\\]') || frame.parentElement;
+                        caixa.classList.remove('min-h-[500px]');
+                        caixa.innerHTML = '<a href="https://instagram.com/barbaraamorimestetica" target="_blank" rel="noopener"'
+                            + ' class="w-full max-w-[540px] border border-borderRose rounded-xl p-8 text-center text-gray-500 hover:border-roseGold transition-colors">'
+                            + '<i class="fa-brands fa-instagram text-roseGold text-3xl block mb-3"></i>'
+                            + '<span class="text-sm">Ver este resultado no Instagram</span></a>';
+                    });
+                }, 5000);
             };
         </script>
 
