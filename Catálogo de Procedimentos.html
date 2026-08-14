@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <!-- Esta página mudou de endereço para catalogo.html.
-         Este ficheiro existe apenas para não quebrar os links já partilhados. -->
+         Este ficheiro existe apenas para não quebrar os links já partilhados.
+
+         As cores ficam literais, e não em var(--token): a CSP desta página é
+         default-src 'none' com style-src 'unsafe-inline', o que permite estilo
+         inline mas NAO permite carregar css/tokens.css. Se a paleta mudar,
+         estes dois valores têm de ser conferidos à mão -- são --texto e
+         --marca-forte. O #AA746B que estava aqui dava 3,72:1 num link de
+         16px, onde a WCAG pede 4,5. -->
     <meta name="robots" content="noindex">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'self'; form-action 'none'">
     <link rel="canonical" href="https://barbaraamorimestetica.github.io/baestetica/catalogo.html">
@@ -13,6 +20,6 @@
 </head>
 <body style="font-family: sans-serif; text-align: center; padding: 3rem; color: #3D2D2B;">
     <p>Esta página mudou de endereço.</p>
-    <p><a href="catalogo.html" style="color: #AA746B;">Abrir o catálogo de procedimentos</a></p>
+    <p><a href="catalogo.html" style="color: #8F5C54;">Abrir o catálogo de procedimentos</a></p>
 </body>
 </html>
