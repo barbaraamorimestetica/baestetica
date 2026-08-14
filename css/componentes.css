@@ -114,6 +114,22 @@ summary:focus-visible,
 }
 
 /* ---------------------------------------------------------------------------
+   BORDA DA MARCA -- a cor de borda mais usada dos dois repositorios.
+
+   Existia com dois nomes para a mesma cor: border-borderRose (42x no site) e
+   border-[#EACDCA] (7x no site, 191x na ferramenta). E no privado havia ainda
+   um terceiro, border-rose-100 (#FFE4E6), que e um rosa frio proximo mas nao
+   igual.
+
+   Traz so a COR. A largura continua a vir da utilidade do Tailwind (border,
+   border-t, border-l-4), que e o que permite trocar esta classe por aquela sem
+   pensar em mais nada.
+   --------------------------------------------------------------------------- */
+.borda-marca {
+    border-color: var(--marca-borda);
+}
+
+/* ---------------------------------------------------------------------------
    ALVO DE PONTEIRO -- a WCAG 2.5.8 pede 24x24 CSS px.
 
    Medido a 390px de largura, com o transform do ajuste-mobile fora do caminho:
