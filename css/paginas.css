@@ -47,3 +47,16 @@ body {
 .rodape span {
     white-space: nowrap;
 }
+
+/* ---------------------------------------------------------------------------
+   Medida de leitura. Os dois paragrafos de descricao do Resultados tinham
+   830px a 14px, o que da ~90 caracteres por linha -- acima dos ~85 em que o
+   olho ainda acha a linha seguinte sem esforco. A 68 o justificado tambem
+   passa a funcionar melhor, porque sobra menos espaco para distribuir.
+
+   O catalogo-impressao NAO usa isto: medido em 62 e 66 caracteres, ja esta
+   na faixa boa.
+   --------------------------------------------------------------------------- */
+.medida-leitura {
+    max-width: 68ch;
+}
