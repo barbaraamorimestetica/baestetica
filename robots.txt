@@ -1,8 +1,32 @@
+# ATENCAO: no endereco atual, este ficheiro nao e lido por buscador nenhum.
+#
+# O site e um "project page" do GitHub Pages e e servido em
+# barbaraamorimestetica.github.io/baestetica/. Os robos so procuram o
+# robots.txt na raiz do host -- barbaraamorimestetica.github.io/robots.txt --
+# que sai de outro repositorio, o barbaraamorimestetica.github.io. O que esta
+# aqui responde em /baestetica/robots.txt e e simplesmente ignorado.
+#
+# O ficheiro fica na mesma por dois motivos: passa a valer sozinho se o site
+# ganhar dominio proprio (com CNAME, o repositorio passa a ser servido na raiz
+# do dominio), e documenta a intencao para quem mexer nisto depois.
+#
+# O sitemap, enquanto isso, precisa de ser enviado a mao pelo Google Search
+# Console. Nao ha como declara-lo daqui.
+
 User-agent: *
 Allow: /
 
-# Layout A4 que gera o PDF do catalogo. Nao e para ser visitada nem indexada,
-# e traz o e-mail em texto puro (o PDF precisa dele sem depender de JavaScript).
-Disallow: /baestetica/catalogo-impressao.html
-
 Sitemap: https://barbaraamorimestetica.github.io/baestetica/sitemap.xml
+
+# Nao ha Disallow para o catalogo-impressao.html, e isso e proposital.
+#
+# Antes havia. Mas Disallow e noindex resolvem coisas diferentes e nao se
+# somam: Disallow impede o robo de BAIXAR a pagina, e uma pagina que ele nunca
+# baixou e uma pagina onde ele nunca leu o <meta name="robots" content="noindex">.
+# O endereco pode entao continuar aparecendo nos resultados, so que sem titulo
+# nem descricao, porque o robo sabe que ela existe (por links ou pelo sitemap)
+# e foi proibido de olhar la dentro para descobrir que nao devia lista-la.
+#
+# Para manter a pagina fora do indice, o caminho e o inverso: deixar o robo
+# entrar e ler o noindex, que ja esta no <head> dela. E o que vale hoje, e
+# continuara valendo se este ficheiro um dia passar a ser lido.
