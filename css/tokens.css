@@ -60,13 +60,33 @@ html {
     font-size: 16px;
 }
 
+/* ---------------------------------------------------------------------------
+   OS QUATRO TONS QUE TAMBEM APARECEM COM TRANSPARENCIA
+
+   Estes sao declarados em componentes RGB, e nao em hexadecimal, porque
+   rgb(var(--x) / 0.4) precisa dos componentes separados -- e o HTML usava
+   border-[#EACDCA]/60, /50, /40, /30 e bg-[#FAF5F5]/60, /40, /30.
+
+   O valor solido SAI daqui, em vez de ser escrito outra vez ao lado. Se
+   houvesse as duas formas lado a lado, elas divergiriam -- que e exatamente o
+   defeito que este ficheiro existe para fechar. O hexadecimal fica no
+   comentario, para quem le.
+   --------------------------------------------------------------------------- */
+
+:root {
+    --marca-rgb:            170 116 107;   /* #AA746B */
+    --marca-clara-rgb:      194 142 134;   /* #C28E86 */
+    --marca-borda-rgb:      234 205 202;   /* #EACDCA */
+    --fundo-rosa-claro-rgb: 250 245 245;   /* #FAF5F5 */
+}
+
 :root {
     /* --- marca ------------------------------------------------------------ */
     --marca-forte:   #8F5C54;   /* tinta de texto pequeno; AA sobre os fundos claros */
     --marca-hover:   #7F4A42;   /* estado sobre --marca-forte */
-    --marca:         #AA746B;   /* titulo grande e icone */
-    --marca-clara:   #C28E86;   /* borda, fundo e filete; nunca tinta de texto */
-    --marca-borda:   #EACDCA;   /* borda fina, o tom mais usado dos dois lados */
+    --marca:         rgb(var(--marca-rgb));        /* titulo grande e icone */
+    --marca-clara:   rgb(var(--marca-clara-rgb));  /* borda, fundo, filete; nunca tinta */
+    --marca-borda:   rgb(var(--marca-borda-rgb));  /* borda fina, o tom mais usado */
 
     /* --- neutros ---------------------------------------------------------- */
     --texto:         #3D2D2B;   /* texto corrido */
@@ -74,7 +94,7 @@ html {
     --superficie:    #FFFFFF;   /* cartao, folha A4 */
     --fundo:         #FCFAF9;   /* fundo do site */
     --fundo-rosa:    #F6ECEB;   /* fundo da ferramenta interna */
-    --fundo-rosa-claro: #FAF5F5; /* nota e faixa dentro das folhas A4 */
+    --fundo-rosa-claro: rgb(var(--fundo-rosa-claro-rgb)); /* nota e faixa nas folhas A4 */
     --fundo-neutro:  #F5F2F1;   /* faixa cinza suave */
     --pontilhado:    #D1C5C2;   /* linha de preenchimento dos formularios */
 
@@ -91,6 +111,18 @@ html {
     --perigo:        #9F1239;
     --perigo-vivo:   #E11D48;
     --perigo-fundo:  #FFF1F2;
+
+    /* --- funcionais: valor de entrada e de saida (fluxo de caixa) ---------
+       Nao sao os tons do grafico: --grafico-alta (#2ECC71) da 1,9:1 sobre
+       branco e nao serve para texto. Estes sao as variantes escuras dos
+       mesmos papeis, e passam AA. */
+    --valor-entrada: #15803D;   /* 4,9:1 sobre branco */
+    --valor-saida:   #DC2626;   /* 4,8:1 sobre branco */
+
+    /* --- funcionais: aviso na tela (nao e erro, nao e perigo) ------------- */
+    --aviso:         #92400E;
+    --aviso-fundo:   #FFFBEB;
+    --aviso-borda:   #FDE68A;
 
     /* --- funcionais: marcas de terceiros --------------------------------- */
     --whatsapp:      #25D366;
