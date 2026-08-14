@@ -96,7 +96,24 @@ html {
     --fundo-rosa:    #F6ECEB;   /* fundo da ferramenta interna */
     --fundo-rosa-claro: rgb(var(--fundo-rosa-claro-rgb)); /* nota e faixa nas folhas A4 */
     --fundo-neutro:  #F5F2F1;   /* faixa cinza suave */
-    --pontilhado:    #D1C5C2;   /* linha de preenchimento dos formularios */
+    --pontilhado:    #D1C5C2;   /* linha de escrever a mao, NO PAPEL */
+
+    /* --- contorno de campo interativo -------------------------------------
+       A WCAG 1.4.11 pede 3:1 do contorno de um componente de interface contra
+       o que esta em volta. Medido sobre branco, a paleta clara toda reprova:
+
+           --marca-borda   #EACDCA   1,49:1
+           --pontilhado    #D1C5C2   1,68:1
+           --marca-clara   #C28E86   2,80:1
+           --marca         #AA746B   3,87:1   <-- o primeiro que passa
+
+       Por isso este token aponta para --marca, e nao para um tom novo: nao era
+       preciso inventar cor, era preciso escolher a que ja passava.
+
+       Vale para o ECRA. No papel a linha continua --pontilhado: uma linha
+       pontilhada de escrever a mao nao e componente de interface, e escurece-la
+       deixaria a folha impressa com o traco a competir com a caligrafia. */
+    --borda-campo:   var(--marca);
 
     /* --- funcionais: categoria de pagamento (fluxo de caixa) -------------- */
     --pag-pix:       #0F766E;

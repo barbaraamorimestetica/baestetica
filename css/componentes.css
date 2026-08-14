@@ -283,3 +283,18 @@ summary:focus-visible,
    valem os tons do grafico, e nao os de texto: sao 4px de cor, nao letra. */
 .borda-entrada { border-color: var(--grafico-alta); }                          /* 1x */
 .borda-saida   { border-color: var(--grafico-baixa); }                         /* 1x */
+
+/* ---------------------------------------------------------------------------
+   CONTORNO DE CAMPO INTERATIVO -- WCAG 1.4.11, 3:1.
+
+   Toda a paleta clara reprovava: --marca-borda da 1,49:1 sobre branco, o
+   --pontilhado 1,68 e o --marca-clara 2,80. O --borda-campo aponta para
+   --marca (3,87:1), o primeiro que passa -- nao foi preciso inventar cor.
+
+   SO NO ECRA. Dentro de @media print o campo volta ao traco claro: no papel
+   ele nao e componente de interface, e uma linha escura competiria com a
+   caligrafia de quem preenche a mao.
+   --------------------------------------------------------------------------- */
+@media screen {
+    .borda-campo { border-color: var(--borda-campo); }
+}
