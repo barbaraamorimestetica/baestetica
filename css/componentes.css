@@ -33,3 +33,66 @@
 .botao-marca:focus-visible {
     background-color: var(--marca-hover);
 }
+
+/* ---------------------------------------------------------------------------
+   Icone em SVG inline, no lugar do Font Awesome completo via CDN.
+   Icones: Font Awesome Free 6.4.0 (CC BY 4.0) - https://fontawesome.com/license/free
+
+   Dimensiona-se pelo font-size (1em de altura) e herda a cor do texto,
+   exatamente como as tags <i> que substituiu. O fill: currentColor e o que
+   permite ao icone decorativo nao declarar cor nenhuma -- ele acompanha o
+   rotulo ao lado, que ja e token.
+
+   Estava copiada nas 12 paginas dos dois repositorios, com o texto
+   byte-a-byte igual em todas. Era a regra mais duplicada do projeto.
+   --------------------------------------------------------------------------- */
+.icon {
+    display: inline-block;
+    height: 1em;
+    width: auto;
+    overflow: visible;
+    fill: currentColor;
+    vertical-align: -0.125em;
+}
+
+/* ---------------------------------------------------------------------------
+   Tipo de titulo, para quem nao esta a usar a utilidade font-serif do Tailwind.
+   Estava em baestetica/404.html, baestetica/index.html e
+   baestetica_private/index.html.
+   --------------------------------------------------------------------------- */
+.serif {
+    font-family: var(--fonte-titulo);
+}
+
+/* ---------------------------------------------------------------------------
+   Cabecalho no telefone. O logotipo tem 160px fixos e o nome, com
+   tracking-[0.2em], pede outros 182px: 398px numa tela de 375px. Abaixo de
+   480px a linha passa a coluna e o logotipo encolhe.
+
+   Usada em baestetica/index.html e em baestetica_private (index e
+   fluxo-de-caixa), com o mesmo texto.
+   --------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .cabecalho {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .cabecalho .marca {
+        width: 7rem;
+        height: 7rem;
+    }
+    .cabecalho .titulo {
+        text-align: center;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   O que nao vai para o papel: barra de acao, botao de gerar PDF, aviso de ecra.
+   Os documentos A4 do repositorio privado acrescentam mais regras de impressao
+   em assets/documento.css; esta e a base que os dois lados usam.
+   --------------------------------------------------------------------------- */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

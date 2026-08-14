@@ -74,6 +74,7 @@
     <!-- Paleta nomeada, comum aos dois repositorios (ver COMUM.md) -->
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/paginas.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
@@ -88,65 +89,6 @@
 
 
     <style>
-        /* Ícones em SVG inline, no lugar do Font Awesome completo via CDN.
-           Ícones: Font Awesome Free 6.4.0 (CC BY 4.0) - https://fontawesome.com/license/free
-           Dimensionam-se pelo font-size (1em de altura) e herdam a cor do texto,
-           exatamente como as tags <i> que substituíram. */
-        .icon {
-            display: inline-block;
-            height: 1em;
-            width: auto;
-            overflow: visible;
-            fill: currentColor;
-            vertical-align: -0.125em;
-        }
-        /* No telefone o cabecalho nao tinha para onde ir. O logotipo tem 160px
-           fixos e o nome, com tracking-[0.2em], pede outros 182px: 398px numa
-           tela de 375. A linha era flex-row sem quebra, entao o nome da marca
-           saia cortado -- "BARBA" numa linha, "AMO" na outra. Abaixo de 480px
-           empilha e centra, que e o que as outras paginas do site ja faziam. */
-        @media (max-width: 480px) {
-            .cabecalho {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .cabecalho .marca {
-                width: 7rem;
-                height: 7rem;
-            }
-            .cabecalho .titulo {
-                text-align: center;
-            }
-        }
-
-        /* O rodape vinha no limite: 848px de conteudo em 848px uteis, sem nenhuma
-           protecao contra quebra. Bastou a linha do COREN crescer com "Esteta"
-           para o flex encolher os filhos abaixo do texto e partir
-           "(22) 99940-" de "8603". Agora cada contato e indivisivel e a linha
-           desce inteira quando nao couber, em vez de o texto rachar no meio.
-           Centrar em vez de espacar ate as bordas custa 8px de cada lado -- o
-           conteudo ja ocupava quase toda a largura. */
-        .rodape {
-            flex-wrap: wrap;
-            justify-content: center;
-            row-gap: 0.75rem;
-        }
-        .rodape a,
-        .rodape span {
-            white-space: nowrap;
-        }
-
-        body {
-            background-color: #FCFAF9;
-            color: #3D2D2B;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        /* Textura suave e luxuosa de fundo para o site */
-        .luxury-light-bg {
-            background-image: radial-gradient(circle at 50% 10%, #FFFFFF 0%, #FCFAF9 100%);
-        }
-        .serif { font-family: 'Playfair Display', serif; }
         .card-shadow {
             border: 1px solid #EACDCA;
             transition: all 0.3s ease;
@@ -155,8 +97,7 @@
             border-color: #C28E86;
             transform: translateY(-4px);
             box-shadow: 0 10px 20px rgba(194, 142, 134, 0.1);
-        }
-    </style>
+        }</style>
 </head>
 <body class="min-h-screen p-4 md:p-8 luxury-light-bg">
 

@@ -65,10 +65,54 @@ python instalar-hooks.py
 Se o hook não estiver instalado, a sincronização volta a depender de memória —
 que é a situação que este arranjo existe para evitar.
 
+## O que está em cada ficheiro comum
+
+`tokens.css` — a paleta nomeada, a tipografia e a **escala base** (`html {
+font-size: 16px }`). Antes a base estava declarada página a página e não batia:
+18px em quatro páginas, 16px nas outras oito.
+
+`componentes.css` — as peças que os dois lados desenham igual, e só essas:
+`.botao-marca` (3 usos no site, 9 na ferramenta), `.icon` (12 páginas, era a
+regra mais duplicada do projeto), `.serif`, o cabeçalho no telefone, e o
+`@media print { .no-print }`.
+
 ## O que **não** é comum
 
-As folhas compiladas do Tailwind: `css/site.css` (17 KB) no público e
+**As folhas compiladas do Tailwind:** `css/site.css` (17 KB) no público e
 `assets/tailwind.css` (23 KB) no privado. São conjuntos de classes diferentes,
 ambas geradas a partir das páginas de cada lado. Juntá-las faria cada repositório
 carregar o que não usa. O procedimento de regeração, esse sim, é o mesmo — está
 descrito em `css/README.md`.
+
+**As peças de um lado só**, pelo mesmo motivo:
+
+| Ficheiro | Onde | O que tem |
+|---|---|---|
+| `css/paginas.css` | só público | `body`, o fundo em degradê, o rodapé de contacto |
+| `assets/documento.css` | só privado | o andaime da folha A4: papel, campo de preencher à mão, caixa de seleção, impressão |
+
+O `documento.css` está ligado **apenas** na `ficha-anamnese` e no
+`termos-consentimento`. Foi uma decisão medida, não descuido: as outras três
+páginas de documento usam os mesmos nomes de classe sem nunca terem tido as
+regras, e carregar o ficheiro nelas mudava o que já desenham — no
+`tabela-precos`, `.logo-circle { width: 60px !important }` encolhia um logótipo
+que hoje é dimensionado pelo `assets/logo.js`. Seria regressão disfarçada de
+arrumação. As três regras que essas páginas realmente partilhavam ficaram nelas,
+com o motivo escrito ao lado.
+
+## A ordem no `<head>`
+
+Os dois lados carregam na mesma ordem lógica, mas o Tailwind fica em pontos
+diferentes, e isso é de propósito:
+
+| | público | privado |
+|---|---|---|
+| 1 | `site.css` (Tailwind) | `tokens.css` |
+| 2 | `tokens.css` | `componentes.css` |
+| 3 | `componentes.css` | `documento.css` |
+| 4 | `paginas.css` | `<style>` da página |
+| 5 | `<style>` da página | `tailwind.css` |
+
+No público o `<style>` da página ganha do Tailwind; no privado é o Tailwind que
+ganha. Em ambos, o `<style>` da página ganha dos ficheiros comuns — é o que
+permite a uma página sobrepor-se sem editar o comum.

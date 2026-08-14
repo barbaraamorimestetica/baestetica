@@ -46,9 +46,34 @@ que o próprio CDN produz em runtime:
 3. Grave `document.querySelector('style').textContent` neste ficheiro e
    mantenha o comentário de cabeçalho.
 
+## Os outros ficheiros desta pasta
+
+`site.css` é o único gerado. Os outros três são escritos à mão:
+
+- **`tokens.css`** — paleta nomeada, tipografia, escala base. **Comum ao
+  repositório privado**: depois de mexer, corra `python sincronizar-comum.py`.
+  Ver `COMUM.md`.
+- **`componentes.css`** — peças que os dois repositórios desenham igual
+  (`.botao-marca`, `.icon`, `.serif`, cabeçalho no telefone, `.no-print`).
+  **Também comum.**
+- **`paginas.css`** — peças só deste site: `body`, `.luxury-light-bg`,
+  `.rodape`. Não é comum, e não deve ser: o privado não tem rodapé de contacto.
+
+Cor não se escreve mais dentro de nome de classe. Em vez de `text-[#AA746B]`,
+use `.tinta-forte`, `.tinta-marca`, `.tinta-texto` ou `.tinta-suave` — o nome
+diz o papel, e a paleta muda num lugar só. Foi assim que 61 reprovas de
+contraste apareceram sem ninguém notar: o hexadecimal estava espalhado por 66
+elementos e trocá-lo queria dizer caçá-lo página por página.
+
 ## Ordem no `<head>`
 
-`site.css` tem de vir **antes** do `<style>` de cada página: o preflight do
-Tailwind faz reset de margens, bordas e tipografia, e as regras próprias de
-cada página (`.luxury-light-bg`, `.card-shadow`, `.icon`, `.print-page`) contam
-com isso e precisam de ganhar.
+```
+site.css  →  tokens.css  →  componentes.css  →  paginas.css  →  <style> da página
+```
+
+`site.css` vem **primeiro**: o preflight do Tailwind faz reset de margens,
+bordas e tipografia, e tudo o que vem depois conta com isso. O `<style>` de cada
+página vem **último**, para poder sobrepor-se ao que é comum sem editar o comum.
+
+No repositório privado a ordem é diferente de propósito — lá o `tailwind.css`
+vem no fim e ganha do `<style>` da página. A tabela está em `COMUM.md`.
