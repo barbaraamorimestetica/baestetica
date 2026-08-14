@@ -97,6 +97,25 @@
             fill: currentColor;
             vertical-align: -0.125em;
         }
+        /* No telefone o cabecalho nao tinha para onde ir. O logotipo tem 160px
+           fixos e o nome, com tracking-[0.2em], pede outros 182px: 398px numa
+           tela de 375. A linha era flex-row sem quebra, entao o nome da marca
+           saia cortado -- "BARBA" numa linha, "AMO" na outra. Abaixo de 480px
+           empilha e centra, que e o que as outras paginas do site ja faziam. */
+        @media (max-width: 480px) {
+            .cabecalho {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .cabecalho .marca {
+                width: 7rem;
+                height: 7rem;
+            }
+            .cabecalho .titulo {
+                text-align: center;
+            }
+        }
+
         /* O rodape vinha no limite: 848px de conteudo em 848px uteis, sem nenhuma
            protecao contra quebra. Bastou a linha do COREN crescer com "Esteta"
            para o flex encolher os filhos abaixo do texto e partir
@@ -140,13 +159,13 @@
 
     <div class="max-w-4xl mx-auto">
 
-        <header class="w-full max-w-6xl mx-auto py-8 px-4 border-b border-[#EACDCA] flex flex-row items-center justify-between gap-6">
+        <header class="cabecalho w-full max-w-6xl mx-auto py-8 px-4 border-b border-[#EACDCA] flex flex-row items-center justify-between gap-6">
             
-            <div class="w-40 h-40 text-[#C28E86] flex items-center justify-center overflow-hidden shrink-0">
+            <div class="marca w-40 h-40 text-[#C28E86] flex items-center justify-center overflow-hidden shrink-0">
                 <img src="img/logo-barbara-amorim.webp" alt="" class="w-full h-full object-contain" style="transform: scale(1.30);">
             </div>
 
-            <div class="text-right">
+            <div class="titulo text-right">
                 <h1 class="font-serif text-3xl md:text-4xl font-bold text-[#AA746B] tracking-[0.2em] uppercase">
                     Bárbara Amorim
                 </h1>
