@@ -22,9 +22,14 @@
        --marca-forte  #8F5C54   5,27:1   passa AA em texto pequeno. E o unico.
        --texto        #3D2D2B  12,55:1   texto corrido.
 
-   O --marca-forte nasceu no repositorio privado exatamente por isso, e o site
-   publico pintava texto de 8 a 12px com --marca (3,72:1) em 44 lugares. Se for
-   escrever texto pequeno em rosa, e este o tom.
+   O --marca-forte nasceu no repositorio privado exatamente por isso. O site
+   publico nao o tinha: media 66 elementos pintados em --marca ou --marca-clara,
+   dos quais 61 reprovavam -- os 5 que passavam eram todos titulo em negrito de
+   20px ou mais. Se for escrever texto pequeno em rosa, e este o tom.
+
+   Os numeros acima sao medidos no navegador, nao estimados: cor computada,
+   tamanho, peso, e o fundo efetivo procurado subindo a arvore ate achar quem
+   pinta. Um retrato feito com expressao regular sobre o HTML errou por 17.
    =========================================================================== */
 
 :root {
@@ -41,6 +46,7 @@
     --superficie:    #FFFFFF;   /* cartao, folha A4 */
     --fundo:         #FCFAF9;   /* fundo do site */
     --fundo-rosa:    #F6ECEB;   /* fundo da ferramenta interna */
+    --fundo-rosa-claro: #FAF5F5; /* nota e faixa dentro das folhas A4 */
     --fundo-neutro:  #F5F2F1;   /* faixa cinza suave */
     --pontilhado:    #D1C5C2;   /* linha de preenchimento dos formularios */
 
@@ -70,17 +76,23 @@
    TINTAS SEMANTICAS
 
    Existem para o HTML parar de espalhar hexadecimais dentro de nome de classe.
-   Antes se escrevia text-[#AA746B] em 44 lugares, e trocar de tom queria dizer
-   caçar o hexadecimal pagina por pagina -- foi assim que o contraste ficou
-   errado sem ninguem notar.
+   Antes se escrevia text-[#AA746B], e trocar de tom queria dizer caçar o
+   hexadecimal pagina por pagina -- foi assim que o contraste ficou errado sem
+   ninguem notar.
 
    O nome diz o papel, nao a cor. Se a paleta mudar, muda aqui.
+
+   As quatro cobrem as cinco tintas que o site usa hoje (a quinta e o branco
+   sobre o botao cheio, que vive em componentes.css). Antes eram sete, com tres
+   cinzas frios do Tailwind -- gray-800, gray-600 e gray-400 -- convivendo com o
+   marrom da marca na mesma pagina. O gray-500 nem era deriva: ja e exatamente
+   #6B7280, so estava escrito noutro vocabulario.
    =========================================================================== */
 
 .tinta-forte  { color: var(--marca-forte); }   /* texto pequeno em rosa */
 .tinta-marca  { color: var(--marca); }         /* titulo grande, icone */
-.tinta-texto  { color: var(--texto); }
-.tinta-suave  { color: var(--texto-suave); }
+.tinta-texto  { color: var(--texto); }         /* texto corrido e titulo neutro */
+.tinta-suave  { color: var(--texto-suave); }   /* rotulo, nota de pe */
 
 a.tinta-forte:hover,
 a.tinta-marca:hover { color: var(--marca-hover); }

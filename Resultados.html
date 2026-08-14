@@ -32,6 +32,9 @@
 
     <!-- Tailwind compilado apenas com as classes usadas (ver css/site.css) -->
     <link rel="stylesheet" href="css/site.css">
+    <!-- Paleta nomeada, comum aos dois repositorios (ver COMUM.md) -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/componentes.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
@@ -96,20 +99,20 @@
 <body class="min-h-screen py-10 px-4 luxury-light-bg">
 
     <div class="max-w-4xl mx-auto w-full">
-        <a href="index.html" class="text-[#AA746B] hover:text-roseGold text-xs font-semibold inline-flex items-center gap-1.5 transition-colors">
+        <a href="index.html" class="tinta-forte hover:tinta-forte text-xs font-semibold inline-flex items-center gap-1.5 transition-colors">
             <svg class="icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg> Início
         </a>
     </div>
 
     <header class="text-center py-6 flex flex-col items-center gap-4">
-        <div class="w-24 h-24 text-roseGold">
+        <div class="w-24 h-24">
             <img src="img/logo-barbara-amorim.webp" 
             alt="" 
             class="w-full h-full object-contain" 
             style="transform: scale(1.40);">            
         </div>
-        <h1 class="font-serif text-3xl md:text-4xl tracking-[0.2em] font-bold text-[#AA746B] uppercase mb-2">Bárbara Amorim</h1>
-        <span class="text-[10px] tracking-[0.45em] text-gray-500 uppercase font-semibold block mb-8">Estética Avançada</span>
+        <h1 class="font-serif text-3xl md:text-4xl tracking-[0.2em] font-bold tinta-marca uppercase mb-2">Bárbara Amorim</h1>
+        <span class="text-[10px] tracking-[0.45em] tinta-suave uppercase font-semibold block mb-8">Estética Avançada</span>
         <h2 class="font-serif text-2xl text-darkText italic">Galeria de Resultados</h2>
         <div class="h-1 w-20 bg-roseGold mx-auto mt-4"></div>
     </header>
@@ -119,15 +122,15 @@
         <section class="bg-white rounded-3xl p-8 gold-border-glow mb-10">
             
             <div class="text-left mb-6">
-                <span class="text-roseGold font-bold text-xs uppercase tracking-widest">Procedimento 01</span>
+                <span class="tinta-forte font-bold text-xs uppercase tracking-widest">Procedimento 01</span>
                 <h3 class="font-serif text-2xl font-bold text-darkText">Preenchimento Labial</h3>
             </div>
 
             <div class="mb-8 text-left">
-                <p class="text-sm text-gray-600 leading-relaxed text-justify">
-                    O <strong class="text-roseAccent">Preenchimento Labial</strong> é uma verdadeira escultura labial. Utilizamos exclusivamente o ácido hialurônico de alta pureza, uma substância biocompatível que garante total segurança e resultados reversíveis. 
+                <p class="text-sm tinta-texto leading-relaxed text-justify">
+                    O <strong class="tinta-forte">Preenchimento Labial</strong> é uma verdadeira escultura labial. Utilizamos exclusivamente o ácido hialurônico de alta pureza, uma substância biocompatível que garante total segurança e resultados reversíveis. 
                     <br><br>
-                    Meu protocolo exclusivo foca na <strong class="text-roseAccent">naturalidade e elegância</strong>, indo além do simples aumento de volume. Trabalhamos a definição do arco do cupido, o refinamento do contorno e uma hidratação profunda (efeito gloss), corrigindo assimetrias e devolvendo a jovialidade aos lábios de forma sutil e harmoniosa. Cada planejamento é único, respeitando as proporções individuais para realçar a sua melhor versão.
+                    Meu protocolo exclusivo foca na <strong class="tinta-forte">naturalidade e elegância</strong>, indo além do simples aumento de volume. Trabalhamos a definição do arco do cupido, o refinamento do contorno e uma hidratação profunda (efeito gloss), corrigindo assimetrias e devolvendo a jovialidade aos lábios de forma sutil e harmoniosa. Cada planejamento é único, respeitando as proporções individuais para realçar a sua melhor versão.
                 </p>
             </div>
 
@@ -144,15 +147,15 @@
         <section class="bg-white rounded-3xl p-8 gold-border-glow mb-10">
             
             <div class="text-left mb-6">
-                <span class="text-roseGold font-bold text-xs uppercase tracking-widest">Procedimento 02</span>
+                <span class="tinta-forte font-bold text-xs uppercase tracking-widest">Procedimento 02</span>
                 <h3 class="font-serif text-2xl font-bold text-darkText">Toxina Botulínica (Botox)</h3>
             </div>
 
             <div class="mb-8 text-left">
-                <p class="text-sm text-gray-600 leading-relaxed text-justify">
-                    A aplicação de <strong class="text-roseAccent">Toxina Botulínica</strong>, popularmente conhecida como Botox, é o padrão ouro na prevenção e tratamento de rugas de expressão. Mais do que apenas suavizar marcas, nosso objetivo é promover um <strong class="text-roseAccent">gerenciamento do envelhecimento</strong> de forma inteligente e personalizada.
+                <p class="text-sm tinta-texto leading-relaxed text-justify">
+                    A aplicação de <strong class="tinta-forte">Toxina Botulínica</strong>, popularmente conhecida como Botox, é o padrão ouro na prevenção e tratamento de rugas de expressão. Mais do que apenas suavizar marcas, nosso objetivo é promover um <strong class="tinta-forte">gerenciamento do envelhecimento</strong> de forma inteligente e personalizada.
                     <br><br>
-                    O procedimento atua relaxando seletivamente a musculatura facial, permitindo que a pele descanse e as linhas frontais, glabelares e os famosos "pés de galinha" sejam suavizados. Priorizamos a técnica de <strong class="text-roseAccent">Natural Look</strong>: um olhar descansado, jovem e livre de marcas de cansaço, mas que preserva totalmente a sua expressividade e identidade facial. O resultado é uma face revitalizada, com aquele viço de quem dormiu bem e cuida da própria essência.
+                    O procedimento atua relaxando seletivamente a musculatura facial, permitindo que a pele descanse e as linhas frontais, glabelares e os famosos "pés de galinha" sejam suavizados. Priorizamos a técnica de <strong class="tinta-forte">Natural Look</strong>: um olhar descansado, jovem e livre de marcas de cansaço, mas que preserva totalmente a sua expressividade e identidade facial. O resultado é uma face revitalizada, com aquele viço de quem dormiu bem e cuida da própria essência.
                 </p>
             </div>
 
@@ -208,8 +211,8 @@
                 function mostrarCartao(caixa) {
                     caixa.classList.remove('min-h-[500px]');
                     caixa.innerHTML = '<a href="https://instagram.com/barbaraamorimestetica" target="_blank" rel="noopener"'
-                            + ' class="w-full max-w-[540px] border border-borderRose rounded-xl p-8 flex flex-col items-center justify-center text-gray-500 hover:border-roseGold transition-colors">'
-                            + '<svg class="icon text-roseGold text-3xl mb-3" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>'
+                            + ' class="w-full max-w-[540px] border border-borderRose rounded-xl p-8 flex flex-col items-center justify-center tinta-suave hover:border-roseGold transition-colors">'
+                            + '<svg class="icon tinta-marca text-3xl mb-3" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>'
                             + '<span class="text-sm">Ver este resultado no Instagram</span></a>';
                 }
 
@@ -269,7 +272,7 @@
 
     <footer class="w-full py-8 border-t border-[#EACDCA] mt-12 bg-[#FCFAF9]">
         <div class="rodape max-w-4xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex flex-col md:flex-row items-center gap-4 text-[12px] text-[#AA746B] font-medium">
+            <div class="flex flex-col md:flex-row items-center gap-4 text-[12px] tinta-forte font-medium">
                 <a href="https://wa.me/5522999408603" target="_blank" rel="noopener" class="flex items-center gap-1 hover:text-rose-400">
                     <svg class="icon text-rose-400" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> (22) 99940-8603
                 </a>
@@ -281,8 +284,8 @@
                 </a>
             </div>
             <div class="text-center">
-                <span class="block text-[11px] text-[#AA746B] font-medium mb-1">Bárbara Amorim &middot; Enfermeira Esteta &middot; COREN-RJ 543.324</span>
-                <span class="block text-[10px] text-gray-400 uppercase tracking-widest">© 2026 Bárbara Amorim</span>
+                <span class="block text-[11px] tinta-forte font-medium mb-1">Bárbara Amorim &middot; Enfermeira Esteta &middot; COREN-RJ 543.324</span>
+                <span class="block text-[10px] tinta-suave uppercase tracking-widest">© 2026 Bárbara Amorim</span>
             </div>
         </div>
     </footer>

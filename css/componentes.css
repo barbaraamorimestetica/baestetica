@@ -1,0 +1,35 @@
+/* ===========================================================================
+   COMUM AOS DOIS REPOSITORIOS -- NAO EDITAR SO DE UM LADO.
+
+   Identico a baestetica/css/componentes.css e a
+   baestetica_private/assets/componentes.css. Depois de mexer:
+
+       python sincronizar-comum.py --aplicar
+
+   O hook de pre-commit recusa o commit se as copias divergirem.
+   ===========================================================================
+
+   Depende de tokens.css: carregue-o antes deste ficheiro.
+
+   Aqui ficam as pecas que os dois lados desenham igual. Comecou com o botao
+   cheio, que nasceu de uma reprova de contraste: o fundo era --marca-clara
+   (#C28E86) com texto branco, 2,80:1. Nao havia como salvar clareando ou
+   escurecendo o texto -- branco da 2,80 e o texto escuro dava 4,48, os dois
+   reprovam. O que estava errado era o fundo.
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Botao cheio da marca -- a acao principal.
+   Fundo --marca-forte com texto branco da 5,49:1. Passa AA em qualquer tamanho.
+   Traz so cor e estado: forma, espaco e tipo continuam nas classes utilitarias
+   de cada uso, que sao diferentes entre os botoes.
+   --------------------------------------------------------------------------- */
+.botao-marca {
+    background-color: var(--marca-forte);
+    color: #FFFFFF;
+}
+
+.botao-marca:hover,
+.botao-marca:focus-visible {
+    background-color: var(--marca-hover);
+}
