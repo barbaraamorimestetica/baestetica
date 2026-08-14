@@ -30,8 +30,8 @@
     <meta property="og:image:alt" content="Espaço de atendimento Bárbara Amorim Estética Avançada">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Dados estruturados: alimentam o painel do Google com endereço, horário e contato.
-         Falta acrescentar o registro profissional (COREN) e o CNPJ quando disponíveis. -->
+    <!-- Dados estruturados: alimentam o painel do Google com endereço, horário,
+         contato e a identificação profissional. Falta só o CNPJ, quando houver. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -42,6 +42,12 @@
         "logo": "https://barbaraamorimestetica.github.io/baestetica/img/logo-barbara-amorim.webp",
         "description": "Estética avançada na Barra Olímpica, Rio de Janeiro. Harmonização facial, toxina botulínica, preenchimento e bioestimuladores de colágeno.",
         "telephone": "+5522999408603",
+        "employee": {
+            "@type": "Person",
+            "name": "Bárbara Amorim",
+            "jobTitle": "Enfermeira",
+            "identifier": "COREN-RJ 543.324"
+        },
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Avenida Vice-Presidente José Alencar, 1405, Sala 208",
@@ -259,8 +265,9 @@
                         <svg class="icon text-rose-400" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg> <span class="endereco">barbaraamorimesteticaa (arroba) gmail.com</span>
                     </a>
                 </div>
-                <div class="text-[10px] text-gray-400 uppercase tracking-widest">
-                    © 2026 Bárbara Amorim
+                <div class="text-center">
+                    <span class="block text-[11px] text-[#AA746B] font-medium mb-1">Bárbara Amorim &middot; Enfermeira &middot; COREN-RJ 543.324</span>
+                    <span class="block text-[10px] text-gray-400 uppercase tracking-widest">© 2026 Bárbara Amorim</span>
                 </div>
             </div>
         </footer>
