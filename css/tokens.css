@@ -1,0 +1,86 @@
+/* ===========================================================================
+   COMUM AOS DOIS REPOSITORIOS -- NAO EDITAR SO DE UM LADO.
+
+   Este ficheiro e identico em baestetica/css/tokens.css e em
+   [repositório interno]/assets/tokens.css. Depois de mexer num deles, rode:
+
+       python [o sincronizador]
+
+   de qualquer um dos dois repositorios. Ele copia e confere. O hook de
+   pre-commit recusa o commit se as copias divergirem, entao nao ha como
+   esquecer.
+   ===========================================================================
+
+   A PALETA, E POR QUE CADA TOM EXISTE
+
+   Os tres tons de rosa da marca tem contrastes muito diferentes sobre o fundo
+   claro (#FCFAF9), e isso decide o uso de cada um -- nao e questao de gosto:
+
+       --marca-clara  #C28E86   2,80:1   reprova tudo. Borda e fundo, nunca tinta.
+       --marca        #AA746B   3,72:1   passa AA so em texto grande (>=24px, ou
+                                        >=18,7px negrito). Titulo e icone.
+       --marca-forte  #8F5C54   5,27:1   passa AA em texto pequeno. E o unico.
+       --texto        #3D2D2B  12,55:1   texto corrido.
+
+   O --marca-forte nasceu no repositorio privado exatamente por isso, e o site
+   publico pintava texto de 8 a 12px com --marca (3,72:1) em 44 lugares. Se for
+   escrever texto pequeno em rosa, e este o tom.
+   =========================================================================== */
+
+:root {
+    /* --- marca ------------------------------------------------------------ */
+    --marca-forte:   #8F5C54;   /* tinta de texto pequeno; AA sobre os fundos claros */
+    --marca-hover:   #7F4A42;   /* estado sobre --marca-forte */
+    --marca:         #AA746B;   /* titulo grande e icone */
+    --marca-clara:   #C28E86;   /* borda, fundo e filete; nunca tinta de texto */
+    --marca-borda:   #EACDCA;   /* borda fina, o tom mais usado dos dois lados */
+
+    /* --- neutros ---------------------------------------------------------- */
+    --texto:         #3D2D2B;   /* texto corrido */
+    --texto-suave:   #6B7280;   /* rotulo secundario */
+    --superficie:    #FFFFFF;   /* cartao, folha A4 */
+    --fundo:         #FCFAF9;   /* fundo do site */
+    --fundo-rosa:    #F6ECEB;   /* fundo da ferramenta interna */
+    --fundo-neutro:  #F5F2F1;   /* faixa cinza suave */
+    --pontilhado:    #D1C5C2;   /* linha de preenchimento dos formularios */
+
+    /* --- funcionais: categoria de pagamento (fluxo de caixa) -------------- */
+    --pag-pix:       #0F766E;
+    --pag-cartao:    #8E44AD;
+    --pag-debito:    #1E5F8C;
+
+    /* --- funcionais: grafico --------------------------------------------- */
+    --grafico-alta:  #2ECC71;
+    --grafico-baixa: #E74C3C;
+
+    /* --- funcionais: acao destrutiva ------------------------------------- */
+    --perigo:        #9F1239;
+    --perigo-vivo:   #E11D48;
+    --perigo-fundo:  #FFF1F2;
+
+    /* --- funcionais: marcas de terceiros --------------------------------- */
+    --whatsapp:      #25D366;
+
+    /* --- tipografia ------------------------------------------------------ */
+    --fonte-texto:   'Montserrat', sans-serif;
+    --fonte-titulo:  'Playfair Display', serif;
+}
+
+/* ===========================================================================
+   TINTAS SEMANTICAS
+
+   Existem para o HTML parar de espalhar hexadecimais dentro de nome de classe.
+   Antes se escrevia text-[#AA746B] em 44 lugares, e trocar de tom queria dizer
+   caçar o hexadecimal pagina por pagina -- foi assim que o contraste ficou
+   errado sem ninguem notar.
+
+   O nome diz o papel, nao a cor. Se a paleta mudar, muda aqui.
+   =========================================================================== */
+
+.tinta-forte  { color: var(--marca-forte); }   /* texto pequeno em rosa */
+.tinta-marca  { color: var(--marca); }         /* titulo grande, icone */
+.tinta-texto  { color: var(--texto); }
+.tinta-suave  { color: var(--texto-suave); }
+
+a.tinta-forte:hover,
+a.tinta-marca:hover { color: var(--marca-hover); }
