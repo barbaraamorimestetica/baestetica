@@ -6,3 +6,17 @@ Downloads/
 # mas em Linux (ou num clone noutra máquina) "Documentos/" não pegaria "documentos/".
 Documentos/
 documentos/
+
+# Artefactos das verificacoes de layout. Ficam de fora porque nao sao o site.
+#
+# Isto existe por causa de um erro concreto: um retrato do repositorio PRIVADO
+# foi extraido para dentro deste, por um "cd" errado num comando de comparacao,
+# e o git add -A commitou os 39 ficheiros. Nada sensivel saiu -- o .gitignore
+# de la manteve Dados/, Downloads/, Imagens/ e *.csv fora do archive -- mas uma
+# copia do repositorio privado nao pode viver no publico, que e publicado.
+pri-antes/
+pub-antes/
+antes/
+depois/
+d[0-9]*.html
+__pycache__/
