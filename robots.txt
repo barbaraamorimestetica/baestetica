@@ -12,6 +12,9 @@
 #
 # O sitemap, enquanto isso, precisa de ser enviado a mao pelo Google Search
 # Console. Nao ha como declara-lo daqui.
+#
+# O procedimento esta em [a documentação de SEO], e o [a conferência do sitemap] confere o sitemap
+# contra as paginas -- inclusive o que esta publicado, com --ar.
 
 User-agent: *
 Allow: /
