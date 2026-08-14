@@ -7,12 +7,20 @@ duplicação foi a escolha, e como ela é garantida.
 
 ## Os ficheiros comuns
 
-| No público | No privado |
-|---|---|
-| `css/tokens.css` | `assets/tokens.css` |
-| `css/componentes.css` | `assets/componentes.css` |
-| `sincronizar-comum.py` | `sincronizar-comum.py` |
-| `COMUM.md` | `COMUM.md` |
+| No público | No privado | O que é |
+|---|---|---|
+| `css/tokens.css` | `assets/tokens.css` | paleta, tipografia, escala base |
+| `css/componentes.css` | `assets/componentes.css` | as peças que os dois desenham igual |
+| `css/fontes.css` | `assets/fontes.css` | as `@font-face` da Montserrat e da Playfair |
+| `sincronizar-comum.py` | idem | confere e copia |
+| `conferir-classes.py` | idem | classe usada sem regra |
+| `conferir-contraste.py` | idem | contraste, estados e anel de foco |
+| `regerar-tailwind.py` | idem | regera a folha compilada |
+| `COMUM.md` | idem | este documento |
+| `TAILWIND.md` | idem | o procedimento do Tailwind |
+
+O `conferir-sitemap.py` e o `SEO.md` ficam **só no público**: a ferramenta interna
+não é indexada e não tem sitemap.
 
 O lado **canônico é o público**. Não por hierarquia: só é preciso que um dos
 dois seja, e o público é o que define a identidade visual da marca.
@@ -95,6 +103,16 @@ redirecionamento e mede o destino. Essas são conferidas por leitura do ficheiro
 `tokens.css` — a paleta nomeada, a tipografia e a **escala base** (`html {
 font-size: 16px }`). Antes a base estava declarada página a página e não batia:
 18px em quatro páginas, 16px nas outras oito.
+
+`fontes.css` — as declarações `@font-face` da Montserrat e da Playfair Display,
+servidas do próprio repositório. Os `url()` são relativos ao ficheiro, e por isso
+o **mesmo texto** funciona nos dois lados: em `css/fontes.css` aponta para
+`css/fontes/`, em `assets/fontes.css` aponta para `assets/fontes/`.
+
+Os 10 ficheiros `.woff2` (388 KB, só o subset `latin`) acompanham a folha mas não
+entram na conferência: são binários imutáveis, baixados do Google Fonts e nunca
+editados à mão. Quem os atualizar segue o procedimento no cabeçalho do
+`fontes.css` e substitui os dois lados de uma vez.
 
 `componentes.css` — as peças que os dois lados desenham igual, e só essas:
 `.botao-marca` (3 usos no site, 9 na ferramenta), `.icon` (12 páginas, era a

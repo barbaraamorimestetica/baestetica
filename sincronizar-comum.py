@@ -32,6 +32,7 @@ PRIVADO = "baestetica_private"
 PARES = [
     (os.path.join("css", "tokens.css"), os.path.join("assets", "tokens.css")),
     (os.path.join("css", "componentes.css"), os.path.join("assets", "componentes.css")),
+    (os.path.join("css", "fontes.css"), os.path.join("assets", "fontes.css")),
     ("sincronizar-comum.py", "sincronizar-comum.py"),
     ("conferir-classes.py", "conferir-classes.py"),
     ("conferir-contraste.py", "conferir-contraste.py"),

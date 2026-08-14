@@ -7,7 +7,7 @@
     <!-- Content-Security-Policy: limita de onde a página pode carregar código,
          estilos, imagens e iframes. Tem de vir antes de qualquer <link> ou <script>,
          senão não cobre o que já foi declarado acima. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self'">
 
     <title>Catálogo de Procedimentos - Bárbara Amorim Estética Avançada</title>
     <meta name="description" content="Catálogo de procedimentos: toxina botulínica, preenchimento facial, bioestimuladores de colágeno, harmonização facial, enzimas corporais, limpeza de pele e skinbooster.">
@@ -36,10 +36,8 @@
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/paginas.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Montserrat e Playfair servidas daqui, nao do fonts.googleapis.com -->
+    <link rel="stylesheet" href="css/fontes.css">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QWMWZ5SYWP"></script>

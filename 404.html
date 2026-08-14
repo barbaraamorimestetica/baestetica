@@ -8,7 +8,7 @@
 
     <!-- Content-Security-Policy: esta página não usa analytics nem embeds,
          por isso a política pode ser mais fechada que a das restantes. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-src 'none'">
 
     <!-- Os caminhos aqui são absolutos a partir da raiz do site: o GitHub Pages
          serve esta página em qualquer endereço inexistente, incluindo subpastas,
@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="/baestetica/css/tokens.css">
     <link rel="stylesheet" href="/baestetica/css/componentes.css">
     <link rel="stylesheet" href="/baestetica/css/paginas.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Montserrat e Playfair servidas daqui, nao do fonts.googleapis.com -->
+    <link rel="stylesheet" href="/baestetica/css/fontes.css">
 
 </head>
 <body class="min-h-screen p-4 md:p-8 luxury-light-bg flex flex-col items-center justify-center text-center">
