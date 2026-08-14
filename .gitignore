@@ -1,1 +1,8 @@
 Downloads/
+
+# Termos de consentimento e documentos clínicos. Nunca versionar: são modelos
+# assinados por pacientes e podem conter dado pessoal sensível.
+# As duas grafias são propositais: o Git no Windows ignora maiúsculas/minúsculas,
+# mas em Linux (ou num clone noutra máquina) "Documentos/" não pegaria "documentos/".
+Documentos/
+documentos/
