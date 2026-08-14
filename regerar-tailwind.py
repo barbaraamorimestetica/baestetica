@@ -84,8 +84,10 @@ def tokens(raiz):
     """Todos os tokens de classe usados, pelo extractor da conferencia."""
     fora = set()
     for a in sorted(os.listdir(raiz)):
-        if not a.endswith(".html") or " " in a:
+        if not a.endswith(".html"):
             continue
+        # Sem excecao para nome com espaco: o nome nunca entra no harness, so o
+        # conteudo. Ver o comentario equivalente em conferir-classes.py.
         html = open(os.path.join(raiz, a), encoding="utf-8").read()
         fora.update(cc.usadas(html).keys())
     return sorted(fora)

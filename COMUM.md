@@ -65,6 +65,31 @@ python instalar-hooks.py
 Se o hook não estiver instalado, a sincronização volta a depender de memória —
 que é a situação que este arranjo existe para evitar.
 
+## Os três verificadores
+
+Rodam de dentro de qualquer um dos dois repositórios e olham os **dois**:
+
+```bash
+python sincronizar-comum.py     # os comuns divergiram?
+python conferir-classes.py      # há classe usada sem regra em folha nenhuma?
+python conferir-contraste.py    # há texto, estado ou anel de foco a reprovar?
+```
+
+Os três descobrem as páginas com `os.listdir`, e não por lista escrita à mão. Isso
+não é detalhe: uma página do site — o `Catálogo de Procedimentos.html`, que
+redireciona um endereço antigo — ficou fora de **todas** as medições feitas à mão
+neste projeto, e escondia um link a 3,87:1.
+
+O `conferir-contraste.py` mede três coisas, e as três por um motivo:
+
+- **repouso**, a cor computada de todo texto contra o fundo efetivo;
+- **estados**, lendo as regras de `:hover` e `:focus` das folhas — o medidor
+  anterior lia só o repouso, e dois *hovers* defeituosos passaram invisíveis;
+- **anel de foco** contra o fundo do elemento em volta (WCAG 1.4.11, 3:1).
+
+Página que redireciona não dá para medir num iframe, porque ele segue o
+redirecionamento e mede o destino. Essas são conferidas por leitura do ficheiro.
+
 ## O que está em cada ficheiro comum
 
 `tokens.css` — a paleta nomeada, a tipografia e a **escala base** (`html {

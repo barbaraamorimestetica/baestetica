@@ -120,8 +120,12 @@ def conferir(raiz, rotulo):
     problemas = []
     total_usadas = set()
     for a in sorted(os.listdir(raiz)):
-        if not a.endswith(".html") or " " in a:
+        if not a.endswith(".html"):
             continue
+        # Nao ha excecao para nome com espaco. Havia, e ela custou caro: o
+        # "Catalogo de Procedimentos.html" ficou fora de toda a verificacao deste
+        # projeto, e escondeu um link a 3,72:1 -- a mesma reprova de contraste que
+        # foi fechada 61 vezes em outras paginas. Nada aqui precisava do salto.
         html, css = folhas_e_estilo(os.path.join(raiz, a), raiz)
         tem = definidas(css)
         for c, origens in usadas(html).items():
