@@ -19,7 +19,6 @@ O hook de pre-commit de cada repositorio chama isto no modo de conferencia e
 recusa o commit se houver divergencia. E por isso que "atualizar em conjunto"
 deixa de depender de lembrar.
 """
-import filecmp
 import hashlib
 import os
 import shutil
@@ -51,11 +50,27 @@ def raizes():
     return pub, pri
 
 
+def conteudo(caminho):
+    """Le o ficheiro com o fim de linha normalizado.
+
+    Sem isto a conferencia acusa divergencia falsa. O git desta maquina tem
+    core.autocrlf ligado: qualquer 'git checkout' reescreve o ficheiro com CRLF,
+    enquanto a copia feita por este script fica com LF. O CSS e identico e o
+    comparador acusava, o que treina a pessoa a ignorar o aviso -- que e pior do
+    que nao ter aviso nenhum.
+    """
+    with open(caminho, "rb") as f:
+        return f.read().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def resumo(caminho):
     if not os.path.exists(caminho):
         return None
-    with open(caminho, "rb") as f:
-        return hashlib.sha256(f.read()).hexdigest()[:12]
+    return hashlib.sha256(conteudo(caminho)).hexdigest()[:12]
+
+
+def iguais(a, b):
+    return conteudo(a) == conteudo(b)
 
 
 def main():
@@ -72,7 +87,7 @@ def main():
         if ra is None:
             ausentes.append((rel_pub, "falta no publico"))
             continue
-        if rb is None or not filecmp.cmp(a, b, shallow=False):
+        if rb is None or not iguais(a, b):
             if aplicar:
                 os.makedirs(os.path.dirname(b) or ".", exist_ok=True)
                 shutil.copyfile(a, b)
