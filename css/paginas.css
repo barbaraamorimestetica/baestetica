@@ -1,0 +1,49 @@
+/* ===========================================================================
+   css/paginas.css -- so do repositorio publico
+
+   Nao entra no [o sincronizador] de proposito: sao pecas do site, e o
+   repositorio privado nao tem rodape de contacto nem fundo em degrade. O que
+   os dois lados desenham igual esta em componentes.css.
+
+   Depende de tokens.css: carregue-o antes deste ficheiro. Carregue este antes
+   do <style> de cada pagina, para a pagina poder sobrepor-se.
+
+   Cada regra aqui estava copiada em 2 a 4 paginas, com o texto igual. Os
+   hexadecimais literais que elas tinham passaram a var() no mesmo passo.
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Estava em 404, Resultados, catalogo e index, com #FCFAF9 e #3D2D2B escritos
+   a mao. O catalogo-impressao tem o seu proprio body -- fundo branco de folha
+   e margem zero -- e por isso nao usa este.
+   --------------------------------------------------------------------------- */
+body {
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: var(--fonte-texto);
+}
+
+/* ---------------------------------------------------------------------------
+   Fundo do site: um clarao branco no alto que desce para o creme. Estava nas
+   mesmas 4 paginas.
+   --------------------------------------------------------------------------- */
+.luxury-light-bg {
+    background-image: radial-gradient(circle at 50% 10%, var(--superficie) 0%, var(--fundo) 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Rodape de contacto. Sem o flex-wrap, no telefone os tres contactos ficavam
+   numa linha unica mais larga que a tela e o ultimo saia cortado; o nowrap
+   impede que um numero de telefone ou um e-mail se quebre ao meio.
+   Estava em index e Resultados.
+   --------------------------------------------------------------------------- */
+.rodape {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.75rem;
+}
+
+.rodape a,
+.rodape span {
+    white-space: nowrap;
+}

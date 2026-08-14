@@ -35,6 +35,7 @@
     <!-- Paleta nomeada, comum aos dois repositorios (ver [a documentação comum]) -->
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/paginas.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,29 +52,6 @@
     </script>
 
     <style>
-        /* Ícones em SVG inline, no lugar do Font Awesome completo via CDN.
-           Ícones: Font Awesome Free 6.4.0 (CC BY 4.0) - https://fontawesome.com/license/free
-           Dimensionam-se pelo font-size (1em de altura) e herdam a cor do texto,
-           exatamente como as tags <i> que substituíram. */
-        .icon {
-            display: inline-block;
-            height: 1em;
-            width: auto;
-            overflow: visible;
-            fill: currentColor;
-            vertical-align: -0.125em;
-        }
-        
-        body {
-            background-color: #FCFAF9;
-            color: #3D2D2B;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        /* Textura suave e luxuosa de fundo para o site */
-        .luxury-light-bg {
-            background-image: radial-gradient(circle at 50% 10%, #FFFFFF 0%, #FCFAF9 100%);
-        }
 
         /* Efeito de borda fina iluminada em Rose Gold */
         .gold-border-glow {
@@ -85,24 +63,14 @@
             border-color: #C28E86;
             box-shadow: 0 10px 30px rgba(194, 142, 134, 0.15);
             transform: translateY(-4px);
-        }
-
-        /* O layout A4 do catálogo vive em catalogo-impressao.html, que é a fonte
-           de Catalogo-Barbara-Amorim.pdf. Aqui só escondemos, ao imprimir, o que
-           é interface e não conteúdo. */
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-        }
-    </style>
+        }</style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-between luxury-light-bg">
 
     <!-- BARRA DE DOWNLOAD SUPERIOR (NÃO IMPRIME) -->
     <div class="w-full max-w-6xl bg-white/90 backdrop-blur-md rounded-2xl border border-borderRose p-4 my-6 mx-4 flex flex-col sm:flex-row justify-between items-center gap-4 no-print z-50 shadow-sm">
         <div class="flex items-center gap-3">
-            <a href="index.html" class="tinta-forte hover:tinta-forte text-xs font-semibold flex items-center gap-1.5 border-r border-borderRose pr-3 shrink-0 transition-colors">
+            <a href="index.html" class="tinta-forte text-xs font-semibold flex items-center gap-1.5 border-r border-borderRose pr-3 shrink-0 transition-colors">
                 <svg class="icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg> Início
             </a>
             <svg class="icon tinta-marca text-lg" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M309 106c11.4-7 19-19.7 19-34c0-22.1-17.9-40-40-40s-40 17.9-40 40c0 14.4 7.6 27 19 34L209.7 220.6c-9.1 18.2-32.7 23.4-48.6 10.7L72 160c5-6.7 8-15 8-24c0-22.1-17.9-40-40-40S0 113.9 0 136s17.9 40 40 40c.2 0 .5 0 .7 0L86.4 427.4c5.5 30.4 32 52.6 63 52.6H426.6c30.9 0 57.4-22.1 63-52.6L535.3 176c.2 0 .5 0 .7 0c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40c0 9 3 17.3 8 24l-89.1 71.3c-15.9 12.7-39.5 7.5-48.6-10.7L309 106z"/></svg>
