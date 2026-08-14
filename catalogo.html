@@ -50,7 +50,6 @@
     gtag('config', 'G-QWMWZ5SYWP');
     </script>
 
-
     <style>
         /* Ícones em SVG inline, no lugar do Font Awesome completo via CDN.
            Ícones: Font Awesome Free 6.4.0 (CC BY 4.0) - https://fontawesome.com/license/free
@@ -64,9 +63,7 @@
             fill: currentColor;
             vertical-align: -0.125em;
         }
-        html {
-            font-size: 18px; 
-        }
+        
         body {
             background-color: #FCFAF9;
             color: #3D2D2B;
@@ -325,7 +322,10 @@
         <footer class="bg-white rounded-3xl p-8 border border-borderRose flex flex-col gap-6 mt-12 shadow-sm">
           <div class="w-full flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
-                <h4 class="font-serif text-lg tinta-marca font-bold uppercase tracking-wide">Ficou com Alguma Dúvida?</h4>
+                <!-- tinta-forte, e nao tinta-marca: com a base em 16px este text-lg da 18px,
+                     e o limiar de "texto grande" da WCAG (18,66px em negrito) e absoluto.
+                     A 18px de base passava com 3,72:1; a 16px passa a exigir 4,5:1. -->
+                <h4 class="font-serif text-lg tinta-forte font-bold uppercase tracking-wide">Ficou com Alguma Dúvida?</h4>
                 <p class="text-[11px] tinta-suave mt-2 max-w-md leading-relaxed font-light">
                     Para mais detalhes, avaliações individuais e planejamento de tratamentos, por favor entre em contato direto pelo meu WhatsApp pessoal ou acesse as minhas redes sociais oficiais.
                 </p>
@@ -348,8 +348,6 @@
         </footer>
 
     </div>
-
-
 
     <!-- Botão flutuante de WhatsApp -->
     <a href="https://wa.me/5522999408603?text=Olá%20Bárbara!%20Gostaria%20de%20saber%20mais%20detalhes%20sobre%20os%20seus%20procedimentos%20estéticos."
