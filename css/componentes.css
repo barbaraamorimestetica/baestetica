@@ -173,3 +173,113 @@ summary:focus-visible,
         display: none !important;
     }
 }
+
+/* ===========================================================================
+   COR DE FUNDO E DE BORDA, POR NOME
+
+   Antes: 469 ocorrencias de cor escrita dentro de nome de classe, entre os dois
+   repositorios, com 42 nomes distintos. Havia a mesma cor com dois nomes
+   (border-borderRose e border-[#EACDCA], 217 usos somados) e havia sete
+   variantes de transparencia escritas a mao.
+
+   Cada classe aqui traz SO A COR. Forma, tamanho e espaco continuam nas
+   utilidades do Tailwind -- e o que permite trocar uma pela outra sem pensar em
+   mais nada, do mesmo modo que .botao-marca e .borda-marca ja fazem.
+
+   As contagens ao lado dizem quantas vezes cada uma e usada hoje. As de um uso
+   so ficam de proposito: adesao parcial e o que produziu a deriva.
+   =========================================================================== */
+
+/* --- borda --------------------------------------------------------------- */
+
+.borda-marca-clara { border-color: var(--marca-clara); }                       /* 5x */
+
+/* As variantes de transparencia existiam como border-[#EACDCA]/60 e afins. */
+.borda-marca-60 { border-color: rgb(var(--marca-borda-rgb) / 0.6); }           /* 4x */
+.borda-marca-50 { border-color: rgb(var(--marca-borda-rgb) / 0.5); }           /* 2x */
+.borda-marca-40 { border-color: rgb(var(--marca-borda-rgb) / 0.4); }           /* 1x */
+.borda-marca-30 { border-color: rgb(var(--marca-borda-rgb) / 0.3); }           /* 1x */
+
+/* Cartao e botao que escurecem a borda ao passar o rato. O :focus-within faz o
+   mesmo pelo teclado, para quem chega ao cartao a tabular. */
+.borda-realce:hover,
+.borda-realce:focus-within { border-color: var(--marca-clara); }               /* 6x */
+
+/* --- fundo --------------------------------------------------------------- */
+
+.fundo             { background-color: var(--fundo); }                         /* 3x */
+.fundo-rosa        { background-color: var(--fundo-rosa); }                    /* 3x */
+.fundo-rosa-claro  { background-color: var(--fundo-rosa-claro); }              /* 6x */
+.fundo-rosa-claro-60 { background-color: rgb(var(--fundo-rosa-claro-rgb) / 0.6); }  /* 1x */
+.fundo-rosa-claro-40 { background-color: rgb(var(--fundo-rosa-claro-rgb) / 0.4); }  /* 4x */
+.fundo-rosa-claro-30 { background-color: rgb(var(--fundo-rosa-claro-rgb) / 0.3); }  /* 2x */
+.fundo-neutro      { background-color: var(--fundo-neutro); }                  /* 15x */
+.fundo-neutro-hover:hover { background-color: var(--fundo-neutro); }           /* 1x */
+.fundo-marca       { background-color: var(--marca); }                         /* 1x */
+.fundo-marca-clara { background-color: var(--marca-clara); }                   /* 2x */
+.fundo-marca-clara-30 { background-color: rgb(var(--marca-clara-rgb) / 0.3); } /* 1x */
+.fundo-marca-forte { background-color: var(--marca-forte); }                   /* 1x */
+.fundo-texto       { background-color: var(--texto); }                         /* 2x */
+
+/* Verde do WhatsApp. Nao e cor da marca: e cor de terceiro, e por isso tem
+   nome proprio em vez de entrar na familia de rosas. */
+.fundo-whatsapp    { background-color: var(--whatsapp); }                       /* 4x */
+
+/* --- pecas decorativas --------------------------------------------------- */
+
+/* Filete curto que separa seccoes. Era bg-roseGold com h-0.5 ou h-1. */
+.filete { background-color: var(--marca-clara); }                              /* 4x */
+
+/* A faixa do topo de cada folha A4: claro nas pontas, mais forte no meio.
+   Eram tres classes por uso (from-, via-, to-), em 13 lugares. */
+.filete-degrade {
+    background-image: linear-gradient(to right,
+        var(--marca-borda), var(--marca-clara), var(--marca-borda));
+}
+
+/* Etiqueta de categoria do catalogo: o rosa da marca a 10% como fundo, com a
+   tinta que passa contraste por cima. */
+.etiqueta {
+    background-color: rgb(var(--marca-rgb) / 0.1);
+    color: var(--marca-forte);
+}                                                                              /* 7x */
+
+/* Tinta do icone puramente ornamental -- o unico lugar onde --marca-borda
+   pinta algo em vez de contornar. */
+.tinta-borda { color: var(--marca-borda); }                                    /* 1x */
+
+/* Cor da caixa de selecao nativa. Passa a --marca para concordar com a
+   .custom-checkbox das fichas, que ja pinta o marcado com esse tom -- eram duas
+   caixas de selecao do mesmo repositorio em cores diferentes. */
+.acento-marca { accent-color: var(--marca); }                                  /* 1x */
+
+/* ---------------------------------------------------------------------------
+   PAPEIS FUNCIONAIS DA FERRAMENTA INTERNA
+
+   Estavam escritos na escala do Tailwind -- text-green-700, text-red-600,
+   text-amber-800 com bg-amber-50 e border-amber-200 -- ao lado da paleta da
+   marca. Sao papeis de verdade, e por isso ganharam token em vez de virarem
+   tinta neutra.
+   --------------------------------------------------------------------------- */
+
+.tinta-entrada { color: var(--valor-entrada); }                                /* 3x */
+.tinta-saida   { color: var(--valor-saida); }                                  /* 3x */
+.tinta-perigo  { color: var(--perigo); }                                       /* 2x */
+
+/* Faixa de aviso: nao e erro nem acao destrutiva, e um recado na tela. Traz as
+   tres cores juntas porque ela e uma peca, nao tres decisoes. */
+.aviso {
+    background-color: var(--aviso-fundo);
+    border-color: var(--aviso-borda);
+    color: var(--aviso);
+}
+
+/* Linha de escrever a mao: o mesmo papel do .dotted-line, mas com borda
+   continua. Era border-gray-300 (#D1D5DB), cinza frio de luminosidade quase
+   igual a do --pontilhado (#D1C5C2). */
+.borda-pontilhado { border-color: var(--pontilhado); }                         /* 10x */
+
+/* Filete lateral dos cartoes de entrada e de saida do fluxo de caixa. Aqui
+   valem os tons do grafico, e nao os de texto: sao 4px de cor, nao letra. */
+.borda-entrada { border-color: var(--grafico-alta); }                          /* 1x */
+.borda-saida   { border-color: var(--grafico-baixa); }                         /* 1x */
