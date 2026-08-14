@@ -31,13 +31,28 @@ A4 que antes ficava escondido dentro de `catalogo.html`. Ele usa as imagens de
 2. Gere o PDF com o Chrome em modo headless:
 
    ```bash
-   chrome --headless=new --disable-gpu --no-pdf-header-footer --virtual-time-budget=12000 --print-to-pdf=Catalogo-Barbara-Amorim.pdf http://127.0.0.1:8765/catalogo-impressao.html
+   chrome --headless=new --disable-gpu --no-pdf-header-footer --virtual-time-budget=30000 --print-to-pdf=Catalogo-Barbara-Amorim.pdf http://127.0.0.1:8765/catalogo-impressao.html
    ```
 
    No Windows o executável costuma estar em
    `C:\Program Files\Google\Chrome\Application\chrome.exe`.
 
+   O `--virtual-time-budget` era de 12000 e não bastava. Num perfil sem cache, a
+   Montserrat e a Playfair Display chegam depois desse prazo, e o Chrome imprime
+   com a fonte de sistema — o PDF sai inteiro em Arial, sem erro nenhum.
+
 3. Confira: 4 páginas, A4 (595x842 pt), e o texto deve dar para selecionar.
+
+   Confira também **qual fonte foi embutida**, que é como se pega a falha acima:
+
+   ```bash
+   python -c "import re;d=open('Catalogo-Barbara-Amorim.pdf','rb').read();print(sorted(set(x.decode() for x in re.findall(rb'/BaseFont\s*/([A-Za-z0-9+#-]+)',d))))"
+   ```
+
+   O certo é sair só `PlayfairDisplay-Italic`, e o arquivo ficar por volta de
+   560 KB. Se aparecer `ArialMT` ou `Arial-BoldMT`, as fontes não carregaram:
+   repita o comando do passo 2. O arquivo também encolhe nesse caso — foi assim
+   que a falha apareceu, com 506 KB em vez de 560 KB.
 
 ## Por que as imagens de `img/print/`
 
