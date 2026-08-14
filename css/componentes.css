@@ -87,6 +87,67 @@
 }
 
 /* ---------------------------------------------------------------------------
+   FOCO VISIVEL -- uma regra, os dois lados.
+
+   Vale para tudo o que recebe foco, e existe por um motivo concreto: quatro
+   regras dos formularios tinham 'outline: none' e NENHUMA regra :focus a
+   substituir. Sao .paper-input, na ficha de anamnese e no termo de
+   consentimento, e .table-input-text, .value-display e .table-input-val, na
+   tabela de precos. Quem preenche pelo teclado nao via onde estava -- na
+   anamnese sao 37 campos em sequencia. Reprova a WCAG 2.4.7.
+
+   Aquelas supressoes sairam. Fica esta, no ficheiro comum, para nao voltar a
+   depender de cada pagina se lembrar. As paginas que TAMBEM mudam borda ou
+   fundo no foco continuam a fazer isso -- e afordancia a mais, nao a menos.
+
+   :focus-visible, e nao :focus, para o anel nao aparecer ao clicar com o rato.
+   --------------------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--marca-forte);
+    outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   ALVO DE PONTEIRO -- a WCAG 2.5.8 pede 24x24 CSS px.
+
+   Medido a 390px de largura, com o transform do ajuste-mobile fora do caminho:
+   os tres links de contacto do rodape tinham 18px de altura (o telefone
+   111x18, o Instagram 168x18, o e-mail 241x18) e os dois "Inicio" tinham 16.
+   A largura nunca foi o problema.
+
+   O padding vertical leva-os a 26px sem mexer em mais nada. Nao ha aqui um
+   tamanho de fonte nem uma cor: e so o alvo.
+   --------------------------------------------------------------------------- */
+.alvo-toque {
+    padding-block: 0.25rem;
+    min-height: 24px;
+}
+
+/* ---------------------------------------------------------------------------
+   Quem pediu menos movimento recebe menos movimento.
+
+   Nao havia nada a respeito em pagina nenhuma, e ha um <svg animate-spin> a
+   girar e transition-all espalhado. O spinner continua visivel, so para de
+   girar -- ele indica "a carregar" pela presenca, nao pelo movimento.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------------------------------------------------------------------------
    O que nao vai para o papel: barra de acao, botao de gerar PDF, aviso de ecra.
    Os documentos A4 do repositorio privado acrescentam mais regras de impressao
    em assets/documento.css; esta e a base que os dois lados usam.
