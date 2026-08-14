@@ -34,6 +34,7 @@ PARES = [
     (os.path.join("css", "componentes.css"), os.path.join("assets", "componentes.css")),
     ("sincronizar-comum.py", "sincronizar-comum.py"),
     ("conferir-classes.py", "conferir-classes.py"),
+    ("regerar-tailwind.py", "regerar-tailwind.py"),
     ("COMUM.md", "COMUM.md"),
     ("TAILWIND.md", "TAILWIND.md"),
 ]

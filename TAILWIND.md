@@ -64,26 +64,42 @@ ser usada: a regra órfã fica na folha como bytes mortos, e isso é inofensivo.
 
 ## Como regerar
 
-Com Node disponível, o caminho normal é o CLI:
+```bash
+python regerar-tailwind.py            # mostra o que mudaria
+python regerar-tailwind.py --aplicar  # escreve as duas folhas
+```
+
+**Não escreve por omissão**, de propósito: esta é a operação mais frágil do
+projeto e o erro dela é silencioso. O modo de conferência lista os seletores que
+entrariam e os que sairiam, para se poder olhar antes de aplicar.
+
+O script faz o que o Tailwind CLI faria se houvesse Node: monta um HTML
+temporário com o CDN pinado na versão, o tema, e uma `<div>` cujo `class` contém
+todos os tokens usados; abre no Chrome headless; recolhe o `<style>` injetado; e
+grava mantendo o cabeçalho de comentário. O caminho do HTML temporário é
+impresso no fim, para se poder abrir e ver o que o CDN recebeu.
+
+Os tokens saem do **mesmo extractor** que o `conferir-classes.py` usa — ele é
+carregado pelo caminho, porque o nome tem hífen. Isso é deliberado: se os dois
+lessem o HTML de maneira diferente, o gerador poderia deixar de fora uma classe
+que a conferência procura, e a folha passaria a conferência com um buraco.
+
+Com Node disponível, o caminho normal seria o CLI:
 
 ```bash
 npx tailwindcss@3.4.17 -i entrada.css -o css/site.css --minify
 ```
 
-...com um `tailwind.config.js` que replique o tema da tabela acima e `content`
-a apontar para `*.html`.
+...com um `tailwind.config.js` que replique o tema e `content` a apontar para
+`*.html`.
 
-Sem Node — que foi como as duas folhas saíram — extrai-se o CSS que o próprio
-CDN produz em runtime:
+### O tema encolheu
 
-1. Junte num HTML temporário o `<script src="https://cdn.tailwindcss.com">`, o
-   bloco `tailwind.config` com o tema, e uma `<div>` cujo `class` contenha
-   **todas** as classes usadas — inclusive as que só aparecem no JavaScript.
-2. Abra com `chrome --headless=new --dump-dom` e recolha o `<style>` que o CDN
-   injetou.
-3. Grave na folha do repositório, **mantendo o cabeçalho de comentário**.
-4. Rode `python conferir-classes.py`. Se aparecer classe sem regra, o conjunto
-   de tokens do passo 1 estava incompleto.
+Depois de a cor sair dos nomes de classe, **nenhum** nome de cor do tema antigo
+(`roseGold`, `roseAccent`, `roseDeep`, `borderRose`, `bgBeige`, `softGray`,
+`darkText`) é usado em página nenhuma. O `tailwind.config` do script tem só as
+duas famílias de fonte — que precisam de ficar, porque o *preflight* do Tailwind
+põe a `fontFamily.sans` no `<html>` e o `.font-serif` é usado 83 vezes.
 
 ### Depois de regerar, prove que não quebrou
 
