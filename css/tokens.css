@@ -32,6 +32,34 @@
    pinta. Um retrato feito com expressao regular sobre o HTML errou por 17.
    =========================================================================== */
 
+/* ---------------------------------------------------------------------------
+   A ESCALA BASE
+
+   Tudo o que o Tailwind mede em rem -- text-xs, p-4, gap-2 -- sai daqui. Antes
+   estava declarada pagina por pagina e nao batia: 18px em catalogo, Resultados,
+   catalogo-impressao e planner-anual; 16px, por omissao ou por declaracao, nas
+   outras oito. Quem ia de index para Resultados via o mesmo text-sm a 14px e
+   depois a 15,75px.
+
+   Escolhido 16px, e nao 18px, por tres razoes medidas:
+
+     - E o valor por omissao do navegador. Uma pagina que se esqueca de declarar
+       concorda com esta folha em vez de derivar dela.
+     - Oito das doze paginas ja estavam nele.
+     - Encolher e a direcao segura nas folhas A4 de altura fixa. Medido: nenhuma
+       das 15 folhas dos dois repositorios transborda a 16px nem a 18px. A
+       primeira quebra aparece a 24px (planner, folha 2) e a 32px (as restantes)
+       -- ou seja, ha folga larga, e a metrica reage quando ha o que acusar.
+
+   As folhas A4 quase nao dependem daqui para o tipo: usam px literal, de 5%
+   (termos) a 27% (catalogo-impressao) dos elementos de texto. O que muda nelas
+   e o espacamento em rem, que num flex justify-between so redistribui a folga.
+   --------------------------------------------------------------------------- */
+
+html {
+    font-size: 16px;
+}
+
 :root {
     /* --- marca ------------------------------------------------------------ */
     --marca-forte:   #8F5C54;   /* tinta de texto pequeno; AA sobre os fundos claros */
