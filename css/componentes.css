@@ -45,6 +45,15 @@
 
    Estava copiada nas 12 paginas dos dois repositorios, com o texto
    byte-a-byte igual em todas. Era a regra mais duplicada do projeto.
+
+   IMPORTANTE -- todo <svg class="icon"> tem de trazer width e height iguais
+   ao viewBox, no proprio elemento. Nao e para a tela: aqui o tamanho vem
+   deste height:1em e o width:auto resolve pela proporcao. E para o PDF.
+   O html2pdf desenha as folhas com o html2canvas, que serializa cada <svg>
+   e o carrega como imagem -- e uma imagem SVG sem dimensao intrinseca nao
+   rasteriza. Sem os atributos o icone simplesmente nao sai no ficheiro,
+   sem erro nenhum, e na tela continua perfeito. Foi assim que os 77 icones
+   dos documentos passaram despercebidos ate serem procurados no PDF.
    --------------------------------------------------------------------------- */
 .icon {
     display: inline-block;
