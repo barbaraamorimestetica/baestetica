@@ -36,9 +36,11 @@ PARES = [
     ("sincronizar-comum.py", "sincronizar-comum.py"),
     ("conferir-classes.py", "conferir-classes.py"),
     ("conferir-contraste.py", "conferir-contraste.py"),
+    ("conferir-rodape.py", "conferir-rodape.py"),
     ("regerar-tailwind.py", "regerar-tailwind.py"),
     ("COMUM.md", "COMUM.md"),
     ("TAILWIND.md", "TAILWIND.md"),
+    ("RODAPE.md", "RODAPE.md"),
 ]
 
 

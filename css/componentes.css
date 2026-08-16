@@ -65,6 +65,28 @@
 }
 
 /* ---------------------------------------------------------------------------
+   O rodape das folhas que viram PDF -- a mesma faixa em 15 folhas dos dois
+   repositorios. O que ele mostra e por que tem esta forma esta em RODAPE.md.
+
+   O align-self:stretch nao e decoracao. Duas folhas do catalogo centram os
+   filhos numa coluna flex, e ali um <div> encolhe ate a largura do conteudo:
+   o rodape ficava com 486px em vez de 643, e os contactos partiam em duas
+   linhas. Como sempre neste rodape, isso so aparecia no PDF.
+
+   E stretch, e nao width:100%, de proposito. O termo de consentimento recua
+   as folhas para 42mm por causa da medida de leitura, e devolve o rodape a
+   largura das outras com margens negativas -- e margem negativa nao alarga
+   uma caixa de largura fixa, so uma que se estica. Com width:100% o rodape
+   do termo voltava aos 476px e partia em duas linhas.
+   --------------------------------------------------------------------------- */
+.rodape-folha {
+    align-self: stretch;
+    /* duas folhas do catalogo sao text-center, e so ali a linha da credencial
+       saia centrada enquanto nas outras 13 ficava a esquerda */
+    text-align: left;
+}
+
+/* ---------------------------------------------------------------------------
    Tipo de titulo, para quem nao esta a usar a utilidade font-serif do Tailwind.
    Estava em baestetica/404.html, baestetica/index.html e
    baestetica_private/index.html.

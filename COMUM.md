@@ -15,9 +15,11 @@ duplicação foi a escolha, e como ela é garantida.
 | `sincronizar-comum.py` | idem | confere e copia |
 | `conferir-classes.py` | idem | classe usada sem regra |
 | `conferir-contraste.py` | idem | contraste, estados e anel de foco |
+| `conferir-rodape.py` | idem | o rodape das folhas exportadas |
 | `regerar-tailwind.py` | idem | regera a folha compilada |
 | `COMUM.md` | idem | este documento |
 | `TAILWIND.md` | idem | o procedimento do Tailwind |
+| `RODAPE.md` | idem | o rodape unico das folhas em PDF |
 
 O `conferir-sitemap.py` e o `SEO.md` ficam **só no público**: a ferramenta interna
 não é indexada e não tem sitemap.
@@ -73,7 +75,7 @@ python instalar-hooks.py
 Se o hook não estiver instalado, a sincronização volta a depender de memória —
 que é a situação que este arranjo existe para evitar.
 
-## Os três verificadores
+## Os quatro verificadores
 
 Rodam de dentro de qualquer um dos dois repositórios e olham os **dois**:
 
@@ -81,6 +83,7 @@ Rodam de dentro de qualquer um dos dois repositórios e olham os **dois**:
 python sincronizar-comum.py     # os comuns divergiram?
 python conferir-classes.py      # há classe usada sem regra em folha nenhuma?
 python conferir-contraste.py    # há texto, estado ou anel de foco a reprovar?
+python conferir-rodape.py       # as 15 folhas exportáveis têm o mesmo rodapé?
 ```
 
 Os três descobrem as páginas com `os.listdir`, e não por lista escrita à mão. Isso
