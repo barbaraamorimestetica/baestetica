@@ -46,6 +46,18 @@
         .print-page:last-child {
             page-break-after: avoid;
             break-after: auto;
+        }
+
+        /* O rodapé é o mesmo das folhas da ferramenta interna (ver RODAPE.md),
+           mas aqui a folha tem 20mm de padding e lá tem 15mm em cima e embaixo
+           e 18mm dos lados. Sem isto o rodapé sai 15px mais estreito e flutua
+           19px mais alto do que nos documentos — mesma faixa, posição
+           diferente. As margens negativas devolvem-no à borda de lá, sem mexer
+           na área de conteúdo do catálogo. */
+        .print-page > .rodape-folha {
+            margin-left: -2mm;
+            margin-right: -2mm;
+            margin-bottom: -5mm;
         }</style>
 </head>
 <body>
