@@ -21,7 +21,8 @@ duplicação foi a escolha, e como ela é garantida.
 | `TAILWIND.md` | idem | o procedimento do Tailwind |
 | `RODAPE.md` | idem | o rodape unico das folhas em PDF |
 
-O `conferir-sitemap.py`, o `conferir-largura.py`, o `SEO.md` e o `RESULTADOS.md`
+O `conferir-sitemap.py`, o `conferir-largura.py`, o `conferir-embeds.py`,
+o `gerar-galeria.py`, o `SEO.md` e o `RESULTADOS.md`
 ficam **só no público**: a ferramenta interna não é indexada, não tem sitemap, e
 as folhas dela são A4 de largura fixa — medir transbordo lateral nelas não diz
 nada.

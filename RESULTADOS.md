@@ -89,15 +89,32 @@ arrancar juntos — no telefone isso trava e gasta dados da paciente. Cada caixa
 só vira embed quando a seção se aproxima do ecrã (`IntersectionObserver`, com
 400px de antecedência).
 
-## O preço disto
+## O que o Google lê
 
-O conteúdo chega por JavaScript, **depois** do HTML. O Googlebot executa
+O conteúdo chega por JavaScript, **depois** do HTML — e o Googlebot executa
 JavaScript, mas não sempre e não depressa. A `Resultados.html` é uma das três
-páginas do sitemap, e o texto das nove seções é hoje o maior do site.
+páginas do sitemap, e o texto das dez seções é o maior do site.
 
-As duas seções do piso continuam no HTML e são indexáveis. As outras sete
-dependem de o robô executar o script. Foi uma troca consciente: autonomia para
-editar sem programador, em cima de indexação garantida.
+Por isso o HTML traz uma **cópia escrita** de tudo, entre os marcadores
+`<!-- galeria:inicio -->` e `<!-- galeria:fim -->`. São 6.000 caracteres de
+texto indexável que não dependem de script nenhum. A mesma cópia é o que a
+paciente vê se a folha não responder, e é o que o `js/galeria.js` substitui
+quando ela responde.
+
+```bash
+python gerar-galeria.py            # mostra o que mudaria
+python gerar-galeria.py --aplicar  # escreve no Resultados.html
+```
+
+**Correr antes de publicar, sempre que a folha mudar.** Sem isso o site
+continua certo para quem tem JavaScript, e o Google fica a ver a versão
+anterior.
+
+A cópia **não** traz os `<blockquote>` do Instagram, e sim um link por post.
+Se trouxesse, o `embed.js` podia processá-los antes de o `galeria.js` os
+trocar, e os 18 embeds carregariam de uma vez — exatamente o que o
+carregamento tardio existe para evitar. O link serve ao Google, a quem não tem
+JavaScript e a quem usa leitor de ecrã.
 
 ## Ficheiros
 
@@ -122,6 +139,16 @@ O primeiro lê os `.js` que cada página carrega, e não só o HTML. Isso não e
 antes desta galeria: as classes criadas em JavaScript ficavam fora da
 conferência **e** fora da folha do Tailwind — não pintavam e não davam erro.
 Foi assim que o `flex-wrap` e o `last:mb-0` apareceram em falta.
+
+```bash
+python conferir-embeds.py      # quais posts do Instagram nao embutem
+```
+
+O `conferir-embeds.py` existe porque um post apagado, arquivado ou restrito
+continua a responder **HTTP 200** — o Instagram devolve 200 até no muro de
+login. O que denuncia é o iframe: quando o post não embute, ele nasce e
+colapsa para uns poucos pixels, contra os 800–1000 de um post bom. Foi assim
+que se descobriu o do Zigomático, e por acaso.
 
 O `conferir-largura.py` mede transbordo lateral de 320 a 414px, por iframe —
 o Chrome headless não aceita janela abaixo de 500px, então um screenshot de
