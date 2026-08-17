@@ -21,8 +21,10 @@ duplicação foi a escolha, e como ela é garantida.
 | `TAILWIND.md` | idem | o procedimento do Tailwind |
 | `RODAPE.md` | idem | o rodape unico das folhas em PDF |
 
-O `conferir-sitemap.py` e o `SEO.md` ficam **só no público**: a ferramenta interna
-não é indexada e não tem sitemap.
+O `conferir-sitemap.py`, o `conferir-largura.py`, o `SEO.md` e o `RESULTADOS.md`
+ficam **só no público**: a ferramenta interna não é indexada, não tem sitemap, e
+as folhas dela são A4 de largura fixa — medir transbordo lateral nelas não diz
+nada.
 
 O lado **canônico é o público**. Não por hierarquia: só é preciso que um dos
 dois seja, e o público é o que define a identidade visual da marca.

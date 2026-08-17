@@ -43,8 +43,12 @@ body {
     row-gap: 0.75rem;
 }
 
-.rodape a,
-.rodape span {
+/* So os contactos. Um numero de telefone ou um e-mail partido ao meio fica
+   ilegivel, e por isso nao quebram. A linha da credencial NAO entra aqui: ela
+   tem 314px, e num ecra de 320 (iPhone SE) empurrava a pagina 41px para o
+   lado. Sao tres itens separados por ponto -- quebrar entre eles nao custa
+   nada. Medido no index tambem, que tem o mesmo rodape. */
+.rodape a {
     white-space: nowrap;
 }
 
@@ -59,4 +63,185 @@ body {
    --------------------------------------------------------------------------- */
 .medida-leitura {
     max-width: 68ch;
+}
+
+/* ---------------------------------------------------------------------------
+   Carrossel de resultados (ver RESULTADOS.md e js/galeria.js).
+
+   Antes os embeds empilhavam um por linha: com 19 posts a pagina passava dos
+   26.000px, e so o Preenchimento Labial ocupava 8.400. O embed do Instagram
+   nao passa de 540px de largura, e a coluna do site tem 896 -- nunca cabiam
+   dois lado a lado, entao alargar nao resolvia.
+
+   A rolagem e nativa e horizontal, com scroll-snap. No telefone o dedo ja
+   sabe fazer isto sem codigo nenhum; as setas existem para o rato e para o
+   teclado. O trilho leva tabindex para as setas do teclado funcionarem nele.
+   --------------------------------------------------------------------------- */
+.carrossel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carrossel-trilho {
+    /* min-width:0 nao e decoracao: um item flex nao encolhe abaixo do seu
+       conteudo sem isto, e o overflow-x nunca chegaria a rolar -- era a
+       largura do trilho que empurrava a pagina de lado. */
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;             /* a barra e substituida pelas setas */
+    padding-bottom: 0.25rem;
+}
+
+.carrossel-trilho::-webkit-scrollbar { display: none; }
+
+/* A largura e 88%, e nao 100%, de proposito: sobra a borda do post seguinte
+   a espreita de cada lado. E o sinal mais forte de que ha mais para ver --
+   mais forte que seta ou bolinha, porque nao precisa de ser interpretado.
+   No telefone e o unico que sobra, porque as setas saem.
+   O minimo do embed do Instagram e 326px; a 88% de um ecra de 375 da 330. */
+.carrossel-slide {
+    flex: 0 0 auto;
+    width: min(88%, 540px);
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.carrossel-seta {
+    flex: 0 0 auto;
+    width: 44px;                       /* 44x44: alvo de toque AAA (WCAG 2.5.5) */
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borda-campo);   /* 3,87:1 contra o branco do cartao */
+    border-radius: 999px;
+    background-color: var(--superficie);
+    color: var(--marca-forte);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.carrossel-seta:hover:not(:disabled) {
+    background-color: var(--marca-forte);
+    color: var(--superficie);
+}
+
+.carrossel-seta:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+/* Uma seccao com um post so nao tem para onde navegar. */
+.carrossel[data-unico] .carrossel-seta { display: none; }
+
+.carrossel-conta {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--texto-suave);
+}
+
+/* O recuo da seccao da galeria. Fica aqui, e nao como utilidade p-8 no
+   HTML, porque o telefone precisa de o reduzir -- e uma classe de utilidade
+   do Tailwind ganha de qualquer seletor de elemento por especificidade. */
+.secao-resultado {
+    padding: 2rem;
+}
+
+@media (max-width: 640px) {
+    /* No telefone a seta rouba largura ao embed. O dedo arrasta, e ficam as
+       bolinhas e a espreita a dizer que ha mais. */
+    .carrossel-seta { display: none; }
+
+    /* A 360px de ecra sobravam 231px para o slide: o cartao gastava 32px de
+       padding de cada lado, e a espreita levava mais 12%. O embed vinha
+       cortado a direita -- medido. Aqui o cartao aperta e a espreita encolhe
+       para 6%, que ainda se ve e ja nao rouba a imagem. */
+    .carrossel-slide { width: 94%; }
+    .secao-resultado { padding: 1.25rem 1rem; }
+}
+
+/* O snippet do Instagram traz min-width:326px no atributo style, e estilo em
+   linha so cede a !important. Num ecra de 320px sobram 305, e o embed empurra
+   a pagina 11px para o lado -- medido no index e na Resultados. Vale para
+   todo embed, e nao so para os do carrossel: o do index esta solto na pagina.
+   Os tres nomes de classe sao o mesmo elemento em tres momentos: o embed.js
+   troca instagram-media por instagram-media-registered quando adota o
+   blockquote, e o iframe que ele cria nasce como instagram-media-rendered.
+   Com um nome so, a regra deixava de casar exatamente depois de o script
+   correr -- que e quando ela precisa de valer. */
+.instagram-media,
+.instagram-media-registered,
+.instagram-media-rendered {
+    min-width: 0 !important;
+    max-width: 100% !important;
+}
+
+/* Dentro do carrossel quem manda na largura e o slide. */
+.carrossel-slide .instagram-media {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* ---------------------------------------------------------------------------
+   As bolinhas. Dizem quantos posts ha e em qual se esta, e levam a qualquer
+   um com um toque. Cada uma tem 24px de alvo (WCAG 2.5.8) ainda que o ponto
+   desenhado seja de 8px.
+   --------------------------------------------------------------------------- */
+.carrossel-pontos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.75rem;
+}
+
+.carrossel-ponto {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.carrossel-ponto::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 1px solid var(--borda-campo);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.carrossel-ponto[aria-current="true"]::before {
+    background-color: var(--marca-forte);
+    border-color: var(--marca-forte);
+    transform: scale(1.25);
+}
+
+/* Uma seccao com um post so nao tem o que indicar. */
+.carrossel-conta[hidden],
+.carrossel[data-unico] .carrossel-pontos { display: none; }
+
+/* So para leitor de ecra: as bolinhas dizem visualmente, isto diz em voz. */
+.so-leitor {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
 }

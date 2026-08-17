@@ -31,6 +31,8 @@ SEM_REGRA_DE_PROPOSITO = {
     "instagram-media":      "e o embed.js do Instagram que estiliza este bloco",
     "group":                "marcador do Tailwind; quem pinta e o group-hover:",
     "val-parcela":          "gancho de querySelectorAll no fluxo-de-caixa",
+    "gerando-pdf":          "marcador de estado no <body>; ninguem o pinta, o ajuste-mobile.js le-o",
+    "folha-encolhida":      "marcador de estado; so o preenchimento.css o pinta, e so onde ele entra",
 }
 
 
@@ -116,6 +118,29 @@ def usadas(html):
     return fora
 
 
+def scripts_proprios(html, raiz):
+    """Os .js do projeto que a pagina carrega, com o caminho ja resolvido.
+
+    Um ficheiro .js tambem cria classes: a galeria de resultados monta as
+    seccoes inteiras em JavaScript. Sem olhar para ele, essas classes ficam
+    fora da conferencia E fora da folha do Tailwind -- nao pintam e nao dao
+    erro, que e a falha que estas ferramentas existem para apanhar.
+
+    Bibliotecas de terceiros ficam de fora de proposito: sao minificadas,
+    atribuem className em dezenas de sitios, e trariam milhares de tokens que
+    nao sao classes deste projeto.
+    """
+    achados = []
+    for m in re.finditer(r'<script[^>]+src\s*=\s*["\']([^"\']+)["\']', html):
+        src = m.group(1)
+        if "//" in src or src.endswith(".min.js") or "/lib/" in src:
+            continue
+        caminho = os.path.normpath(os.path.join(raiz, src.lstrip("/")))
+        if os.path.isfile(caminho):
+            achados.append(caminho)
+    return achados
+
+
 def conferir(raiz, rotulo):
     problemas = []
     total_usadas = set()
@@ -128,11 +153,17 @@ def conferir(raiz, rotulo):
         # foi fechada 61 vezes em outras paginas. Nada aqui precisava do salto.
         html, css = folhas_e_estilo(os.path.join(raiz, a), raiz)
         tem = definidas(css)
-        for c, origens in usadas(html).items():
-            total_usadas.add(c)
-            if c in tem or c in SEM_REGRA_DE_PROPOSITO:
-                continue
-            problemas.append((a, c, ",".join(sorted(origens))))
+        # a pagina, e os .js que ela carrega -- os dois contra as MESMAS folhas
+        fontes = [(a, html)]
+        for js in scripts_proprios(html, raiz):
+            with open(js, encoding="utf-8") as f:
+                fontes.append((os.path.relpath(js, raiz).replace("\\", "/"), f.read()))
+        for nome, texto in fontes:
+            for c, origens in usadas(texto).items():
+                total_usadas.add(c)
+                if c in tem or c in SEM_REGRA_DE_PROPOSITO:
+                    continue
+                problemas.append((nome, c, ",".join(sorted(origens))))
     print("=== %s: %d classes distintas usadas ===" % (rotulo, len(total_usadas)))
     if not problemas:
         print("    toda classe usada tem regra em alguma folha.")

@@ -90,6 +90,11 @@ def tokens(raiz):
         # conteudo. Ver o comentario equivalente em conferir-classes.py.
         html = open(os.path.join(raiz, a), encoding="utf-8").read()
         fora.update(cc.usadas(html).keys())
+        # os .js do projeto tambem criam classes -- ver o comentario em
+        # conferir-classes.py:scripts_proprios. Sem isto a folha do Tailwind
+        # sai sem as classes que a galeria monta em JavaScript.
+        for js in cc.scripts_proprios(html, raiz):
+            fora.update(cc.usadas(open(js, encoding="utf-8").read()).keys())
     return sorted(fora)
 
 
