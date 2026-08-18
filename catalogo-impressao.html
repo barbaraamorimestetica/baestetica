@@ -8,7 +8,15 @@
 
     <!-- Esta página é a fonte de Catalogo-Barbara-Amorim.pdf: é o layout A4 do
          catálogo, sem barras nem botões. Não é linkada a partir do site.
-         Para regerar o PDF depois de alterar o catálogo, ver PDF.md. -->
+         Para regerar o PDF depois de alterar o catálogo, ver PDF.md.
+
+         AS IMAGENS SÃO AS DE img/print/, EM JPG, E NÃO AS WebP DE img/.
+         Parece duplicação e não é. Medido: trocando por WebP, o PDF passa de
+         559 KB para 3.829 KB — sete vezes. Com JPEG o Chrome embute o fluxo
+         comprimido como está; com WebP tem de descodificar e recodificar, e
+         escolhe algo sem perdas. As WebP até têm mais pixels e menos bytes no
+         disco, o que torna a troca tentadora: é por isso que fica escrito aqui.
+         O PDF é o que a paciente descarrega. -->
 
     <link rel="stylesheet" href="css/site.css">
     <!-- Paleta nomeada, comum aos dois repositorios (ver COMUM.md) -->
