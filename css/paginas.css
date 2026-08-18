@@ -245,3 +245,22 @@ body {
     white-space: nowrap;
     border: 0;
 }
+
+/* ---------------------------------------------------------------------------
+   O contorno dourado dos cartoes. Estava escrito a mao no <style> da
+   Resultados.html e da catalogo.html -- duas copias com valores em hexadecimal
+   em vez de token. Passou a viver aqui porque o js/galeria.js aplica a classe,
+   e ele corre nas duas paginas: com a regra dentro de uma delas, a outra ficava
+   com a classe sem pintura, sem erro nenhum. Foi o conferir-classes.py que deu
+   por isso.
+   --------------------------------------------------------------------------- */
+.gold-border-glow {
+    border: 1px solid var(--marca-borda);
+    box-shadow: 0 4px 20px rgb(var(--marca-clara-rgb) / 0.05);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.gold-border-glow:hover {
+    border-color: var(--marca-clara);
+    transform: translateY(-2px);
+}
