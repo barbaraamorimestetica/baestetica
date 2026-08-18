@@ -123,13 +123,13 @@
         <!-- A caixa do atendimento lidera a pagina: o que e, onde e, quando
              atende e como marcar, num bloco so. Os cartoes de navegacao vem
              depois dela. -->
-        <section class="w-full max-w-6xl mx-auto py-12 px-6">
+        <section class="w-full max-w-6xl mx-auto py-12 px-4 md:px-6">
             <div class="text-center mb-10">
                 <h2 class="serif text-2xl md:text-3xl tinta-texto uppercase tracking-widest">Espaço de Atendimento</h2>
                 <div class="w-20 h-0.5 filete mx-auto mt-2"></div>
             </div>
 
-            <div class="bg-white p-6 md:p-10 rounded-2xl card-shadow">
+            <div class="bg-white p-5 md:p-10 rounded-2xl card-shadow">
 
                 <!-- O que e e onde e, antes do endereco. A frase existia so
                      no <meta description> e nos dados estruturados: o Google
@@ -167,37 +167,37 @@
                 <div class="flex flex-col md:flex-row items-center gap-12">
 
                     <div class="w-full md:w-1/2 space-y-6">
-                    <div class="flex items-start gap-4">
+                    <div>
+                        <div>
+                            <div class="flex items-center gap-4">
                         <div class="fundo-rosa rounded-full w-11 h-11 flex items-center justify-center shrink-0">
                             <svg class="icon tinta-marca text-xl" width="384" height="512" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
                         </div>
-                        <div>
                             <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Onde estamos</h3>
-                            <!-- "Av." e nao "Avenida": a coluna tem 299px e a
-                                 forma extensa precisa de 300. Falhava por um
-                                 pixel, e o nome da rua quebrava deixando
-                                 "Alencar" sozinho numa quarta linha. Alargar a
-                                 coluna por 1px seria fragil -- qualquer mudanca
-                                 de fonte desfazia. Os dados estruturados mantem
-                                 a forma extensa, que e o que o Google prefere. -->
-                            <p class="tinta-texto leading-relaxed mt-1">
-                                Av. Vice-Presidente José Alencar<br>
-                                Nº 1405, Sala 208, Barra Olímpica<br>
-                                Rio de Janeiro - RJ
-                            </p>
                         </div>
-                    </div>
+                        <!-- "Av." e nao "Avenida": a coluna tem 299px e a
+                        forma extensa precisa de 300. Falhava por um
+                        pixel, e o nome da rua quebrava deixando
+                        "Alencar" sozinho numa quarta linha. Alargar a
+                        coluna por 1px seria fragil -- qualquer mudanca
+                        de fonte desfazia. Os dados estruturados mantem
+                        a forma extensa, que e o que o Google prefere. -->
+                        <p class="mt-2 md:pl-[60px] tinta-texto leading-relaxed text-pretty">
+                        Av. Vice-Presidente José Alencar<br>
+                        Nº 1405, Sala 208, Barra Olímpica<br>
+                        Rio de Janeiro - RJ
+                        </p>
+                                            </div>
 
-                    <div class="flex items-start gap-4">
+                    <div class="flex items-center gap-4">
                         <div class="fundo-rosa rounded-full w-11 h-11 flex items-center justify-center shrink-0">
                             <svg class="icon tinta-marca text-xl" width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
                         </div>
-                        <div>
-                            <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Atendimento</h3>
-                            <p class="tinta-texto mt-1">Sábado de 9h às 13h</p>
-                            <p class="tinta-texto mt-1">*Necessário agendamento prévio</p>
-                        </div>
-                    </div>
+                                <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Atendimento</h3>
+                            </div>
+                            <p class="mt-2 md:pl-[60px] tinta-texto mt-1">Sábado de 9h às 13h</p>
+                            <p class="mt-2 md:pl-[60px] tinta-texto mt-1">*Necessário agendamento prévio</p>
+                                                    </div>
 
                 </div>
 
@@ -234,7 +234,7 @@
         </div>
 
 
-        <section class="w-full max-w-6xl mx-auto py-12 px-6">
+        <section class="w-full max-w-6xl mx-auto py-12 px-4 md:px-6">
             <div class="text-center mb-10">
                 <h2 class="serif text-2xl md:text-3xl tinta-texto uppercase tracking-widest">Acompanhe meu trabalho</h2>
                 <div class="w-20 h-0.5 filete mx-auto mt-2"></div>
