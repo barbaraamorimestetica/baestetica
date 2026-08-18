@@ -118,6 +118,20 @@
         return String(l[coluna] || '').trim() !== '';
     }
 
+    // O post mais recente primeiro, nas duas paginas. A ordem vem do ID, e nao
+    // da ordem das linhas: ela reordena-se sozinha quando se acrescenta uma
+    // linha no meio da planilha, e a Barbara nao tem de a manter arrumada.
+    // Linha sem ID numerico vai para o fim, e nao para a frente com um NaN.
+    function porIdDesc(links) {
+        return links.slice().sort(function (a, b) {
+            var x = parseInt(a.ID, 10), y = parseInt(b.ID, 10);
+            if (isNaN(x) && isNaN(y)) { return 0; }
+            if (isNaN(x)) { return 1; }
+            if (isNaN(y)) { return -1; }
+            return y - x;
+        });
+    }
+
     function temColuna(links, coluna) {
         return links.length > 0
             && Object.prototype.hasOwnProperty.call(links[0], coluna);
@@ -415,8 +429,9 @@
         if (galeria) { pedidos.push(buscarAba(ABAS.procs)); }
         Promise.all(pedidos)
             .then(function (r) {
-                if (galeria) { desenhar(r[0], r[1]); }
-                if (destaques) { desenharDestaques(r[0], destaques); }
+                var links = porIdDesc(r[0]);
+                if (galeria) { desenhar(links, r[1]); }
+                if (destaques) { desenharDestaques(links, destaques); }
             })
             .catch(function (e) {
                 console.error('galeria: a folha nao pode ser usada, fica o que '
