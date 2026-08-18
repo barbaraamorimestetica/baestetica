@@ -173,8 +173,15 @@
                         </div>
                         <div>
                             <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Onde estamos</h3>
+                            <!-- "Av." e nao "Avenida": a coluna tem 299px e a
+                                 forma extensa precisa de 300. Falhava por um
+                                 pixel, e o nome da rua quebrava deixando
+                                 "Alencar" sozinho numa quarta linha. Alargar a
+                                 coluna por 1px seria fragil -- qualquer mudanca
+                                 de fonte desfazia. Os dados estruturados mantem
+                                 a forma extensa, que e o que o Google prefere. -->
                             <p class="tinta-texto leading-relaxed mt-1">
-                                Avenida Vice-Presidente José Alencar<br>
+                                Av. Vice-Presidente José Alencar<br>
                                 Nº 1405, Sala 208, Barra Olímpica<br>
                                 Rio de Janeiro - RJ
                             </p>
