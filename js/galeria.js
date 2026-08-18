@@ -28,6 +28,12 @@
 
     var FOLHA = '1aO-AGvUPBe8y71UP7hlnF3a4dH24Jxq3dUv9f2QE6VI';
     var ABAS = {
+        // Sao estas tres que identificam a aba, e por isso sao obrigatorias.
+        // As colunas Resultados e Destaque sao OPCIONAIS de proposito: sem
+        // isso, o dia em que o codigo entra e a planilha ainda nao tem as
+        // colunas as duas paginas ficam sem galeria ao mesmo tempo. Ausentes,
+        // vale o comportamento de antes delas -- tudo na Resultados, nada em
+        // destaque.
         links: { nome: 'Links', cabecalho: ['ID', 'Link', 'Procedimento'] },
         procs: { nome: 'Procedimentos', cabecalho: ['Procedimento', 'Ordem', 'Descricao'] }
     };
@@ -105,6 +111,18 @@
     }
 
     // ---- montagem --------------------------------------------------------
+    // Uma celula marcada -- qualquer coisa escrita nela -- faz o post aparecer
+    // naquele lugar. Vazia, nao aparece. A regra e a mesma nas duas colunas, e
+    // e a coisa mais simples de explicar a quem edita a planilha.
+    function marcado(l, coluna) {
+        return String(l[coluna] || '').trim() !== '';
+    }
+
+    function temColuna(links, coluna) {
+        return links.length > 0
+            && Object.prototype.hasOwnProperty.call(links[0], coluna);
+    }
+
     function procedimentosDe(celula) {
         return celula.split(';').map(function (p) { return p.trim(); })
                      .filter(function (p) { return p; });
@@ -112,6 +130,9 @@
 
     function agrupar(links, temSeccao) {
         var mapa = {};
+        if (temColuna(links, 'Resultados')) {
+            links = links.filter(function (l) { return marcado(l, 'Resultados'); });
+        }
         var juntar = temSeccao[COMBINADOS];
         if (!juntar) {
             console.warn('galeria: nao ha linha "' + COMBINADOS + '" na aba '
@@ -357,10 +378,46 @@
         observarCaixas(main);
     }
 
+
+    // ---- destaques da pagina inicial -------------------------------------
+    // A seccao "Acompanhe meu trabalho" tinha um reel escrito a mao no HTML.
+    // Uma seccao com esse nome a mostrar sempre o mesmo post e a promessa
+    // oposta ao que entrega: envelhece sozinha e ninguem da por isso. Agora
+    // sai da mesma planilha, pela coluna Destaque.
+    function desenharDestaques(links, alvo) {
+        if (!temColuna(links, 'Destaque')) {
+            console.warn('galeria: a aba Links nao tem a coluna Destaque; '
+                + 'fica o que esta escrito no HTML.');
+            return;
+        }
+        var posts = links.filter(function (l) {
+            return l.Link && marcado(l, 'Destaque');
+        });
+        if (!posts.length) {
+            console.warn('galeria: nenhuma linha marcada na coluna Destaque; '
+                + 'fica o que esta escrito no HTML.');
+            return;
+        }
+        var novo = carrossel('destaque', posts);
+        Array.prototype.slice.call(alvo.querySelectorAll('[data-piso]'))
+             .forEach(function (el) { el.remove(); });
+        alvo.appendChild(novo);
+        observarCaixas(alvo);
+    }
+
     function iniciar() {
         if (!window.fetch || !window.Promise) { return; }   // fica o piso
-        Promise.all([buscarAba(ABAS.links), buscarAba(ABAS.procs)])
-            .then(function (r) { desenhar(r[0], r[1]); })
+        var galeria = document.querySelector('[data-galeria]');
+        var destaques = document.querySelector('[data-destaques]');
+        if (!galeria && !destaques) { return; }
+        // a pagina inicial nao precisa da aba Procedimentos
+        var pedidos = [buscarAba(ABAS.links)];
+        if (galeria) { pedidos.push(buscarAba(ABAS.procs)); }
+        Promise.all(pedidos)
+            .then(function (r) {
+                if (galeria) { desenhar(r[0], r[1]); }
+                if (destaques) { desenharDestaques(r[0], destaques); }
+            })
             .catch(function (e) {
                 console.error('galeria: a folha nao pode ser usada, fica o que '
                     + 'esta escrito no HTML. Motivo:', e && e.message ? e.message : e);
