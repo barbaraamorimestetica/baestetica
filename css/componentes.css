@@ -100,8 +100,8 @@
    tracking-[0.2em], pede outros 182px: 398px numa tela de 375px. Abaixo de
    480px a linha passa a coluna e o logotipo encolhe.
 
-   Usada em baestetica/index.html e em [repositório interno] (index e
-   fluxo-de-caixa), com o mesmo texto.
+   Usada em baestetica/index.html e em [repositório interno]/index.html, com o
+   mesmo texto.
    --------------------------------------------------------------------------- */
 @media (max-width: 480px) {
     .cabecalho {
