@@ -14,7 +14,7 @@
 // ha iframe para varrer, e no caso 3 varrer cedo demais troca por um cartao um
 // embed que ia funcionar.
 //
-// Vive num ficheiro proprio porque as duas paginas que embutem Instagram
+// Vive num arquivo proprio porque as duas paginas que embutem Instagram
 // precisam dele: a Resultados e a inicial.
 window.baEmbeds = (function () {
     // Cada caixa [data-embed-instagram] reserva 500px de altura à espera
@@ -68,7 +68,7 @@ pendentes = [];
 
     // O prazo e de cada caixa, e nao da pagina: com a galeria vinda
     // da folha (js/galeria.js) as caixas nascem quando a seccao entra
-    // no ecra, e uma caixa criada agora nao pode herdar o relogio de
+    // na tela, e uma caixa criada agora nao pode herdar o relogio de
     // uma que nasceu ha um minuto.
     function rodada() {
 var agora = Date.now();

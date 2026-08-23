@@ -5,7 +5,7 @@
    repositorio privado nao tem rodape de contacto nem fundo em degrade. O que
    os dois lados desenham igual esta em componentes.css.
 
-   Depende de tokens.css: carregue-o antes deste ficheiro. Carregue este antes
+   Depende de tokens.css: carregue-o antes deste arquivo. Carregue este antes
    do <style> de cada pagina, para a pagina poder sobrepor-se.
 
    Cada regra aqui estava copiada em 2 a 4 paginas, com o texto igual. Os
@@ -45,7 +45,7 @@ body {
 
 /* So os contactos. Um numero de telefone ou um e-mail partido ao meio fica
    ilegivel, e por isso nao quebram. A linha da credencial NAO entra aqui: ela
-   tem 314px, e num ecra de 320 (iPhone SE) empurrava a pagina 41px para o
+   tem 314px, e numa tela de 320 (iPhone SE) empurrava a pagina 41px para o
    lado. Sao tres itens separados por ponto -- quebrar entre eles nao custa
    nada. Medido no index tambem, que tem o mesmo rodape. */
 .rodape a {
@@ -104,7 +104,7 @@ body {
    a espreita de cada lado. E o sinal mais forte de que ha mais para ver --
    mais forte que seta ou bolinha, porque nao precisa de ser interpretado.
    No telefone e o unico que sobra, porque as setas saem.
-   O minimo do embed do Instagram e 326px; a 88% de um ecra de 375 da 330. */
+   O minimo do embed do Instagram e 326px; a 88% de uma tela de 375 da 330. */
 .carrossel-slide {
     flex: 0 0 auto;
     width: min(88%, 540px);
@@ -162,7 +162,7 @@ body {
        bolinhas e a espreita a dizer que ha mais. */
     .carrossel-seta { display: none; }
 
-    /* A 360px de ecra sobravam 231px para o slide: o cartao gastava 32px de
+    /* A 360px de tela sobravam 231px para o slide: o cartao gastava 32px de
        padding de cada lado, e a espreita levava mais 12%. O embed vinha
        cortado a direita -- medido. Aqui o cartao aperta e a espreita encolhe
        para 6%, que ainda se ve e ja nao rouba a imagem. */
@@ -171,14 +171,14 @@ body {
 }
 
 /* O snippet do Instagram traz min-width:326px no atributo style, e estilo em
-   linha so cede a !important. Num ecra de 320px sobram 305, e o embed empurra
+   linha so cede a !important. Numa tela de 320px sobram 305, e o embed empurra
    a pagina 11px para o lado -- medido no index e na Resultados. Vale para
    todo embed, e nao so para os do carrossel: o do index esta solto na pagina.
    Os tres nomes de classe sao o mesmo elemento em tres momentos: o embed.js
    troca instagram-media por instagram-media-registered quando adota o
    blockquote, e o iframe que ele cria nasce como instagram-media-rendered.
    Com um nome so, a regra deixava de casar exatamente depois de o script
-   correr -- que e quando ela precisa de valer. */
+   rodar -- que e quando ela precisa de valer. */
 .instagram-media,
 .instagram-media-registered,
 .instagram-media-rendered {
@@ -235,7 +235,7 @@ body {
 .carrossel-conta[hidden],
 .carrossel[data-unico] .carrossel-pontos { display: none; }
 
-/* So para leitor de ecra: as bolinhas dizem visualmente, isto diz em voz. */
+/* So para leitor de tela: as bolinhas dizem visualmente, isto diz em voz. */
 .so-leitor {
     position: absolute;
     width: 1px; height: 1px;
@@ -250,7 +250,7 @@ body {
    O contorno dourado dos cartoes. Estava escrito a mao no <style> da
    Resultados.html e da catalogo.html -- duas copias com valores em hexadecimal
    em vez de token. Passou a viver aqui porque o js/galeria.js aplica a classe,
-   e ele corre nas duas paginas: com a regra dentro de uma delas, a outra ficava
+   e ele roda nas duas paginas: com a regra dentro de uma delas, a outra ficava
    com a classe sem pintura, sem erro nenhum. Foi o [a conferência de classes] que deu
    por isso.
    --------------------------------------------------------------------------- */

@@ -94,7 +94,7 @@
                 var linhas = lerCsv(txt);
                 if (!linhas.length) { throw new Error('aba ' + cfg.nome + ' vazia'); }
                 var cab = linhas[0].map(function (c) { return c.trim(); });
-                // e aqui que se apanha o nome de aba errado
+                // e aqui que se pega o nome de aba errado
                 for (var i = 0; i < cfg.cabecalho.length; i++) {
                     if (cab[i] !== cfg.cabecalho[i]) {
                         throw new Error('aba ' + cfg.nome + ': esperava a coluna '
@@ -180,7 +180,7 @@
         return caixa;
     }
 
-    // O blockquote so nasce quando a seccao entra no ecra. Com 19 embeds numa
+    // O blockquote so nasce quando a seccao entra na tela. Com 19 embeds numa
     // pagina, cria-los todos de uma vez sao 19 iframes com script proprio a
     // arrancar juntos -- no telefone isso trava e gasta dados da paciente.
     function encherCaixa(caixa) {
@@ -224,7 +224,7 @@
     // a borda do post seguinte fica a espreita (o unico sinal que sobra no
     // telefone, onde as setas saem), as bolinhas dizem quantos sao e em qual
     // se esta, e as setas dao o gesto a quem usa rato. Para quem usa leitor
-    // de ecra ha um texto que se atualiza sozinho.
+    // de tela ha um texto que se atualiza sozinho.
     function seta(rotulo, caminho) {
         var b = document.createElement('button');
         b.type = 'button';

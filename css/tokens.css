@@ -1,7 +1,7 @@
 /* ===========================================================================
    COMUM AOS DOIS REPOSITORIOS -- NAO EDITAR SO DE UM LADO.
 
-   Este ficheiro e identico em baestetica/css/tokens.css e em
+   Este arquivo e identico em baestetica/css/tokens.css e em
    [repositório interno]/assets/tokens.css. Depois de mexer num deles, rode:
 
        python [o sincronizador]
@@ -37,13 +37,13 @@
 
    Tudo o que o Tailwind mede em rem -- text-xs, p-4, gap-2 -- sai daqui. Antes
    estava declarada pagina por pagina e nao batia: 18px em catalogo, Resultados,
-   catalogo-impressao e [o planner interno]; 16px, por omissao ou por declaracao, nas
+   catalogo-impressao e [o planner interno]; 16px, por padrao ou por declaracao, nas
    outras oito. Quem ia de index para Resultados via o mesmo text-sm a 14px e
    depois a 15,75px.
 
    Escolhido 16px, e nao 18px, por tres razoes medidas:
 
-     - E o valor por omissao do navegador. Uma pagina que se esqueca de declarar
+     - E o valor por padrao do navegador. Uma pagina que se esqueca de declarar
        concorda com esta folha em vez de derivar dela.
      - Oito das doze paginas ja estavam nele.
      - Encolher e a direcao segura nas folhas A4 de altura fixa. Medido: nenhuma
@@ -69,7 +69,7 @@ html {
 
    O valor solido SAI daqui, em vez de ser escrito outra vez ao lado. Se
    houvesse as duas formas lado a lado, elas divergiriam -- que e exatamente o
-   defeito que este ficheiro existe para fechar. O hexadecimal fica no
+   defeito que este arquivo existe para fechar. O hexadecimal fica no
    comentario, para quem le.
    --------------------------------------------------------------------------- */
 
@@ -110,7 +110,7 @@ html {
        Por isso este token aponta para --marca, e nao para um tom novo: nao era
        preciso inventar cor, era preciso escolher a que ja passava.
 
-       Vale para o ECRA. No papel a linha continua --pontilhado: uma linha
+       Vale para a TELA. No papel a linha continua --pontilhado: uma linha
        pontilhada de escrever a mao nao e componente de interface, e escurece-la
        deixaria a folha impressa com o traco a competir com a caligrafia. */
     --borda-campo:   var(--marca);
@@ -163,7 +163,7 @@ html {
    sobre o botao cheio, que vive em componentes.css). Antes eram sete, com tres
    cinzas frios do Tailwind -- gray-800, gray-600 e gray-400 -- convivendo com o
    marrom da marca na mesma pagina. O gray-500 nem era deriva: ja e exatamente
-   #6B7280, so estava escrito noutro vocabulario.
+   #6B7280, so estava escrito em outro vocabulario.
    =========================================================================== */
 
 .tinta-forte  { color: var(--marca-forte); }   /* texto pequeno em rosa */

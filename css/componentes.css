@@ -9,7 +9,7 @@
    O hook de pre-commit recusa o commit se as copias divergirem.
    ===========================================================================
 
-   Depende de tokens.css: carregue-o antes deste ficheiro.
+   Depende de tokens.css: carregue-o antes deste arquivo.
 
    Aqui ficam as pecas que os dois lados desenham igual. Comecou com o botao
    cheio, que nasceu de uma reprova de contraste: o fundo era --marca-clara
@@ -51,7 +51,7 @@
    deste height:1em e o width:auto resolve pela proporcao. E para o PDF.
    O html2pdf desenha as folhas com o html2canvas, que serializa cada <svg>
    e o carrega como imagem -- e uma imagem SVG sem dimensao intrinseca nao
-   rasteriza. Sem os atributos o icone simplesmente nao sai no ficheiro,
+   rasteriza. Sem os atributos o icone simplesmente nao sai no arquivo,
    sem erro nenhum, e na tela continua perfeito. Foi assim que os 77 icones
    dos documentos passaram despercebidos ate serem procurados no PDF.
    --------------------------------------------------------------------------- */
@@ -87,7 +87,7 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Tipo de titulo, para quem nao esta a usar a utilidade font-serif do Tailwind.
+   Tipo de titulo, para quem nao usa a utilidade font-serif do Tailwind.
    Estava em baestetica/404.html, baestetica/index.html e
    [repositório interno]/index.html.
    --------------------------------------------------------------------------- */
@@ -127,7 +127,7 @@
    tabela de precos. Quem preenche pelo teclado nao via onde estava -- na
    anamnese sao 37 campos em sequencia. Reprova a WCAG 2.4.7.
 
-   Aquelas supressoes sairam. Fica esta, no ficheiro comum, para nao voltar a
+   Aquelas supressoes sairam. Fica esta, no arquivo comum, para nao voltar a
    depender de cada pagina se lembrar. As paginas que TAMBEM mudam borda ou
    fundo no foco continuam a fazer isso -- e afordancia a mais, nao a menos.
 
@@ -195,7 +195,7 @@ summary:focus-visible,
 }
 
 /* ---------------------------------------------------------------------------
-   O que nao vai para o papel: barra de acao, botao de gerar PDF, aviso de ecra.
+   O que nao vai para o papel: barra de acao, botao de gerar PDF, aviso de tela.
    Os documentos A4 do repositorio privado acrescentam mais regras de impressao
    em assets/documento.css; esta e a base que os dois lados usam.
    --------------------------------------------------------------------------- */
@@ -322,7 +322,7 @@ summary:focus-visible,
    --pontilhado 1,68 e o --marca-clara 2,80. O --borda-campo aponta para
    --marca (3,87:1), o primeiro que passa -- nao foi preciso inventar cor.
 
-   SO NO ECRA. Dentro de @media print o campo volta ao traco claro: no papel
+   SO NA TELA. Dentro de @media print o campo volta ao traco claro: no papel
    ele nao e componente de interface, e uma linha escura competiria com a
    caligrafia de quem preenche a mao.
    --------------------------------------------------------------------------- */
