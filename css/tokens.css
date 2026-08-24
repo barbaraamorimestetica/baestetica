@@ -90,7 +90,26 @@ html {
 
     /* --- neutros ---------------------------------------------------------- */
     --texto:         #3D2D2B;   /* texto corrido */
-    --texto-suave:   #6B7280;   /* rotulo secundario */
+    /* Rotulo secundario.
+
+       Era #6B7280 -- o gray-500 do Tailwind, herdado. Passava sobre branco
+       (4,83:1) e sobre o --fundo (4,65:1), e REPROVAVA nas outras tres
+       superficies da propria paleta:
+
+           --fundo-rosa        #F6ECEB   4,17:1
+           --fundo-neutro      #F5F2F1   4,34:1
+           --fundo-rosa-claro  #FAF5F5   4,48:1
+
+       Nao se via porque o texto pequeno em cinza calhava de estar sempre
+       dentro de um cartao branco. Quando os cartoes sairam e as notas
+       passaram a assentar no rosa do fundo, apareceram nove reprovacoes de
+       uma vez -- que ja la estavam por escrever, a espera do primeiro texto
+       que saisse do cartao.
+
+       O tom novo tem o MESMO matiz e a MESMA saturacao, so 5% mais escuro:
+       e o menor escurecimento que passa nas cinco superficies. A pior fica
+       em 4,54:1, e sobre branco sobe para 5,26:1. */
+    --texto-suave:   #666C7A;
     --superficie:    #FFFFFF;   /* cartao, folha A4 */
     --fundo:         #FCFAF9;   /* fundo do site */
     --fundo-rosa:    #F6ECEB;   /* fundo da ferramenta interna */
