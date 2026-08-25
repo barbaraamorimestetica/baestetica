@@ -2,7 +2,7 @@
    COMUM AOS DOIS REPOSITORIOS -- NAO EDITAR SO DE UM LADO.
 
    Este arquivo tem uma copia gemea no outro repositorio, e as duas tem de ser
-   identicas ao byte. Depois de mexer numa delas, corra o sincronizador: ele
+   identicas ao byte. Depois de mexer numa delas, rode o sincronizador: ele
    copia e confere. O hook de pre-commit recusa o commit se divergirem, entao
    nao ha como esquecer.
 
@@ -131,7 +131,7 @@ html {
 
        Vale para a TELA. No papel a linha continua --pontilhado: uma linha
        pontilhada de escrever a mao nao e componente de interface, e escurece-la
-       deixaria a folha impressa com o traco a competir com a caligrafia. */
+       deixaria a folha impressa com o traco competindo com a caligrafia. */
     --borda-campo:   var(--marca);
 
     /* --- funcionais: categoria de pagamento (fluxo de caixa) -------------- */

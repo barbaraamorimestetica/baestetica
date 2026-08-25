@@ -1,6 +1,6 @@
 /* A NAVEGAÇÃO DO SITE
  *
- * Este arquivo é SÓ do repositório público. Não é um dos partilhados, e não
+ * Este arquivo é SÓ do repositório público. Não é um dos compartilhados, e não
  * deve passar a ser: o sincronizador não o conhece.
  *
  * POR QUE ELA ESTÁ ESCRITA NO HTML, E NÃO INJETADA POR JAVASCRIPT
@@ -99,7 +99,7 @@
 
        A folga e de 6px. Se um destino novo entrar, ou um rotulo crescer, isto
        volta a quebrar em duas linhas nos aparelhos pequenos -- e quebrar
-       continua a ser a resposta certa, e nao rolar de lado, que ESCONDE item.
+       continua sendo a resposta certa, e nao rolar de lado, que ESCONDE item.
        Num site que a paciente le, esconder e pior do que ocupar mais uma linha.
 
        O tamanho da letra nao desceu de 10px para conseguir isto. O que cedeu

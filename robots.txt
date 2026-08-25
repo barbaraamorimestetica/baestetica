@@ -1,4 +1,4 @@
-# ATENCAO: no endereco atual, este ficheiro nao e lido por buscador nenhum.
+# ATENCAO: no endereco atual, este arquivo nao e lido por buscador nenhum.
 #
 # O site e um "project page" do GitHub Pages e e servido em
 # barbaraamorimestetica.github.io/baestetica/. Os robos so procuram o
@@ -6,7 +6,7 @@
 # que sai de outro repositorio, o barbaraamorimestetica.github.io. O que esta
 # aqui responde em /baestetica/robots.txt e e simplesmente ignorado.
 #
-# O ficheiro fica na mesma por dois motivos: passa a valer sozinho se o site
+# O arquivo fica na mesma por dois motivos: passa a valer sozinho se o site
 # ganhar dominio proprio (com CNAME, o repositorio passa a ser servido na raiz
 # do dominio), e documenta a intencao para quem mexer nisto depois.
 #
@@ -32,4 +32,4 @@ Sitemap: https://barbaraamorimestetica.github.io/baestetica/sitemap.xml
 #
 # Para manter a pagina fora do indice, o caminho e o inverso: deixar o robo
 # entrar e ler o noindex, que ja esta no <head> dela. E o que vale hoje, e
-# continuara valendo se este ficheiro um dia passar a ser lido.
+# continuara valendo se este arquivo um dia passar a ser lido.

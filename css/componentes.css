@@ -2,7 +2,7 @@
    COMUM AOS DOIS REPOSITORIOS -- NAO EDITAR SO DE UM LADO.
 
    Este arquivo tem uma copia gemea no outro repositorio, e as duas tem de ser
-   identicas ao byte. Depois de mexer numa delas, corra o sincronizador. O hook
+   identicas ao byte. Depois de mexer numa delas, rode o sincronizador. O hook
    de pre-commit recusa o commit se divergirem.
 
    O caminho da gemea e o nome do sincronizador estao documentados do lado de
@@ -70,7 +70,7 @@
 
    O align-self:stretch nao e decoracao. Duas folhas do catalogo centram os
    filhos numa coluna flex, e ali um <div> encolhe ate a largura do conteudo:
-   o rodape ficava com 486px em vez de 643, e os contactos partiam em duas
+   o rodape ficava com 486px em vez de 643, e os contatos partiam em duas
    linhas. Como sempre neste rodape, isso so aparecia no PDF.
 
    E stretch, e nao width:100%, de proposito. O termo de consentimento recua
@@ -129,7 +129,7 @@
 
    Aquelas supressoes sairam. Fica esta, no arquivo comum, para nao voltar a
    depender de cada pagina se lembrar. As paginas que TAMBEM mudam borda ou
-   fundo no foco continuam a fazer isso -- e afordancia a mais, nao a menos.
+   fundo no foco continuam fazendo isso -- e afordancia a mais, nao a menos.
 
    :focus-visible, e nao :focus, para o anel nao aparecer ao clicar com o rato.
    --------------------------------------------------------------------------- */
@@ -152,7 +152,7 @@ summary:focus-visible,
    um terceiro, border-rose-100 (#FFE4E6), que e um rosa frio proximo mas nao
    igual.
 
-   Traz so a COR. A largura continua a vir da utilidade do Tailwind (border,
+   Traz so a COR. A largura continua vindo da utilidade do Tailwind (border,
    border-t, border-l-4), que e o que permite trocar esta classe por aquela sem
    pensar em mais nada.
    --------------------------------------------------------------------------- */
@@ -164,7 +164,7 @@ summary:focus-visible,
    ALVO DE PONTEIRO -- a WCAG 2.5.8 pede 24x24 CSS px.
 
    Medido a 390px de largura, com o transform do ajuste-mobile fora do caminho:
-   os tres links de contacto do rodape tinham 18px de altura (o telefone
+   os tres links de contato do rodape tinham 18px de altura (o telefone
    111x18, o Instagram 168x18, o e-mail 241x18) e os dois "Inicio" tinham 16.
    A largura nunca foi o problema.
 

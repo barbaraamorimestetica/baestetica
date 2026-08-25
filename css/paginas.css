@@ -1,8 +1,8 @@
 /* ===========================================================================
    css/paginas.css -- so do repositorio publico
 
-   Nao e partilhado, de proposito: sao pecas do site, e o
-   repositorio privado nao tem rodape de contacto nem fundo em degrade. O que
+   Nao e compartilhado, de proposito: sao pecas do site, e o
+   repositorio privado nao tem rodape de contato nem fundo em degrade. O que
    os dois lados desenham igual esta em componentes.css.
 
    Depende de tokens.css: carregue-o antes deste arquivo. Carregue este antes
@@ -32,7 +32,7 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
-   Rodape de contacto. Sem o flex-wrap, no telefone os tres contactos ficavam
+   Rodape de contato. Sem o flex-wrap, no telefone os tres contatos ficavam
    numa linha unica mais larga que a tela e o ultimo saia cortado; o nowrap
    impede que um numero de telefone ou um e-mail se quebre ao meio.
    Estava em index e Resultados.
@@ -43,7 +43,7 @@ body {
     row-gap: 0.75rem;
 }
 
-/* So os contactos. Um numero de telefone ou um e-mail partido ao meio fica
+/* So os contatos. Um numero de telefone ou um e-mail partido ao meio fica
    ilegivel, e por isso nao quebram. A linha da credencial NAO entra aqui: ela
    tem 314px, e numa tela de 320 (iPhone SE) empurrava a pagina 41px para o
    lado. Sao tres itens separados por ponto -- quebrar entre eles nao custa
@@ -383,7 +383,7 @@ body {
 
 /* Seccao ainda sem resultado: o nome esbatido e a palavra no lugar do numero.
    Continua a ser link -- a descricao do procedimento esta la, e e ela que
-   interessa a quem esta a decidir. */
+   interessa a quem esta decidindo. */
 .galeria-indice-vazio {
     font-style: italic;
     font-weight: 600;
@@ -450,7 +450,7 @@ body {
    tela e meia de rolagem.
 
    Sem JavaScript ele fica escondido, e isso e aceitavel: e um atalho, e a
-   pagina continua a rolar. O que NAO seria aceitavel era o contrario -- um
+   pagina continua rolando. O que NAO seria aceitavel era o contrario -- um
    atalho visivel que so funcionasse com script.
 
    O contorno vem do --marca-clara, que da 2,80:1 e reprova para TEXTO. Aqui nao

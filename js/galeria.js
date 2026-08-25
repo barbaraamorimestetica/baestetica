@@ -21,7 +21,7 @@
 //    lugar das descricoes, sem erro nenhum.
 //
 // 3. Um embed morrer. Quem trata disso e o window.baEmbeds, que ja existia.
-//    As caixas criadas aqui sao registadas nele pelo baEmbeds.acompanhar().
+//    As caixas criadas aqui sao registradas nele pelo baEmbeds.acompanhar().
 // ---------------------------------------------------------------------------
 (function () {
     'use strict';

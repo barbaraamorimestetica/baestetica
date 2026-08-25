@@ -3,7 +3,7 @@ Downloads/
 # Termos de consentimento e documentos clínicos. Nunca versionar: são modelos
 # assinados por pacientes e podem conter dado pessoal sensível.
 # As duas grafias são propositais: o Git no Windows ignora maiúsculas/minúsculas,
-# mas em Linux (ou num clone noutra máquina) "Documentos/" não pegaria "documentos/".
+# mas em Linux (ou num clone em outra máquina) "Documentos/" não pegaria "documentos/".
 Documentos/
 documentos/
 
@@ -11,7 +11,7 @@ documentos/
 #
 # Isto existe por causa de um erro concreto: um retrato do repositorio PRIVADO
 # foi extraido para dentro deste, por um "cd" errado num comando de comparacao,
-# e o git add -A commitou os 39 ficheiros. Nada sensivel saiu -- o .gitignore
+# e o git add -A commitou os 39 arquivos. Nada sensivel saiu -- o .gitignore
 # de la manteve Dados/, Downloads/, Imagens/ e *.csv fora do archive -- mas uma
 # copia do repositorio privado nao pode viver no publico, que e publicado.
 pri-antes/
