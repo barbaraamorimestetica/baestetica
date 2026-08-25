@@ -264,3 +264,24 @@ body {
     border-color: var(--marca-clara);
     transform: translateY(-2px);
 }
+
+/* ---------------------------------------------------------------------------
+   ALVO DE BOTAO NO TELEFONE
+
+   O .alvo-toque do componentes.css leva a 24px, que e o minimo da WCAG 2.2
+   para qualquer alvo -- e serve para o que foi feito: link solto dentro de uma
+   frase, como os contatos do rodape.
+
+   Um BOTAO e outra coisa. E o que o dedo procura primeiro, e a medida que a
+   Apple e a Google recomendam e 44px.
+
+   Medido percorrendo as paginas num navegador: os tres botoes do 404 tinham
+   42px, e o "Download do catalogo" -- que e a acao principal daquela pagina --
+   tinha 36. Nenhum reprovava a WCAG; os dois ficavam abaixo do confortavel.
+   --------------------------------------------------------------------------- */
+.botao-alvo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+}

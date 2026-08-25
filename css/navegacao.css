@@ -88,13 +88,18 @@
        alto de um aparelho que tem pouca tela, e duas linhas centradas leem-se
        como defeito, não como escolha.
 
-       Estes valores sao o maior respiro que ainda deixa os CINCO destinos
-       numa linha so a partir dos 360px. Medido em 320, 360, 375, 414, 640 e
-       1200.
+       Com estes valores os CINCO destinos pedem 314px numa linha so -- cabe
+       em qualquer telefone, inclusive num de 320.
 
-       Aos 320 -- e so ali -- quebra em duas linhas, e quebrar e a resposta
-       certa: a alternativa era rolar de lado, que ESCONDE item. Num site que a
-       paciente le, esconder e pior do que ocupar mais uma linha.
+       CUIDADO AO MEDIR: num iframe de computador a barra de rolagem come 15px,
+       entao um iframe de 320 mede 305 e o menu parece quebrar. No telefone a
+       barra e sobreposta e nao tira largura nenhuma. O numero que decide e a
+       largura NATURAL do menu (314), e nao a do iframe.
+
+       A folga e de 6px. Se um destino novo entrar, ou um rotulo crescer, isto
+       volta a quebrar em duas linhas nos aparelhos pequenos -- e quebrar
+       continua a ser a resposta certa, e nao rolar de lado, que ESCONDE item.
+       Num site que a paciente le, esconder e pior do que ocupar mais uma linha.
 
        O tamanho da letra nao desceu de 10px para conseguir isto. O que cedeu
        foi o espaco a volta, que nao se le. */
