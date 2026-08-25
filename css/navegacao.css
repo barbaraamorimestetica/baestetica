@@ -1,0 +1,154 @@
+/* A NAVEGAÇÃO DO SITE
+ *
+ * Este arquivo é SÓ do repositório público. Não é dos comuns (ver [a documentação comum]):
+ * o [o sincronizador] não o conhece, e não deve conhecer.
+ *
+ * POR QUE ELA ESTÁ ESCRITA NO HTML, E NÃO INJETADA POR JAVASCRIPT
+ *
+ * A barra lateral da ferramenta interna é montada por JavaScript, e ali isso é
+ * certo: são muitas páginas e ninguém indexa aquilo. Aqui é o contrário. Este
+ * site é lido por buscador, e num site de três páginas o link interno é boa
+ * parte do que ele tem para trabalhar. Link que só existe depois de o
+ * JavaScript correr fica fora do código-fonte, e também fora do alcance de quem
+ * navega com ele desligado.
+ *
+ * Então o menu é escrito nas quatro páginas. A cópia é o preço, e ele é pago
+ * com o [a conferência do menu], que recusa qualquer divergência entre elas -- é o
+ * padrão deste projeto: conferir, em vez de deduplicar em tempo de execução.
+ *
+ * POR QUE NÃO É UMA BARRA LATERAL
+ *
+ * A ferramenta interna tem catorze destinos, e lá uma coluna de 200px ganha a
+ * largura que ocupa. Aqui são cinco, e a página inteira é centrada -- logotipo,
+ * títulos com o filete por baixo, cartões. Uma coluna fixa à esquerda quebraria
+ * essa simetria e gastaria um quinto da tela com cinco links.
+ *
+ * O TELEFONE MANDA
+ *
+ * Medido: os cinco rótulos numa linha pedem cerca de 415px de conteúdo. Num
+ * telefone de 320 não cabem, e há duas saídas -- rolar de lado, que esconde
+ * item, ou quebrar em duas linhas, que não esconde nada. Num site que a
+ * paciente lê, esconder é a pior das duas.
+ *
+ * Por isso ele quebra. E por isso não gruda no topo abaixo de 640px: duas
+ * linhas de 48px presas no alto seriam 96px de tela comidos num aparelho que
+ * tem pouca. Ali o menu fica onde está e sai com a rolagem.
+ *
+ * CORES MEDIDAS: --marca-forte #8F5C54 sobre --superficie dá 5,49:1, e sobre o
+ * --fundo dá 5,27:1. Os dois passam o 4,5:1 que a WCAG pede para texto pequeno.
+ * O --marca (#AA746B) daria 3,72:1 e reprovaria -- é a mesma armadilha que o
+ * css/tokens.css documenta.
+ */
+
+.ba-menu {
+    width: 100%;
+    background: var(--superficie);
+    border-bottom: 1px solid var(--marca-borda);
+    /* z-index baixo de propósito: o botão flutuante do WhatsApp está em z-50 e
+       tem de continuar por cima. */
+    z-index: 30;
+}
+
+.ba-menu-lista {
+    display: flex;
+    flex-wrap: wrap;          /* nada de esconder item: quebra */
+    justify-content: center;
+    align-items: center;
+    /* Sem intervalo no telefone: o recuo de cada item já separa os rótulos em
+       9,6px, e o intervalo por cima disso custava os 10px que faltavam para
+       caber numa linha a 360. */
+    gap: 0;
+    max-width: 72rem;         /* a mesma largura do cabeçalho das páginas */
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    list-style: none;
+}
+
+.ba-menu a {
+    display: flex;
+    align-items: center;
+    /* 48px de alvo de toque, acima dos 44 que são o mínimo confortável. */
+    min-height: 48px;
+    /* O espaçamento é medido, e não escolhido a olho.
+
+       Com cinco destinos e 0,55rem de recuo, os rótulos pediam mais de 415px e
+       quebravam em DUAS linhas em toda largura de telefone -- 97px de menu no
+       alto de um aparelho que tem pouca tela, e duas linhas centradas leem-se
+       como defeito, não como escolha.
+
+       Com quatro, cabe numa linha até aos 320px, e sobra folga para o menu
+       respirar. Estes valores são o maior respiro que ainda cabe na tela mais
+       estreita: medido em 320, 360, 375, 414, 640 e 1200, sempre numa linha e
+       com nada fora da tela.
+
+       Se um dia entrar um quinto destino, isto volta a quebrar em duas linhas
+       nos aparelhos pequenos -- e quebrar continua a ser a resposta certa, e
+       não rolar de lado, que ESCONDE item. Num site que a paciente lê,
+       esconder é pior do que ocupar mais uma linha. */
+    padding: 0 0.45rem;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--marca-forte);
+    text-decoration: none;
+    white-space: nowrap;
+    /* O traço existe sempre, transparente, para a página corrente não empurrar
+       as outras 2px para cima quando ganha cor. */
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.ba-menu a:hover {
+    color: var(--marca-hover);
+    border-bottom-color: var(--marca-clara);
+}
+
+.ba-menu a:focus-visible {
+    outline: 2px solid var(--marca);
+    outline-offset: -2px;
+}
+
+/* Onde se está. Dois sinais além da cor -- o traço e o peso da letra -- mais o
+   aria-current, que o leitor de tela anuncia. Cor sozinha não diz nada a quem
+   não a distingue. */
+.ba-menu a[aria-current="page"] {
+    color: var(--marca-hover);
+    border-bottom-color: var(--marca-forte);
+    font-weight: 700;
+}
+
+@media (min-width: 640px) {
+    /* Daqui para cima cabe numa linha só, e aí grudar no topo custa 48px e
+       poupa a rolagem de volta. */
+    .ba-menu {
+        position: sticky;
+        top: 0;
+    }
+
+    /* Uma barra grudada come o topo do que a âncora traz à vista: clicar em
+       "Espaço" levaria o título para DEBAIXO do menu, e quem clicou veria o
+       texto a meio da secção sem saber que perdeu o cabeçalho. Esta folga é a
+       altura do menu, e só existe onde ele gruda. */
+    #espaco,
+    #contato {
+        scroll-margin-top: 3.5rem;
+    }
+    .ba-menu-lista {
+        gap: 0 0.5rem;
+        padding: 0 1rem;
+    }
+    .ba-menu a {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        padding: 0 0.75rem;
+    }
+}
+
+/* No papel o menu não existe. O .no-print do css/componentes.css já o esconde;
+   isto é o cinto além dos suspensórios. */
+@media print {
+    .ba-menu {
+        display: none !important;
+    }
+}
