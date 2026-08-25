@@ -66,7 +66,7 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
-   Carrossel de resultados (ver [a documentação da galeria] e js/galeria.js).
+   Carrossel de resultados (ver js/galeria.js).
 
    Antes os embeds empilhavam um por linha: com 19 posts a pagina passava dos
    26.000px, e so o Preenchimento Labial ocupava 8.400. O embed do Instagram

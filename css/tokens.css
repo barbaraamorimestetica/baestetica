@@ -6,9 +6,9 @@
    copia e confere. O hook de pre-commit recusa o commit se divergirem, entao
    nao ha como esquecer.
 
-   O caminho da gemea e o nome do sincronizador estao no [a documentação comum], e nao aqui:
-   este arquivo e servido na rua, e nao ha por que anunciar dali o que existe
-   do outro lado.
+   O caminho da gemea e o nome do sincronizador estao documentados do lado de
+   dentro, e nao aqui: este arquivo e servido na rua, e nao ha por que
+   anunciar dali o que existe do outro lado.
    ===========================================================================
 
    A PALETA, E POR QUE CADA TOM EXISTE
@@ -37,9 +37,9 @@
 
    Tudo o que o Tailwind mede em rem -- text-xs, p-4, gap-2 -- sai daqui. Antes
    estava declarada pagina por pagina e nao batia: 18px em catalogo, Resultados,
-   catalogo-impressao e [o planner interno]; 16px, por padrao ou por declaracao, nas
-   outras oito. Quem ia de index para Resultados via o mesmo text-sm a 14px e
-   depois a 15,75px.
+   catalogo-impressao e numa folha do lado interno; 16px, por padrao ou por
+   declaracao, nas outras oito. Quem ia de index para Resultados via o mesmo
+   text-sm a 14px e depois a 15,75px.
 
    Escolhido 16px, e nao 18px, por tres razoes medidas:
 

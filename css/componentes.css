@@ -5,8 +5,8 @@
    identicas ao byte. Depois de mexer numa delas, corra o sincronizador. O hook
    de pre-commit recusa o commit se divergirem.
 
-   O caminho da gemea e o nome do sincronizador estao no [a documentação comum], e nao aqui:
-   este arquivo e servido na rua.
+   O caminho da gemea e o nome do sincronizador estao documentados do lado de
+   dentro, e nao aqui: este arquivo e servido na rua.
    ===========================================================================
 
    Depende de tokens.css: carregue-o antes deste arquivo.
@@ -66,7 +66,7 @@
 
 /* ---------------------------------------------------------------------------
    O rodape das folhas que viram PDF -- a mesma faixa em 15 folhas dos dois
-   repositorios. O que ele mostra e por que tem esta forma esta em [a documentação do rodapé].
+   repositorios. O que ele mostra e por que tem esta forma esta documentado.
 
    O align-self:stretch nao e decoracao. Duas folhas do catalogo centram os
    filhos numa coluna flex, e ali um <div> encolhe ate a largura do conteudo:
