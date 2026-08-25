@@ -9,8 +9,8 @@
          senão não cobre o que já foi declarado acima. -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.instagram.com https://*.cdninstagram.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.cdninstagram.com https://*.fbcdn.net; connect-src 'self' https://docs.google.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.instagram.com https://*.cdninstagram.com; frame-src 'self' https://www.instagram.com https://instagram.com">
 
-    <title>Bárbara Amorim - Estética Avançada | Harmonização Facial na Barra Olímpica, RJ</title>
-    <meta name="description" content="Estética avançada na Barra Olímpica, Rio de Janeiro. Harmonização facial, toxina botulínica, preenchimento e bioestimuladores de colágeno com protocolos personalizados. Agende pelo WhatsApp.">
+    <title>Bárbara Amorim - Estética Avançada | Harmonização Facial no Rio e em Macaé</title>
+    <meta name="description" content="Estética avançada na Barra Olímpica, Rio de Janeiro, e em Macaé. Harmonização facial, toxina botulínica, preenchimento e bioestimuladores de colágeno com protocolos personalizados. Agende pelo WhatsApp.">
     <link rel="canonical" href="https://barbaraamorimestetica.github.io/baestetica/">
 
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -22,7 +22,7 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Bárbara Amorim - Estética Avançada">
     <meta property="og:title" content="Bárbara Amorim - Estética Avançada">
-    <meta property="og:description" content="Harmonização facial, toxina botulínica, preenchimento e bioestimuladores na Barra Olímpica, Rio de Janeiro. Atendimento com agendamento prévio.">
+    <meta property="og:description" content="Harmonização facial, toxina botulínica, preenchimento e bioestimuladores na Barra Olímpica, Rio de Janeiro, e em Macaé. Atendimento com agendamento prévio.">
     <meta property="og:url" content="https://barbaraamorimestetica.github.io/baestetica/">
     <meta property="og:image" content="https://barbaraamorimestetica.github.io/baestetica/img/og-capa.jpg">
     <meta property="og:image:width" content="1200">
@@ -31,40 +31,107 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Dados estruturados: alimentam o painel do Google com endereço, horário,
-         contato e a identificação profissional. Falta só o CNPJ, quando houver. -->
+         contato e a identificação profissional. Falta só o CNPJ, quando houver.
+
+         DUAS UNIDADES, DOIS NÓS. Antes havia um só, com um endereço e um
+         horário. Deixar assim depois de abrir Macaé faria o painel do Google
+         mandar para o Rio quem procurasse em Macaé -- e o painel é onde muita
+         gente lê o endereço sem nunca abrir o site.
+
+         Cada unidade é um nó com o seu @id, o seu endereço e o seu horário. O
+         nome carrega a cidade porque é assim que o resultado aparece na busca
+         local, e a profissional entra nos dois: é a mesma pessoa atendendo.
+
+         A forma extensa "Avenida" fica aqui, embora a página escreva "Av." --
+         o Google prefere a extensa, e aqui não há coluna estreita para
+         estourar. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "BeautySalon",
-        "name": "Bárbara Amorim - Estética Avançada",
-        "url": "https://barbaraamorimestetica.github.io/baestetica/",
-        "image": "https://barbaraamorimestetica.github.io/baestetica/img/og-capa.jpg",
-        "logo": "https://barbaraamorimestetica.github.io/baestetica/img/logo-barbara-amorim.webp",
-        "description": "Estética avançada na Barra Olímpica, Rio de Janeiro. Harmonização facial, toxina botulínica, preenchimento e bioestimuladores de colágeno.",
-        "telephone": "+5522999408603",
-        "employee": {
-            "@type": "Person",
-            "name": "Bárbara Amorim",
-            "jobTitle": "Enfermeira Esteta",
-            "identifier": "COREN-RJ 543.324"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Avenida Vice-Presidente José Alencar, 1405, Sala 208",
-            "addressLocality": "Rio de Janeiro",
-            "addressRegion": "RJ",
-            "addressCountry": "BR"
-        },
-        "openingHoursSpecification": [
+        "@graph": [
             {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": "Saturday",
-                "opens": "09:00",
-                "closes": "13:00"
+                "@type": "BeautySalon",
+                "@id": "https://barbaraamorimestetica.github.io/baestetica/#rio",
+                "name": "Bárbara Amorim - Estética Avançada · Rio de Janeiro",
+                "url": "https://barbaraamorimestetica.github.io/baestetica/",
+                "image": "https://barbaraamorimestetica.github.io/baestetica/img/og-capa.jpg",
+                "logo": "https://barbaraamorimestetica.github.io/baestetica/img/logo-barbara-amorim.webp",
+                "description": "Estética avançada na Barra Olímpica, Rio de Janeiro. Harmonização facial, toxina botulínica, preenchimento e bioestimuladores de colágeno.",
+                "telephone": "+5522999408603",
+                "employee": {
+                    "@type": "Person",
+                    "name": "Bárbara Amorim",
+                    "jobTitle": "Enfermeira Esteta",
+                    "identifier": "COREN-RJ 543.324"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Avenida Vice-Presidente José Alencar, 1405, Sala 208",
+                    "addressLocality": "Rio de Janeiro",
+                    "addressRegion": "RJ",
+                    "addressCountry": "BR"
+                },
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": "Saturday",
+                        "opens": "09:00",
+                        "closes": "13:00"
+                    },
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": [
+                            "Monday",
+                            "Tuesday",
+                            "Wednesday",
+                            "Thursday",
+                            "Friday"
+                        ],
+                        "opens": "10:00",
+                        "closes": "18:00",
+                        "description": "Com agendamento prévio."
+                    }
+                ],
+                "sameAs": [
+                    "https://instagram.com/barbaraamorimestetica"
+                ]
+            },
+            {
+                "@type": "BeautySalon",
+                "@id": "https://barbaraamorimestetica.github.io/baestetica/#macae",
+                "name": "Bárbara Amorim - Estética Avançada · Macaé",
+                "url": "https://barbaraamorimestetica.github.io/baestetica/",
+                "image": "https://barbaraamorimestetica.github.io/baestetica/img/og-capa.jpg",
+                "logo": "https://barbaraamorimestetica.github.io/baestetica/img/logo-barbara-amorim.webp",
+                "description": "Estética avançada em Macaé, no bairro Glória. Harmonização facial, toxina botulínica, preenchimento e bioestimuladores de colágeno.",
+                "telephone": "+5522999408603",
+                "employee": {
+                    "@type": "Person",
+                    "name": "Bárbara Amorim",
+                    "jobTitle": "Enfermeira Esteta",
+                    "identifier": "COREN-RJ 543.324"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Rua Castro Alves, 227, Glória",
+                    "addressLocality": "Macaé",
+                    "addressRegion": "RJ",
+                    "postalCode": "27933-180",
+                    "addressCountry": "BR"
+                },
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": "Saturday",
+                        "opens": "08:00",
+                        "closes": "14:00",
+                        "description": "Data conforme agendamento prévio."
+                    }
+                ],
+                "sameAs": [
+                    "https://instagram.com/barbaraamorimestetica"
+                ]
             }
-        ],
-        "sameAs": [
-            "https://instagram.com/barbaraamorimestetica"
         ]
     }
     </script>
@@ -154,85 +221,108 @@
                      no <meta description> e nos dados estruturados: o Google
                      lia-a e a paciente nao. -->
                 <p class="text-sm md:text-base tinta-texto leading-relaxed text-center mb-8">
-                    Harmonização facial, toxina botulínica e preenchimentos
-                    <span class="whitespace-nowrap">&mdash; Barra Olímpica, Rio de Janeiro.</span>
+                    Harmonização facial, toxina botulínica e preenchimentos.
                 </p>
 
-                <!-- As acoes vem ANTES do endereco, e nao depois. Com a caixa a liderar a
+                <!-- A acao vem ANTES do endereco, e nao depois. Com a caixa a liderar a
                      pagina, medi o botao de agendar em 806px numa tela de 800: caia
                      para baixo da dobra, que era exatamente o que este trabalho
                      existia para resolver. Aqui fica visivel sem rolar.
 
-                     Atravessam a caixa e nao a coluna do endereco: la a
-                     coluna tem 383px e os dois botoes precisam de 491, entao
-                     empilhavam. Aqui ha 1024px e ficam lado a lado.
-                     Agendar primeiro: e o objetivo do site. O Maps fica como
-                     acao secundaria, com o contorno em vez do fundo. -->
+                     O botao do Maps SAIU daqui quando a segunda unidade entrou.
+                     Um botao unico apontava para um endereco unico -- com duas
+                     unidades ele passaria a mentir para metade de quem
+                     clicasse. Cada unidade tem o seu, dentro do proprio bloco,
+                     onde o endereco esta ao lado e nao ha o que confundir.
+                     Sobra o agendar, que e o objetivo do site e vale para as
+                     duas: quem manda mensagem diz onde quer ser atendida. -->
                 <div class="mb-8 flex flex-wrap items-center justify-center gap-3">
                     <a href="https://wa.me/5522999408603?text=Ol%C3%A1%20B%C3%A1rbara!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
                        target="_blank" rel="noopener"
-                       class="botao-marca inline-flex items-center gap-2 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-md transition-all">
+                       class="botao-alvo botao-marca gap-2 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-md transition-all">
                 <svg class="icon" width="448" height="512" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
                         Agendar avaliação
                     </a>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Vice-Presidente+José+Alencar+1405+Sala+208+Barra+Olímpica" 
-                    target="_blank" rel="noopener" 
-                    class="inline-block px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest border borda-marca tinta-forte borda-realce transition-colors">
-                        Ver no Google Maps
-                    </a>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="grid gap-5 md:gap-6 lg:grid-cols-2">
+                <div class="border borda-marca rounded-xl p-4 md:p-6 flex flex-col">
+                    <div class="flex items-baseline justify-between gap-3 mb-5">
+                        <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Rio de Janeiro</h3>
+                        <span class="text-[11px] uppercase tracking-widest tinta-suave">WE Doctors</span>
+                    </div>
 
-                    <div class="w-full md:w-1/2 space-y-6">
-                    <div>
-                        <div>
-                            <div class="flex items-center gap-4">
-                        <div class="fundo-rosa rounded-full w-11 h-11 flex items-center justify-center shrink-0">
-                            <svg class="icon tinta-marca text-xl" width="384" height="512" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-                        </div>
-                            <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Onde estamos</h3>
-                        </div>
-                        <!-- "Av." e nao "Avenida": a coluna tem 299px e a
-                        forma extensa precisa de 300. Falhava por um
-                        pixel, e o nome da rua quebrava deixando
-                        "Alencar" sozinho numa quarta linha. Alargar a
-                        coluna por 1px seria fragil -- qualquer mudanca
-                        de fonte desfazia. Os dados estruturados mantem
-                        a forma extensa, que e o que o Google prefere. -->
-                        <p class="mt-2 md:pl-[60px] tinta-texto leading-relaxed text-pretty">
-                        Av. Vice-Presidente José Alencar<br>
-                        Nº 1405, Sala 208, Barra Olímpica<br>
+                    <div class="flex items-center">
+                        <h4 class="text-xs font-bold uppercase tracking-widest tinta-suave">Onde é</h4>
+                    </div>
+                    <p class="mt-2 tinta-texto leading-relaxed lg:min-h-[6.5rem]">
+                        Av. Vice-Presidente<br>
+                        José Alencar, Nº 1405<br>
+                        Sala 208, Barra Olímpica<br>
                         Rio de Janeiro - RJ
-                        </p>
-                                            </div>
+                    </p>
 
-                    <div class="flex items-center gap-4">
-                        <div class="fundo-rosa rounded-full w-11 h-11 flex items-center justify-center shrink-0">
-                            <svg class="icon tinta-marca text-xl" width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
-                        </div>
-                                <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Atendimento</h3>
-                            </div>
-                            <p class="mt-2 md:pl-[60px] tinta-texto mt-1">Sábado de 9h às 13h</p>
-                            <p class="mt-2 md:pl-[60px] tinta-texto mt-1">*Necessário agendamento prévio</p>
-                                                    </div>
+                    <div class="flex items-center mt-5">
+                        <h4 class="text-xs font-bold uppercase tracking-widest tinta-suave">Quando</h4>
+                    </div>
+                    <p class="mt-2 tinta-texto"><strong>Sábado, 9h às 13h</strong><br>
+                        <span class="text-xs tinta-suave">horário fixo</span></p>
 
-                </div>
+                    <p class="mt-3 tinta-texto">Segunda a sexta, 10h às 18h<br>
+                        <span class="text-xs tinta-suave">com agendamento prévio</span></p>
 
-                <div class="w-full md:w-1/2">
-                    <div class="aspect-video overflow-hidden flex items-center justify-center group relative">
-                        
-                        <svg class="icon tinta-borda text-5xl absolute group-hover:scale-110 transition-transform" width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/></svg>
-                        
-                            <img src="img/espaco-atendimento.webp" alt="Sala de atendimento com poltrona reclinável, bancada e armários brancos, e janela ampla voltada para as árvores da rua" class="w-full h-full object-contain" style="transform: scale(1.0);">
-                        
+                    <div class="mt-auto pt-5">
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+Vice-Presidente+Jos%C3%A9+Alencar+1405+Sala+208+Barra+Ol%C3%ADmpica+Rio+de+Janeiro"
+                           target="_blank" rel="noopener"
+                           class="botao-alvo inline-flex items-center px-6 rounded-full text-[11px] font-bold uppercase tracking-widest border borda-marca tinta-forte borda-realce">
+                            Ver no Google Maps
+                        </a>
                     </div>
                 </div>
 
+                <div class="border borda-marca rounded-xl p-4 md:p-6 flex flex-col">
+                    <div class="flex items-baseline justify-between gap-3 mb-5">
+                        <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Macaé</h3>
+                        <span class="text-[11px] uppercase tracking-widest tinta-suave">Somus.Co</span>
+                    </div>
+
+                    <div class="flex items-center">
+                        <h4 class="text-xs font-bold uppercase tracking-widest tinta-suave">Onde é</h4>
+                    </div>
+                    <p class="mt-2 tinta-texto leading-relaxed lg:min-h-[6.5rem]">
+                        R. Castro Alves, 227<br>
+                        Glória, Macaé - RJ<br>
+                        CEP 27933-180
+                    </p>
+
+                    <div class="flex items-center mt-5">
+                        <h4 class="text-xs font-bold uppercase tracking-widest tinta-suave">Quando</h4>
+                    </div>
+                    <p class="mt-2 tinta-texto"><strong>Sábados, 8h às 14h</strong><br>
+                        <span class="text-xs tinta-suave">data conforme agendamento prévio</span></p>
+
+                    <div class="mt-auto pt-5">
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Castro+Alves+227+Gl%C3%B3ria+Maca%C3%A9+RJ+27933-180"
+                           target="_blank" rel="noopener"
+                           class="botao-alvo inline-flex items-center px-6 rounded-full text-[11px] font-bold uppercase tracking-widest border borda-marca tinta-forte borda-realce">
+                            Ver no Google Maps
+                        </a>
+                    </div>
+                </div>
                 </div>
 
-
+                <!-- A foto e da sala do Rio, e por isso a legenda diz qual e.
+                     Enquanto havia uma unidade so, nao havia o que confundir;
+                     com duas, uma foto sem legenda passa a sugerir que as duas
+                     sao assim. -->
+                <figure class="mt-8">
+                    <div class="aspect-video overflow-hidden flex items-center justify-center">
+                        <img src="img/espaco-atendimento.webp" alt="Sala de atendimento com poltrona reclinável, bancada e armários brancos, e janela ampla voltada para as árvores da rua" class="w-full h-full object-contain">
+                    </div>
+                    <figcaption class="mt-3 text-center text-xs tinta-suave">
+                        A sala no Rio de Janeiro, na Barra Olímpica.
+                    </figcaption>
+                </figure>
             </div>
         </section>
 
