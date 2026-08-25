@@ -245,7 +245,21 @@
                     </a>
                 </div>
 
-                <div class="grid gap-5 md:gap-6 lg:grid-cols-2">
+                <!-- LADO A LADO A PARTIR DE 640px, e o numero foi medido duas vezes.
+                     Estava em md (768), e antes disso saltou para lg (1024) porque
+                     em 768 o horario quebrava em tres linhas. Essa razao morreu
+                     quando o horario deixou de emendar a condicao com travessao:
+                     agora sao duas linhas curtas, e cabem em coluna estreita.
+
+                     Medido sem o min-height, que inflava a contagem: em 640, 700,
+                     768, 800 e 1024, ZERO quebra involuntaria -- cada paragrafo sai
+                     com o numero de linhas que esta escrito. A coluna mais apertada
+                     e a de 640, com 257px, e sobram 25px na linha mais larga.
+
+                     Em lg ficavam empilhados entre 768 e 1023, que e tablet e
+                     notebook pequeno. Duas unidades lado a lado e o ponto da secao:
+                     e assim que se compara horario com horario. -->
+                <div class="grid gap-5 md:gap-6 sm:grid-cols-2">
                 <div class="border borda-marca rounded-xl p-4 md:p-6 flex flex-col">
                     <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-5">
                         <h3 class="serif text-lg font-bold tinta-texto uppercase tracking-tight">Rio de Janeiro</h3>
@@ -255,7 +269,7 @@
                     <div class="flex items-center">
                         <h4 class="text-xs font-bold uppercase tracking-widest tinta-suave">Onde é</h4>
                     </div>
-                    <p class="mt-2 tinta-texto leading-relaxed lg:min-h-[6.5rem]">
+                    <p class="mt-2 tinta-texto leading-relaxed sm:min-h-[6.5rem]">
                         Av. Vice-Presidente<br>
                         José Alencar, Nº 1405<br>
                         Sala 208, Barra Olímpica<br>
@@ -289,7 +303,7 @@
                     <div class="flex items-center">
                         <h4 class="text-xs font-bold uppercase tracking-widest tinta-suave">Onde é</h4>
                     </div>
-                    <p class="mt-2 tinta-texto leading-relaxed lg:min-h-[6.5rem]">
+                    <p class="mt-2 tinta-texto leading-relaxed sm:min-h-[6.5rem]">
                         R. Castro Alves, 227<br>
                         Glória, Macaé - RJ<br>
                         CEP 27933-180
