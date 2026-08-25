@@ -118,6 +118,40 @@
     font-weight: 700;
 }
 
+/* ---------------------------------------------------------------------------
+   QUANDO O ENDEREÇO APONTA UMA SECÇÃO DESTA PÁGINA
+
+   O `aria-current="page"` está escrito no HTML e marca a PÁGINA -- e está
+   certo: quem clica em "Espaço" continua na página Início. Mas para quem olha,
+   o menu ficava a dizer "Início" depois de a tela já ter descido para o Espaço.
+
+   Aqui a marca passa para a secção enquanto o endereço a apontar. Sem
+   JavaScript nenhum: o `:target` é a secção que o `#` do endereço nomeia, e o
+   `:has()` deixa o <html> reagir a ela. Isto importa porque o 404.html declara
+   `script-src 'none'` -- ali não corre script nenhum, por desenho.
+
+   Num navegador sem `:has()` nada disto se aplica e a marca fica no item da
+   página, que é o comportamento de sempre. Degrada para o que já havia.
+
+   CADA DESTINO COM `#` PRECISA DO SEU PAR DE REGRAS AQUI. O [a conferência do menu]
+   recusa um destino ancorado que não tenha as duas -- senão o menu ganharia
+   um item que nunca acende, e ninguém daria por isso.
+   --------------------------------------------------------------------------- */
+
+/* a página deixa de estar acesa... */
+html:has(#espaco:target) .ba-menu a[aria-current="page"] {
+    color: var(--marca-forte);
+    border-bottom-color: transparent;
+    font-weight: 600;
+}
+
+/* ...e a secção acende no lugar dela */
+html:has(#espaco:target) .ba-menu a[href$="#espaco"] {
+    color: var(--marca-hover);
+    border-bottom-color: var(--marca-forte);
+    font-weight: 700;
+}
+
 @media (min-width: 640px) {
     /* Daqui para cima cabe numa linha só, e aí grudar no topo custa 48px e
        poupa a rolagem de volta. */
