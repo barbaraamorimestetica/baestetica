@@ -74,7 +74,7 @@
 
     
 
-    <header class="text-center py-6 flex flex-col items-center gap-4">
+    <header id="topo" class="text-center py-6 flex flex-col items-center gap-4">
         <div class="w-24 h-24">
             <img src="img/logo-barbara-amorim.webp" 
             alt="" 
@@ -90,7 +90,23 @@
     <main class="max-w-4xl mx-auto space-y-20" data-galeria>
 
         <!-- galeria:inicio -->
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <nav class="galeria-indice" data-piso aria-labelledby="galeria-indice-titulo">
+            <h2 id="galeria-indice-titulo" class="galeria-indice-titulo">Os procedimentos</h2>
+            <ul class="galeria-indice-lista">
+                <li><a href="#res-preenchimento-labial">Preenchimento Labial<span class="galeria-indice-conta">8</span></a></li>
+                <li><a href="#res-toxina-botulinica-botox">Toxina Botulínica (Botox)<span class="galeria-indice-conta">3</span></a></li>
+                <li><a href="#res-preenchimento-de-bigode-chines">Preenchimento de Bigode Chinês<span class="galeria-indice-conta">3</span></a></li>
+                <li><a href="#res-preenchimento-de-olheiras">Preenchimento de Olheiras<span class="galeria-indice-conta">2</span></a></li>
+                <li><a href="#res-preenchimento-de-mento">Preenchimento de Mento<span class="galeria-indice-conta">1</span></a></li>
+                <li><a href="#res-preenchimento-de-mandibula">Preenchimento de Mandíbula<span class="galeria-indice-conta">1</span></a></li>
+                <li><a href="#res-preenchimento-de-zigomatico">Preenchimento de Zigomático<span class="galeria-indice-conta galeria-indice-vazio">em breve</span></a></li>
+                <li><a href="#res-preenchimento-de-pre-maxila">Preenchimento de Pré-Maxila<span class="galeria-indice-conta galeria-indice-vazio">em breve</span></a></li>
+                <li><a href="#res-bioestimulador-de-colageno-caha">Bioestimulador de Colágeno (CaHA)<span class="galeria-indice-conta galeria-indice-vazio">em breve</span></a></li>
+                <li><a href="#res-harmonizacao-facial-mais-de-1-procedimento">Harmonização facial (mais de 1 procedimento)<span class="galeria-indice-conta">3</span></a></li>
+            </ul>
+        </nav>
+
+        <section id="res-preenchimento-labial" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Preenchimento Labial</h3>
             </div>
@@ -113,7 +129,7 @@
             </p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-toxina-botulinica-botox" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Toxina Botulínica (Botox)</h3>
             </div>
@@ -131,7 +147,7 @@
             </p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-preenchimento-de-bigode-chines" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Preenchimento de Bigode Chinês</h3>
             </div>
@@ -149,7 +165,7 @@
             </p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-preenchimento-de-olheiras" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Preenchimento de Olheiras</h3>
             </div>
@@ -166,7 +182,7 @@
             </p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-preenchimento-de-mento" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Preenchimento de Mento</h3>
             </div>
@@ -182,7 +198,7 @@
             </p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-preenchimento-de-mandibula" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Preenchimento de Mandíbula</h3>
             </div>
@@ -198,7 +214,7 @@
             </p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-preenchimento-de-zigomatico" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Preenchimento de Zigomático</h3>
             </div>
@@ -209,7 +225,7 @@
             <p class="text-center text-sm tinta-suave italic border borda-marca rounded-xl py-6">Resultados em breve.</p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-preenchimento-de-pre-maxila" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Preenchimento de Pré-Maxila</h3>
             </div>
@@ -220,7 +236,7 @@
             <p class="text-center text-sm tinta-suave italic border borda-marca rounded-xl py-6">Resultados em breve.</p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-bioestimulador-de-colageno-caha" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Bioestimulador de Colágeno (CaHA)</h3>
             </div>
@@ -231,7 +247,7 @@
             <p class="text-center text-sm tinta-suave italic border borda-marca rounded-xl py-6">Resultados em breve.</p>
         </section>
 
-        <section class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
+        <section id="res-harmonizacao-facial-mais-de-1-procedimento" class="secao-resultado bg-white rounded-3xl gold-border-glow mb-10" data-piso>
             <div class="text-left mb-6">
                 <h3 class="font-serif text-2xl font-bold tinta-texto">Harmonização facial (mais de 1 procedimento)</h3>
             </div>
@@ -261,6 +277,7 @@
         <!-- Depois do baEmbeds, de proposito: a galeria chama baEmbeds.acompanhar()
              para as caixas que cria. Ver js/galeria.js e [a documentação da galeria]. -->
         <script src="js/galeria.js" defer></script>
+        <script src="js/ao-topo.js" defer></script>
 
         <script>
             // O embed.js processa os blockquotes sozinho quando carrega. Esta
@@ -293,6 +310,20 @@
     </footer>
 
     <!-- Botão flutuante de WhatsApp -->
+    <!-- VOLTAR AO TOPO
+         Sao dez seccoes compridas, e o indice -- que e o que serve para
+         escolher outro procedimento -- esta no alto. No computador o menu do
+         site fica preso e ja resolve; no telefone ele sai com a rolagem, e e
+         ali que a pagina tem mais telas.
+
+         E um <a> para uma ancora: funciona sem JavaScript, entra na ordem do
+         teclado, e quem desloca a pagina e o navegador. O js/ao-topo.js so
+         faz APARECER depois de se ter descido -- um botao de voltar ao topo
+         visivel enquanto se esta no topo nao faz nada. -->
+    <a href="#topo" class="ao-topo no-print" aria-label="Voltar ao topo da página">
+        <svg class="icon" width="384" height="512" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+    </a>
+
     <a href="https://wa.me/5522999408603?text=Olá%20Bárbara!%20Vi%20a%20galeria%20de%20resultados%20e%20gostaria%20de%20agendar%20uma%20avaliação."
        target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
        class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full fundo-whatsapp text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform">

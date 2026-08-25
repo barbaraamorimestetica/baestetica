@@ -320,8 +320,68 @@
         return raiz;
     }
 
+    /* O id da seccao, a partir do nome do procedimento.
+     *
+     * ESTA FUNCAO EXISTE DUAS VEZES, e tem de dar o mesmo resultado nas duas:
+     * aqui e no [o gerador da galeria], que escreve a copia estatica. Esta versao
+     * substitui aquela quando a folha responde, e se os ids nao coincidirem o
+     * indice fica a apontar seccoes que deixaram de existir nesse instante.
+     *
+     * O algoritmo e o mais simples que serve, e por isso e facil de repetir:
+     * separar os acentos, deitar fora o que sobra deles, minusculas, e tudo o
+     * que nao for letra ou numero vira hifen.
+     *
+     * E pelo NOME, e nao pela ordem: a ordem vem da folha e pode mudar, e um
+     * endereco guardado apontando #res-3 passaria a abrir outro procedimento. */
+    function ancora(nome) {
+        return 'res-' + String(nome)
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')   // o que sobra dos acentos
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
+    /* A lista dos procedimentos, no topo, com quantos resultados ha em cada.
+     *
+     * O numero poupa a viagem: ha seccoes ainda sem resultado nenhum, e tocar
+     * num nome para cair num "em breve" ensina a nao usar a lista. */
+    function indiceDe(ordenados, porProc) {
+        var nav = document.createElement('nav');
+        nav.className = 'galeria-indice';
+        nav.setAttribute('aria-labelledby', 'galeria-indice-titulo');
+
+        var titulo = document.createElement('h2');
+        titulo.id = 'galeria-indice-titulo';
+        titulo.className = 'galeria-indice-titulo';
+        titulo.textContent = 'Os procedimentos';
+        nav.appendChild(titulo);
+
+        var lista = document.createElement('ul');
+        lista.className = 'galeria-indice-lista';
+        ordenados.forEach(function (p) {
+            var nome = p.Procedimento;
+            var n = (porProc[nome] || []).length;
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.href = '#' + ancora(nome);
+            // textContent, e nao innerHTML: o nome vem da folha, que e de fora
+            a.textContent = nome;
+            var conta = document.createElement('span');
+            conta.className = 'galeria-indice-conta'
+                            + (n ? '' : ' galeria-indice-vazio');
+            conta.textContent = n ? String(n) : 'em breve';
+            a.appendChild(conta);
+            li.appendChild(a);
+            lista.appendChild(li);
+        });
+        nav.appendChild(lista);
+        return nav;
+    }
+
     function secao(indice, nome, descricao, posts) {
         var sec = document.createElement('section');
+        sec.id = ancora(nome);
         // sem o p-8 do Tailwind: o recuo do telefone vive no .secao-resultado,
         // e uma classe de utilidade ganharia dele por especificidade
         sec.className = 'secao-resultado bg-white rounded-3xl gold-border-glow mb-10';
@@ -386,6 +446,11 @@
         var main = document.querySelector('[data-galeria]');
         if (!main) { throw new Error('nao achei [data-galeria]'); }
         var novo = document.createDocumentFragment();
+        // O indice PRIMEIRO, com a mesma ordem das seccoes. Ele e refeito aqui,
+        // e nao aproveitado do piso: a lista do piso e a da ultima vez que o
+        // [o gerador da galeria] correu, e se a folha ganhou um procedimento desde
+        // entao, ficaria uma lista velha a apontar seccoes novas.
+        novo.appendChild(indiceDe(ordenados, porProc));
         ordenados.forEach(function (p, i) {
             novo.appendChild(secao(i + 1, p.Procedimento, p.Descricao,
                                    porProc[p.Procedimento] || []));
