@@ -326,15 +326,21 @@
         // e uma classe de utilidade ganharia dele por especificidade
         sec.className = 'secao-resultado bg-white rounded-3xl gold-border-glow mb-10';
 
+        // SEM "Procedimento 01" por cima do nome.
+        //
+        // O rotulo nao dizia nada que o nome nao dissesse, e numerar sugeria uma
+        // ordem que nao existe: a ordem vem da aba Procedimentos e serve para
+        // arrumar a pagina, nao para classificar tratamento.
+        //
+        // Tirado nos DOIS lugares que desenham esta seccao -- aqui e no
+        // [o gerador da galeria], que escreve a copia estatica que o Google le. Tirar
+        // so de um faria a pagina mudar sozinha quando o JavaScript acabasse de
+        // correr.
         var topo = document.createElement('div');
         topo.className = 'text-left mb-6';
-        var etiqueta = document.createElement('span');
-        etiqueta.className = 'tinta-forte font-bold text-xs uppercase tracking-widest';
-        etiqueta.textContent = 'Procedimento ' + (indice < 10 ? '0' : '') + indice;
         var titulo = document.createElement('h3');
         titulo.className = 'font-serif text-2xl font-bold tinta-texto';
         titulo.textContent = nome;
-        topo.appendChild(etiqueta);
         topo.appendChild(titulo);
         sec.appendChild(topo);
 

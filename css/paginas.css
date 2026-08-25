@@ -285,3 +285,111 @@ body {
     justify-content: center;
     min-height: 44px;
 }
+
+/* ---------------------------------------------------------------------------
+   O INDICE DOS PROCEDIMENTOS, no topo do catalogo
+
+   Sao sete cartoes com imagem. Sem indice, quem chega nao sabe o que existe --
+   descobre rolando, e no telefone a grade e de uma coluna, o que faz sete telas
+   de rolagem para ver a lista.
+
+   Nao e so navegacao: uma lista do que se faz, logo no alto, e conteudo. Por
+   isso ela fica VISIVEL, e nao dentro de um <details> que se abre -- esconder a
+   lista atras de um toque nao resolveria a metade do problema que e "nao saber
+   o que existe".
+
+   O TELEFONE DECIDE A GRADE
+
+   Medido: com minmax(150px) a coluna de 288px que sobra num telefone de 320 da
+   UMA coluna, e sete linhas de 44px sao 308px de indice antes do primeiro
+   cartao. Com 130px cabem duas colunas, e sao quatro linhas -- 176px. O nome
+   mais longo da lista, "Preenchimento Facial", cabe em 130px a 11px.
+
+   Os 44px de altura sao alvo de toque, e nao enfeite: e uma lista para tocar.
+   --------------------------------------------------------------------------- */
+
+.cat-indice {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto 1.5rem;
+    padding: 1.25rem;
+    background: var(--superficie);
+    border: 1px solid var(--marca-borda);
+    border-radius: 1rem;
+}
+
+.cat-indice-titulo {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin: 0 0 0.75rem;
+}
+
+.cat-indice-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.25rem 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cat-indice a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.5rem 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--marca-forte);
+    text-decoration: none;
+    line-height: 1.3;
+    border-bottom: 1px solid var(--marca-borda);
+    transition: color 0.15s, border-color 0.15s;
+}
+
+/* O ultimo de cada coluna fica sem filete? Nao da para saber quantas colunas
+   couberam, entao o filete fica em todos: uma lista com o ultimo diferente
+   parece defeito, e todos iguais leem-se como lista. */
+
+.cat-indice a:hover {
+    color: var(--marca-hover);
+    border-bottom-color: var(--marca-clara);
+}
+
+.cat-indice a:focus-visible {
+    outline: 2px solid var(--marca);
+    outline-offset: 2px;
+}
+
+/* NAO HA SETA AQUI, e vale dizer por que nao.
+
+   A primeira versao punha uma flecha para baixo em `content`. Duas razoes para
+   ela sair. A primeira: ela foi gravada como um CARACTERE DE CONTROLE seguido
+   de "93" -- o \2193 do CSS chegou ao Python como \21 + "93", e o \21 e
+   escape octal, que da 0x11. A segunda, e a que decide: mesmo escrita certa, a
+   fonte servida daqui e um subconjunto e pode nao trazer o glifo -- e um
+   quadradinho no lugar da flecha e pior do que flecha nenhuma.
+
+   O filete e a cor de link ja dizem que o nome leva a algum lugar. */
+
+/* Em tela larga a lista para de crescer em colunas. Com auto-fill a 130px, um
+   monitor de 1100 punha os sete nomes numa fila unica, e "Preenchimento
+   Facial" partia em duas linhas dentro da sua celula -- uma fila de nomes
+   quebrados nao se le como lista. Quatro colunas dao 4 + 3. */
+@media (min-width: 700px) {
+    .cat-indice-lista {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.25rem 1.5rem;
+    }
+}
+
+/* Acima de 640px o menu do site fica preso no topo, e a ancora levaria o cartao
+   para debaixo dele. A folga e a altura do menu mais um respiro. */
+@media (min-width: 640px) {
+    [id^="proc-"] {
+        scroll-margin-top: 4rem;
+    }
+}
