@@ -44,9 +44,21 @@
     width: 100%;
     background: var(--superficie);
     border-bottom: 1px solid var(--marca-borda);
-    /* z-index baixo de propósito: o botão flutuante do WhatsApp está em z-50 e
-       tem de continuar por cima. */
-    z-index: 30;
+    /* ACIMA DE TUDO O QUE ROLA POR BAIXO DELE.
+     *
+     * Estava em 30, escolhido para o botão flutuante do WhatsApp (z-50) ficar
+     * por cima. O raciocínio era errado: aquele botão é `fixed` no canto de
+     * baixo e nunca encontra uma barra presa no topo -- seria preciso uma
+     * janela com menos de 120px de altura.
+     *
+     * E custou um defeito real: no catalogo.html a barra de download passava
+     * POR CIMA do menu ao rolar. Ela é `position: static`, o que normalmente
+     * faria o `z-50` dela não valer nada -- mas ela é filha de um contentor
+     * flex, e em item de flex o z-index conta mesmo sem posicionamento. 50
+     * contra 30, e ela ganhava.
+     *
+     * 60 põe o menu acima de qualquer coisa que a página traga em z-50. */
+    z-index: 60;
 }
 
 .ba-menu-lista {
@@ -76,19 +88,20 @@
        alto de um aparelho que tem pouca tela, e duas linhas centradas leem-se
        como defeito, não como escolha.
 
-       Com quatro, cabe numa linha até aos 320px, e sobra folga para o menu
-       respirar. Estes valores são o maior respiro que ainda cabe na tela mais
-       estreita: medido em 320, 360, 375, 414, 640 e 1200, sempre numa linha e
-       com nada fora da tela.
+       Estes valores sao o maior respiro que ainda deixa os CINCO destinos
+       numa linha so a partir dos 360px. Medido em 320, 360, 375, 414, 640 e
+       1200.
 
-       Se um dia entrar um quinto destino, isto volta a quebrar em duas linhas
-       nos aparelhos pequenos -- e quebrar continua a ser a resposta certa, e
-       não rolar de lado, que ESCONDE item. Num site que a paciente lê,
-       esconder é pior do que ocupar mais uma linha. */
-    padding: 0 0.45rem;
+       Aos 320 -- e so ali -- quebra em duas linhas, e quebrar e a resposta
+       certa: a alternativa era rolar de lado, que ESCONDE item. Num site que a
+       paciente le, esconder e pior do que ocupar mais uma linha.
+
+       O tamanho da letra nao desceu de 10px para conseguir isto. O que cedeu
+       foi o espaco a volta, que nao se le. */
+    padding: 0 0.28rem;
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--marca-forte);
     text-decoration: none;
@@ -152,6 +165,18 @@ html:has(#espaco:target) .ba-menu a[href$="#espaco"] {
     font-weight: 700;
 }
 
+html:has(#instagram:target) .ba-menu a[aria-current="page"] {
+    color: var(--marca-forte);
+    border-bottom-color: transparent;
+    font-weight: 600;
+}
+
+html:has(#instagram:target) .ba-menu a[href$="#instagram"] {
+    color: var(--marca-hover);
+    border-bottom-color: var(--marca-forte);
+    font-weight: 700;
+}
+
 @media (min-width: 640px) {
     /* Daqui para cima cabe numa linha só, e aí grudar no topo custa 48px e
        poupa a rolagem de volta. */
@@ -165,7 +190,7 @@ html:has(#espaco:target) .ba-menu a[href$="#espaco"] {
        texto a meio da secção sem saber que perdeu o cabeçalho. Esta folga é a
        altura do menu, e só existe onde ele gruda. */
     #espaco,
-    #contato {
+    #instagram {
         scroll-margin-top: 3.5rem;
     }
     .ba-menu-lista {
