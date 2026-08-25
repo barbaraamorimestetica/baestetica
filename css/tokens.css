@@ -1,14 +1,14 @@
 /* ===========================================================================
    COMUM AOS DOIS REPOSITORIOS -- NAO EDITAR SO DE UM LADO.
 
-   Este arquivo e identico em baestetica/css/tokens.css e em
-   [repositório interno]/assets/tokens.css. Depois de mexer num deles, rode:
+   Este arquivo tem uma copia gemea no outro repositorio, e as duas tem de ser
+   identicas ao byte. Depois de mexer numa delas, corra o sincronizador: ele
+   copia e confere. O hook de pre-commit recusa o commit se divergirem, entao
+   nao ha como esquecer.
 
-       python [o sincronizador]
-
-   de qualquer um dos dois repositorios. Ele copia e confere. O hook de
-   pre-commit recusa o commit se as copias divergirem, entao nao ha como
-   esquecer.
+   O caminho da gemea e o nome do sincronizador estao no [a documentação comum], e nao aqui:
+   este arquivo e servido na rua, e nao ha por que anunciar dali o que existe
+   do outro lado.
    ===========================================================================
 
    A PALETA, E POR QUE CADA TOM EXISTE

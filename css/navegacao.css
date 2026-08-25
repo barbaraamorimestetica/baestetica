@@ -1,7 +1,7 @@
 /* A NAVEGAÇÃO DO SITE
  *
- * Este arquivo é SÓ do repositório público. Não é dos comuns (ver [a documentação comum]):
- * o [o sincronizador] não o conhece, e não deve conhecer.
+ * Este arquivo é SÓ do repositório público. Não é um dos partilhados, e não
+ * deve passar a ser: o sincronizador não o conhece.
  *
  * POR QUE ELA ESTÁ ESCRITA NO HTML, E NÃO INJETADA POR JAVASCRIPT
  *
@@ -13,8 +13,9 @@
  * navega com ele desligado.
  *
  * Então o menu é escrito nas quatro páginas. A cópia é o preço, e ele é pago
- * com o [a conferência do menu], que recusa qualquer divergência entre elas -- é o
- * padrão deste projeto: conferir, em vez de deduplicar em tempo de execução.
+ * com uma conferência automática que recusa qualquer divergência entre elas
+ * -- é o padrão deste projeto: conferir, em vez de deduplicar em tempo de
+ * execução.
  *
  * POR QUE NÃO É UMA BARRA LATERAL
  *
@@ -151,7 +152,7 @@
    Num navegador sem `:has()` nada disto se aplica e a marca fica no item da
    página, que é o comportamento de sempre. Degrada para o que já havia.
 
-   CADA DESTINO COM `#` PRECISA DO SEU PAR DE REGRAS AQUI. O [a conferência do menu]
+   CADA DESTINO COM `#` PRECISA DO SEU PAR DE REGRAS AQUI. A conferência
    recusa um destino ancorado que não tenha as duas -- senão o menu ganharia
    um item que nunca acende, e ninguém daria por isso.
    --------------------------------------------------------------------------- */

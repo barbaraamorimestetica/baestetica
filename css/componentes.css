@@ -1,12 +1,12 @@
 /* ===========================================================================
    COMUM AOS DOIS REPOSITORIOS -- NAO EDITAR SO DE UM LADO.
 
-   Identico a baestetica/css/componentes.css e a
-   [repositório interno]/assets/componentes.css. Depois de mexer:
+   Este arquivo tem uma copia gemea no outro repositorio, e as duas tem de ser
+   identicas ao byte. Depois de mexer numa delas, corra o sincronizador. O hook
+   de pre-commit recusa o commit se divergirem.
 
-       python [o sincronizador] --aplicar
-
-   O hook de pre-commit recusa o commit se as copias divergirem.
+   O caminho da gemea e o nome do sincronizador estao no [a documentação comum], e nao aqui:
+   este arquivo e servido na rua.
    ===========================================================================
 
    Depende de tokens.css: carregue-o antes deste arquivo.
@@ -89,7 +89,7 @@
 /* ---------------------------------------------------------------------------
    Tipo de titulo, para quem nao usa a utilidade font-serif do Tailwind.
    Estava em baestetica/404.html, baestetica/index.html e
-   [repositório interno]/index.html.
+   na porta de entrada do outro repositorio.
    --------------------------------------------------------------------------- */
 .serif {
     font-family: var(--fonte-titulo);
@@ -100,7 +100,7 @@
    tracking-[0.2em], pede outros 182px: 398px numa tela de 375px. Abaixo de
    480px a linha passa a coluna e o logotipo encolhe.
 
-   Usada em baestetica/index.html e em [repositório interno]/index.html, com o
+   Usada nas paginas iniciais dos dois repositorios, com o
    mesmo texto.
    --------------------------------------------------------------------------- */
 @media (max-width: 480px) {

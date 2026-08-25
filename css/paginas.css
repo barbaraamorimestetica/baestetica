@@ -1,7 +1,7 @@
 /* ===========================================================================
    css/paginas.css -- so do repositorio publico
 
-   Nao entra no [o sincronizador] de proposito: sao pecas do site, e o
+   Nao e partilhado, de proposito: sao pecas do site, e o
    repositorio privado nao tem rodape de contacto nem fundo em degrade. O que
    os dois lados desenham igual esta em componentes.css.
 
@@ -251,8 +251,8 @@ body {
    Resultados.html e da catalogo.html -- duas copias com valores em hexadecimal
    em vez de token. Passou a viver aqui porque o js/galeria.js aplica a classe,
    e ele roda nas duas paginas: com a regra dentro de uma delas, a outra ficava
-   com a classe sem pintura, sem erro nenhum. Foi o [a conferência de classes] que deu
-   por isso.
+   com a classe sem pintura, sem erro nenhum. Foi a conferencia de classes que
+   deu por isso.
    --------------------------------------------------------------------------- */
 .gold-border-glow {
     border: 1px solid var(--marca-borda);

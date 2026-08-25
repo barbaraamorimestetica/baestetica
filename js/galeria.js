@@ -323,7 +323,7 @@
     /* O id da seccao, a partir do nome do procedimento.
      *
      * ESTA FUNCAO EXISTE DUAS VEZES, e tem de dar o mesmo resultado nas duas:
-     * aqui e no [o gerador da galeria], que escreve a copia estatica. Esta versao
+     * aqui e no gerador da copia estatica. Esta versao
      * substitui aquela quando a folha responde, e se os ids nao coincidirem o
      * indice fica a apontar seccoes que deixaram de existir nesse instante.
      *
@@ -393,7 +393,7 @@
         // arrumar a pagina, nao para classificar tratamento.
         //
         // Tirado nos DOIS lugares que desenham esta seccao -- aqui e no
-        // [o gerador da galeria], que escreve a copia estatica que o Google le. Tirar
+        // gerador da copia estatica, que e a que o Google le. Tirar
         // so de um faria a pagina mudar sozinha quando o JavaScript acabasse de
         // correr.
         var topo = document.createElement('div');
@@ -448,7 +448,7 @@
         var novo = document.createDocumentFragment();
         // O indice PRIMEIRO, com a mesma ordem das seccoes. Ele e refeito aqui,
         // e nao aproveitado do piso: a lista do piso e a da ultima vez que o
-        // [o gerador da galeria] correu, e se a folha ganhou um procedimento desde
+        // gerador da copia estatica correu, e se a folha ganhou um procedimento desde
         // entao, ficaria uma lista velha a apontar seccoes novas.
         novo.appendChild(indiceDe(ordenados, porProc));
         ordenados.forEach(function (p, i) {
