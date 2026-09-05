@@ -100,6 +100,19 @@ body {
 
 .carrossel-trilho::-webkit-scrollbar { display: none; }
 
+/* A caixa que desistiu do embed.
+   
+   Os 500px reservados existem para o post que vem; quando ele nao vem, o
+   cartao "Ver este resultado no Instagram" tem o tamanho dele proprio. Sem
+   isto o cartao ficava no meio de meio metro de vazio e a seccao parecia
+   quebrada -- que e o oposto do que o cartao existe para fazer.
+   
+   O trilho alinha por `flex-start`, entao uma caixa mais baixa que as vizinhas
+   fica no topo e nao estica. */
+.carrossel-slide.sem-embed {
+    min-height: 0;
+}
+
 /* A largura e 88%, e nao 100%, de proposito: sobra a borda do post seguinte
    a espreita de cada lado. E o sinal mais forte de que ha mais para ver --
    mais forte que seta ou bolinha, porque nao precisa de ser interpretado.
