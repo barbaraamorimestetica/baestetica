@@ -283,13 +283,26 @@
         if (caixa.getAttribute('data-cheia')) { return; }
         caixa.setAttribute('data-cheia', '1');
 
-        // JA SE SABE QUE ESTE NAO ABRE: o cartao entra na hora.
+        // FOTO PREENCHIDA MANDA: nem se tenta o embed.
         //
-        // Antes a pagina descobria sozinha, em cada visita: criava o
-        // blockquote, esperava o embed.js, media o iframe colapsar. Quem
-        // chegava na seccao ficava a olhar um retangulo branco vazio por
-        // segundos -- por uma resposta que ja estava medida.
-        if (recusado(caixa.getAttribute('data-permalink'))
+        // Quem enche a coluna "Link Foto" ja sabe que aquele post nao abre --
+        // foi por isso que se deu o trabalho de salvar a imagem. Tentar o
+        // embed primeiro seria pedir ao Instagram uma resposta que ja se
+        // conhece, e depois desenhar em cima dela.
+        //
+        // E ISTO NAO DEPENDE DE MEDICAO NENHUMA. A lista do js/sem-embed.js e
+        // tao fresca quanto a ultima vez que alguem correu a medicao; a foto na
+        // planilha vale no minuto em que e colada. Um post travado hoje aparece
+        // certo hoje, sem esperar por ninguem.
+        //
+        // A CONSEQUENCIA, dita com letras: com foto preenchida o embed NAO
+        // aparece, mesmo que o post volte a funcionar. A foto passa a ser a
+        // escolha, e nao o remendo -- para voltar ao embed, apaga-se a celula.
+        var temFoto = !!caixa.getAttribute('data-foto');
+
+        // Sem foto, ainda vale a lista medida: para esses o cartao entra na
+        // hora, em vez de a pagina esperar o iframe colapsar em cada visita.
+        if ((temFoto || recusado(caixa.getAttribute('data-permalink')))
             && window.baEmbeds && window.baEmbeds.cartao) {
             window.baEmbeds.cartao(caixa);
             return;
