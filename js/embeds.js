@@ -56,25 +56,63 @@ if (timer) { clearInterval(timer); timer = null; }
 // A ALTURA RESERVADA TEM DE SAIR JUNTO.
 //
 // Cada caixa reserva 500px a espera do embed, e a reserva vive no CSS --
-// `.carrossel-slide { min-height: 500px }`. Esta linha removia uma classe
-// do Tailwind, `min-h-[500px]`, que nao esta em HTML nenhum: sobrou de uma
-// marcacao anterior. O cartao aparecia dentro de uma moldura de meio metro
-// de vazio, e a seccao parecia quebrada -- que e o oposto do que ele existe
-// para fazer.
+// `.carrossel-slide { min-height: 500px }`. Antes esta linha removia uma
+// classe do Tailwind, `min-h-[500px]`, que nao esta em HTML nenhum: sobrou
+// de uma marcacao anterior. O cartao aparecia dentro de uma moldura de meio
+// metro de vazio, e a seccao parecia quebrada -- que e o oposto do que ele
+// existe para fazer.
 caixa.classList.add('sem-embed');
 
 // O CARTAO APONTA PARA O POST, e nao para o perfil.
 //
 // Quem chega ate aqui quer ver AQUELE resultado. Mandar para a conta obriga
-// a procurar entre cem publicacoes -- e o post pode ate abrir para quem
+// a procurar entre cem publicacoes -- e o post abre normalmente para quem
 // esta com sessao iniciada, que e o caso comum de quem usa o Instagram no
 // telefone.
 var destino = caixa.getAttribute('data-permalink')
     || 'https://instagram.com/barbaraamorimestetica';
-caixa.innerHTML = '<a href="' + destino + '" target="_blank" rel="noopener"'
-        + ' class="w-full max-w-[540px] border borda-marca rounded-xl p-8 flex flex-col items-center justify-center tinta-suave borda-realce transition-colors">'
-        + '<svg class="icon tinta-marca text-3xl mb-3" width="448" height="512" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>'
-        + '<span class="text-sm">Ver este resultado no Instagram</span></a>';
+
+// E O ENDERECO APARECE ESCRITO, e nao so no href.
+//
+// Sem ele o cartao dizia "Ver este resultado no Instagram" e mais nada: quem
+// chegava via um quadrado vazio com uma frase, e a leitura era "o site nao
+// carregou" ou "esta faltando o link". Escrito, o cartao deixa de ser uma
+// ausencia e passa a ser um destino -- da para ver para onde vai antes de
+// clicar, e da para copiar mesmo sem clicar.
+//
+// Sem o "https://www.", que nao ajuda ninguem a reconhecer o endereco e
+// ocupa a largura que o resto precisa no telefone.
+var visivel = destino.replace(/^https?:\/\//, '').replace(/^www\./, '')
+    .replace(/\/$/, '');
+
+caixa.innerHTML = '';
+var cartao = document.createElement('div');
+cartao.className = 'cartao-sem-embed';
+// So o desenho vai por innerHTML: e texto fixo deste arquivo. O endereco vem
+// da planilha e entra pelo DOM, onde nao ha como uma aspa solta fechar um
+// atributo e o resto virar marcacao.
+cartao.innerHTML = '<span class="cartao-sem-embed-icone" aria-hidden="true">'
+    + '<svg class="icon tinta-marca text-3xl mb-3" width="448" height="512" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>' + '</span>';
+
+var frase = document.createElement('p');
+frase.className = 'cartao-sem-embed-frase';
+frase.textContent = 'Este resultado abre no Instagram.';
+cartao.appendChild(frase);
+
+var botao = document.createElement('a');
+botao.href = destino;
+botao.target = '_blank';
+botao.rel = 'noopener';
+botao.className = 'botao-marca cartao-sem-embed-botao';
+botao.textContent = 'Ver a publicação';
+cartao.appendChild(botao);
+
+var endereco = document.createElement('p');
+endereco.className = 'cartao-sem-embed-endereco';
+endereco.textContent = visivel;
+cartao.appendChild(endereco);
+
+caixa.appendChild(cartao);
     }
 
     function desistirDeTodas() {

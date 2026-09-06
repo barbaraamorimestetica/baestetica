@@ -100,17 +100,68 @@ body {
 
 .carrossel-trilho::-webkit-scrollbar { display: none; }
 
-/* A caixa que desistiu do embed.
-   
-   Os 500px reservados existem para o post que vem; quando ele nao vem, o
-   cartao "Ver este resultado no Instagram" tem o tamanho dele proprio. Sem
-   isto o cartao ficava no meio de meio metro de vazio e a seccao parecia
-   quebrada -- que e o oposto do que o cartao existe para fazer.
-   
-   O trilho alinha por `flex-start`, entao uma caixa mais baixa que as vizinhas
-   fica no topo e nao estica. */
+/* O CARTAO DE QUANDO O POST NAO EMBUTE.
+
+   O Instagram fecha alguns posts para quem nao esta com sessao iniciada, e um
+   embed e sempre um visitante deslogado. Quando isso acontece, o lugar do post
+   nao pode ficar vazio: quem chega le vazio como "o site quebrou".
+
+   TRES COISAS, E CADA UMA RESPONDE A UMA PERGUNTA
+   uma frase, que diz o que aconteceu; um botao, que e o que se clica; e o
+   ENDERECO ESCRITO, que diz para onde vai antes do clique e da para copiar
+   sem clicar. So a frase, o cartao ainda parecia uma ausencia.
+
+   E A ALTURA E A DELE. Os 500px reservados existem para o post que vem;
+   quando ele nao vem, a moldura de meio metro de vazio era o proprio defeito.
+   O trilho alinha por `flex-start`, entao uma caixa mais baixa que as
+   vizinhas fica no topo e nao estica. */
 .carrossel-slide.sem-embed {
     min-height: 0;
+}
+
+.cartao-sem-embed {
+    width: 100%;
+    max-width: 540px;
+    border: 1px solid var(--marca-borda);
+    border-radius: 0.75rem;
+    padding: 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cartao-sem-embed-icone {
+    color: var(--marca);
+    line-height: 1;
+}
+
+.cartao-sem-embed-frase {
+    font-size: 0.875rem;
+    color: var(--texto);
+    margin-bottom: 1rem;
+}
+
+.cartao-sem-embed-botao {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+/* O endereco: pequeno, mas legivel -- 12px sobre branco no --texto-suave da
+   4,6:1, acima do minimo de 4,5:1 do WCAG AA para texto pequeno.
+   `break-all` porque um endereco nao tem espacos onde quebrar, e numa tela de
+   320px ele empurraria a pagina de lado. */
+.cartao-sem-embed-endereco {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+    word-break: break-all;
 }
 
 /* A largura e 88%, e nao 100%, de proposito: sobra a borda do post seguinte
