@@ -11,4 +11,4 @@
 // A deteccao em tempo real continua no js/embeds.js: ela cobre o
 // post que passe a nao embutir entre uma medicao e outra, e o caso
 // em que o proprio embed.js nao carrega.
-window.baSemEmbed = ["Dc5GkZ8xZwo", "DcVwbjvEchy", "DcloB3LkTUm"];
+window.baSemEmbed = ["Dc5GkZ8xZwo", "DcVwbjvEchy", "DcgebfqESKf", "DcloB3LkTUm"];

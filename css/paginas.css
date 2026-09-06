@@ -117,6 +117,215 @@ body {
    vizinhas fica no topo e nao estica. */
 .carrossel-slide.sem-embed {
     min-height: 0;
+    /* EM COLUNA, e nao em linha.
+       O slide e `flex` com `justify-content: center` -- desenhado para um filho
+       so, o embed. Com foto passa a ter dois, a imagem e o cartao, e em linha
+       eles ficavam lado a lado: metade da largura para cada, a foto encolhida e
+       o cartao esticado ao lado dela. */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* A FOTO NO LUGAR DO EMBED.
+
+   Vem da coluna "Link Foto" da planilha, e entra ACIMA do cartao: a foto
+   mostra o resultado, o cartao continua levando ao post -- que e onde estao a
+   legenda e o antes-e-depois completo.
+
+   `max-width` igual a do embed do Instagram (540px), para a fila do carrossel
+   nao ficar com um item de largura diferente dos outros. */
+.resultado-foto {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* A MOLDURA DE POST.
+
+   A foto sozinha, com uma frase embaixo, nao se lia como resultado do
+   Instagram -- lia-se como uma imagem qualquer com um aviso. Aqui ela vem na
+   forma que a paciente reconhece: conta em cima, imagem no meio, link para o
+   post embaixo.
+
+   540px e a largura do embed do Instagram, e por isso e a desta: na fila do
+   carrossel, um item de largura diferente dos outros salta a vista. */
+.cartao-instagram {
+    width: 100%;
+    max-width: 540px;
+    margin: 0;
+    background: var(--superficie);
+    border: 1px solid var(--marca-borda);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.cartao-instagram-topo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem;
+}
+
+/* O ANEL COLORIDO do avatar.
+
+   Os cinco tons sao os do degrade do Instagram, na ordem em que ele os usa:
+   amarelo, laranja, rosa, roxo, azul. `border` nao aceita degrade, entao o
+   anel e o fundo de um elemento proprio e o avatar fica por cima, com um vao
+   branco de 2px -- que e o que separa um do outro no original.
+
+   NO INSTAGRAM O ANEL QUER DIZER "ha story agora"; aqui ele e enfeite, e nao
+   promete nada. Fica registrado para ninguem o ler como estado. */
+.cartao-instagram-anel {
+    flex: 0 0 auto;
+    display: block;
+    padding: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(45deg,
+        #FEDA75, #FA7E1E, #D62976, #962FBF, #4F5BD5);
+    line-height: 0;
+}
+
+.cartao-instagram-avatar {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    object-fit: cover;
+    background: var(--superficie);
+    border: 2px solid var(--superficie);
+}
+
+/* O retrato e o nome sao UM link, e o alvo clicavel e a fila inteira. */
+.cartao-instagram-quem {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+}
+
+.cartao-instagram-conta {
+    min-width: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--texto);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Sublinha ao passar o rato, e nao em repouso: o nome da conta em negrito
+   sublinhado competiria com o "Ver mais no Instagram" la embaixo, que e a
+   saida principal. Que e clicavel diz-se ao chegar perto. */
+.cartao-instagram-quem:hover .cartao-instagram-conta,
+.cartao-instagram-quem:focus-visible .cartao-instagram-conta {
+    text-decoration: underline;
+}
+
+/* "Ver perfil" e "Ver mais no Instagram" levam a --marca-forte, que e a unica
+   tinta da paleta que passa AA em texto pequeno (5,27:1 sobre branco). O azul
+   do Instagram seria a unica coisa azul da pagina. */
+/* O "Ver perfil" na forma do Instagram: botao de contorno, texto e borda no
+   mesmo azul.
+
+   A BORDA TAMBEM E AZUL, e nao a rosa da casa. Com o texto azul e a borda
+   rosa, o botao ficava entre duas linguagens -- e o contorno e metade do que
+   faz aquele botao ser reconhecido.
+
+   #385185 da 7,82:1 sobre branco, muito acima do minimo de 3:1 que o WCAG
+   pede para contorno de componente. */
+/* O "Ver perfil" na FORMA do Instagram: botao cheio, texto branco, canto
+   pouco arredondado. Era de contorno e nao era isso.
+
+   O AZUL NAO E O EXATO DO INSTAGRAM, E FOI MEDIDO ANTES DE ESCOLHER.
+   Branco sobre o #0095F6 deles da 3,17:1 -- abaixo do minimo de 4,5:1 que o
+   WCAG AA pede para texto pequeno. O proprio Instagram reprova ali -- e a
+   medicao automatica de contraste do projeto nao pegaria, porque ela le as
+   paginas estaticas e este botao nasce em JavaScript. Foi medido a mao.
+   Escurecendo o MESMO tom ate passar, o primeiro que serve e #007AC9, a 82%
+   do original: 4,54:1 com branco. E o azul mais parecido que se le. */
+.cartao-instagram-perfil {
+    flex: 0 0 auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: #007AC9;
+    text-decoration: none;
+    padding: 0.35rem 0.85rem;
+    border: 0;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+}
+
+/* 5,87:1, mais escuro que o repouso: o estado nunca perde contraste. */
+.cartao-instagram-perfil:hover,
+.cartao-instagram-perfil:focus-visible {
+    background: #0068AC;
+}
+
+/* O PE, EM DOIS BLOCOS. O de cima e a saida para o post; o de baixo e a fala.
+   Os filetes sao o que o embed do Instagram usa para separar um do outro. */
+.cartao-instagram-pe {
+    border-top: 1px solid var(--marca-borda);
+}
+
+.cartao-instagram-saida {
+    padding: 0.75rem;
+}
+
+.cartao-instagram-corpo {
+    padding: 0.75rem;
+    border-top: 1px solid var(--marca-borda);
+}
+
+/* A conta que abre a fala, em negrito, como no embed. */
+.cartao-instagram-autor {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--texto);
+    margin-bottom: 0.4rem;
+}
+
+/* A LEGENDA do post, escrita na planilha.
+
+   E conversa com a paciente, e em duas delas ha aviso que TEM de ficar
+   visivel: "imagem autorizada pela paciente" e "esta imagem nao promete ou
+   garante resultados". 13px no --texto sobre branco da 13,05:1.
+
+   Cada `
+` da celula virou um paragrafo; o espaco entre eles e o que faz a
+   legenda se ler como texto e nao como bloco. */
+.cartao-instagram-legenda p {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--texto);
+}
+
+.cartao-instagram-legenda p + p {
+    margin-top: 0.5rem;
+}
+
+/* O AZUL AQUI E O DO INSTAGRAM, e nao o da casa.
+
+   E a unica cor emprestada da plataforma em toda a pagina, e tem uma razao:
+   este link diz "isto continua em outro lugar", e a cor faz parte de como esse
+   lugar se anuncia. O resto da moldura segue a paleta.
+
+   #385185 e o azul do rodape do embed, e da 7,82:1 sobre branco -- passa AA
+   em texto pequeno com folga. O azul vivo da marca (#3897F0) da 3,06:1 e
+   reprovaria: parece mais com o Instagram e nao se le. */
+.cartao-instagram-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #385185;
+    text-decoration: none;
+}
+
+.cartao-instagram-link:hover,
+.cartao-instagram-link:focus-visible {
+    text-decoration: underline;
 }
 
 .cartao-sem-embed {
@@ -151,17 +360,6 @@ body {
     letter-spacing: 0.02em;
     text-decoration: none;
     transition: background-color 0.2s;
-}
-
-/* O endereco: pequeno, mas legivel -- 12px sobre branco no --texto-suave da
-   4,6:1, acima do minimo de 4,5:1 do WCAG AA para texto pequeno.
-   `break-all` porque um endereco nao tem espacos onde quebrar, e numa tela de
-   320px ele empurraria a pagina de lado. */
-.cartao-sem-embed-endereco {
-    margin-top: 0.75rem;
-    font-size: 0.75rem;
-    color: var(--texto-suave);
-    word-break: break-all;
 }
 
 /* A largura e 88%, e nao 100%, de proposito: sobra a borda do post seguinte

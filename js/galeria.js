@@ -172,11 +172,89 @@
         }).filter(function (p) { return p; });
     }
 
-    function caixaDeEmbed(link) {
+    // A FOTO DA PLANILHA, PARA QUANDO O EMBED NAO PODE ENTRAR.
+    //
+    // O Instagram fecha alguns posts para quem nao tem sessao iniciada, e nesses
+    // a seccao ficava so com o cartao. A coluna "Link Foto" da aba Links guarda
+    // uma imagem para pôr no lugar -- a mesma do post, salva a parte.
+    //
+    // SO O ENDERECO DO DRIVE QUE FUNCIONA COMO IMAGEM. Medido nos tres posts:
+    // o `uc?export=view`, que e o truque mais citado por aí, e recusado pelo
+    // navegador (o curl baixa os bytes; o <img> nao). O `thumbnail?id=...&sz=`
+    // serve, e o `lh3.googleusercontent.com/d/...` tambem -- este fica de
+    // reserva, tentado se o primeiro falhar.
+    //
+    // O que se cola na planilha e o link normal de compartilhamento, do tipo
+    // `/file/d/<ID>/view?usp=...`: daqui se tira o <ID>. Um endereco que ja
+    // seja de imagem (comeca por http e nao e do Drive) vale como esta.
+    function enderecoDaFoto(bruto) {
+        var t = (bruto || '').trim();
+        if (!t) { return ''; }
+        var m = t.match(/\/file\/d\/([A-Za-z0-9_-]{10,})/)
+            || t.match(/[?&]id=([A-Za-z0-9_-]{10,})/)
+            || t.match(/googleusercontent\.com\/d\/([A-Za-z0-9_-]{10,})/);
+        if (m) {
+            return 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w1080';
+        }
+        return /^https?:\/\//.test(t) ? t : '';
+    }
+
+    // DE ONDE SAI A LEGENDA.
+    //
+    // Por nome de coluna primeiro -- `Legenda`, ou `Texto Foto` -- que e como
+    // o resto desta planilha e lido. Se a coluna existir SEM cabecalho, vale a
+    // setima posicao e fica um aviso na consola: melhor ler e avisar do que
+    // ignorar em silencio o que alguem se deu o trabalho de escrever.
+    var NOMES_DA_LEGENDA = ['Legenda', 'Texto Foto', 'Texto'];
+
+    function legendaDaLinha(l) {
+        for (var i = 0; i < NOMES_DA_LEGENDA.length; i++) {
+            var v = l[NOMES_DA_LEGENDA[i]];
+            if (v && v.trim()) { return v.trim(); }
+        }
+        var semNome = l[''];
+        if (semNome && semNome.trim()) {
+            if (!legendaDaLinha.avisou) {
+                legendaDaLinha.avisou = true;
+                console.warn('galeria: a coluna da legenda esta sem cabecalho.'
+                    + ' Escreva "Legenda" na primeira linha dela -- assim ela'
+                    + ' deixa de depender da posicao.');
+            }
+            return semNome.trim();
+        }
+        return '';
+    }
+
+    function caixaDeEmbed(l, procedimento) {
         var caixa = document.createElement('div');
         caixa.className = 'carrossel-slide';
         caixa.setAttribute('data-embed-instagram', '');
-        caixa.setAttribute('data-permalink', link);
+        caixa.setAttribute('data-permalink', l.Link);
+        var foto = enderecoDaFoto(l['Link Foto']);
+        if (foto) {
+            caixa.setAttribute('data-foto', foto);
+            // O TEXTO DA IMAGEM, que e o que leitor de tela le e o que o
+            // Google usa. Curto de proposito: descreve a imagem, e nao o
+            // caso -- a conversa com a paciente e a LEGENDA, logo abaixo.
+            caixa.setAttribute('data-foto-alt',
+                'Resultado de ' + (procedimento || 'procedimento')
+                + ' no consultório da Bárbara Amorim');
+
+            // A LEGENDA DO POST.
+            //
+            // E o texto que o embed do Instagram mostraria embaixo da
+            // imagem, escrito na planilha. Nao serve de texto alternativo:
+            // sao cinco linhas de conversa com a paciente, e um leitor de
+            // tela leria tudo isso onde se espera a descricao da foto. Aqui
+            // ela e o que sempre foi -- legenda, a vista, embaixo da imagem.
+            //
+            // Em duas delas ha aviso que TEM de ficar visivel: "imagem
+            // autorizada pela paciente" e "esta imagem nao promete ou
+            // garante resultados". Enterrar isso num atributo seria esconder
+            // justamente o que precisa de ser lido.
+            var legenda = legendaDaLinha(l);
+            if (legenda) { caixa.setAttribute('data-legenda', legenda); }
+        }
         return caixa;
     }
 
@@ -281,7 +359,9 @@
         trilho.setAttribute('role', 'group');
         trilho.setAttribute('aria-label', posts.length + ' resultados de ' + nome
             + (unico ? '' : ' — arraste para o lado para ver os outros'));
-        posts.forEach(function (l) { trilho.appendChild(caixaDeEmbed(l.Link)); });
+        posts.forEach(function (l) {
+            trilho.appendChild(caixaDeEmbed(l, nome));
+        });
 
         caixa.appendChild(anterior);
         caixa.appendChild(trilho);
