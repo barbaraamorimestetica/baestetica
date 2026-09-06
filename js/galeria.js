@@ -205,7 +205,13 @@
     // o resto desta planilha e lido. Se a coluna existir SEM cabecalho, vale a
     // setima posicao e fica um aviso na consola: melhor ler e avisar do que
     // ignorar em silencio o que alguem se deu o trabalho de escrever.
-    var NOMES_DA_LEGENDA = ['Legenda', 'Texto Foto', 'Texto'];
+    // Mais de um nome aceito, e nao um so: a coluna nasceu sem cabecalho,
+    // foi chamada de "Descricao" e podia ter sido "Legenda". Escolher um
+    // nome e obrigar quem preenche a adivinhar qual era -- e o preco de
+    // errar e a legenda desaparecer da pagina sem aviso, que foi o que
+    // aconteceu. Todos estes servem; o primeiro que tiver texto vale.
+    var NOMES_DA_LEGENDA = ['Legenda', 'Descricao', 'Descrição',
+                            'Texto Foto', 'Texto'];
 
     function legendaDaLinha(l) {
         for (var i = 0; i < NOMES_DA_LEGENDA.length; i++) {
