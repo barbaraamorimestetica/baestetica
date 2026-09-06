@@ -183,9 +183,33 @@
     // O blockquote so nasce quando a seccao entra na tela. Com 19 embeds numa
     // pagina, cria-los todos de uma vez sao 19 iframes com script proprio a
     // arrancar juntos -- no telefone isso trava e gasta dados da paciente.
+    // Os posts que o Instagram recusa incorporar, medidos fora do site e
+    // escritos no js/sem-embed.js. A lista pode nao existir -- uma pagina
+    // servida sem ela funciona igual, so volta a descobrir sozinha.
+    function recusado(link) {
+        var lista = window.baSemEmbed;
+        if (!lista || !lista.length || !link) { return false; }
+        var codigo = link.split(/\/(?:p|reel|tv)\//)[1];
+        if (!codigo) { return false; }
+        codigo = codigo.replace(/\/.*$/, '').split('?')[0];
+        return lista.indexOf(codigo) !== -1;
+    }
+
     function encherCaixa(caixa) {
         if (caixa.getAttribute('data-cheia')) { return; }
         caixa.setAttribute('data-cheia', '1');
+
+        // JA SE SABE QUE ESTE NAO ABRE: o cartao entra na hora.
+        //
+        // Antes a pagina descobria sozinha, em cada visita: criava o
+        // blockquote, esperava o embed.js, media o iframe colapsar. Quem
+        // chegava na seccao ficava a olhar um retangulo branco vazio por
+        // segundos -- por uma resposta que ja estava medida.
+        if (recusado(caixa.getAttribute('data-permalink'))
+            && window.baEmbeds && window.baEmbeds.cartao) {
+            window.baEmbeds.cartao(caixa);
+            return;
+        }
         var bq = document.createElement('blockquote');
         bq.className = 'instagram-media';
         bq.setAttribute('data-instgrm-captioned', '');

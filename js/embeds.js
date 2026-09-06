@@ -37,6 +37,22 @@ window.baEmbeds = (function () {
     var INTERVALO = 500;
     var ALTURA_MINIMA = 120;   // abaixo disto o iframe colapsou
 
+    // QUANTO SE ESPERA DEPOIS DE O IFRAME TERMINAR DE CARREGAR.
+    //
+    // O PRAZO de 15s existe para o caso em que nao ha iframe nenhum -- e ai
+    // nao ha o que medir, so o relogio. Mas quando o iframe existe e ja
+    // disparou o `load`, a resposta do Instagram CHEGOU: se ele continua com
+    // dois pixels de altura, nao vai crescer mais.
+    //
+    // Esperar os 15s nesse caso e fazer a paciente olhar um retangulo branco
+    // vazio por quinze segundos -- foi exatamente o que o Gabriel viu na
+    // seccao do Bioestimulador, e com razao: ele parece defeito.
+    //
+    // Os 2s de folga sao para o redimensionamento: o embed.js mede o conteudo
+    // e manda a altura por postMessage DEPOIS do load, e medir no instante do
+    // load pegaria todo embed ainda pequeno.
+    var FOLGA_APOS_CARREGAR = 2000;
+
     var pendentes = [];
     var inicio = 0;
     var timer = null;
@@ -46,6 +62,21 @@ window.baEmbeds = (function () {
     function temEmbedVivo(caixa) {
 var frame = caixa.querySelector('iframe.instagram-media');
 return !!frame && frame.getBoundingClientRect().height > ALTURA_MINIMA;
+    }
+
+    // O iframe nao existe quando a caixa entra na lista: quem o cria e o
+    // embed.js, e so depois de adotar o blockquote. Por isso a escuta e posta
+    // na primeira rodada em que ele aparecer, e uma vez so.
+    //
+    // O `load` de um iframe de outro dominio CHEGA ao pai -- o que nao chega e
+    // o conteudo. Aqui basta saber que terminou.
+    function escutarCarregamento(caixa) {
+var frame = caixa.querySelector('iframe.instagram-media');
+if (!frame || frame.__baEscutado) { return; }
+frame.__baEscutado = true;
+frame.addEventListener('load', function () {
+    caixa.__baCarregou = Date.now();
+});
     }
 
     function parar() {
@@ -130,6 +161,14 @@ var agora = Date.now();
 pendentes = pendentes.filter(function (caixa) {
     if (!caixa.isConnected) { return false; }   // seccao trocada
     if (temEmbedVivo(caixa)) { return false; }
+    escutarCarregamento(caixa);
+    // O IFRAME JA CARREGOU E CONTINUA PEQUENO: a resposta chegou, e e nao.
+    // Nao ha por que esperar o resto do prazo.
+    if (caixa.__baCarregou
+        && agora - caixa.__baCarregou >= FOLGA_APOS_CARREGAR) {
+        mostrarCartao(caixa);
+        return false;
+    }
     if (agora - (caixa.__baInicio || agora) >= PRAZO) {
         mostrarCartao(caixa);
         return false;
@@ -173,5 +212,10 @@ iniciar();
 
     // acompanhar() e o que a galeria dinamica chama para as caixas
     // que cria depois do arranque
-    return { aoFalharScript: aoFalharScript, acompanhar: vigiar };
+    // cartao() e para quem JA SABE que o post nao embute -- a galeria, quando
+    // o post esta no js/sem-embed.js. Sem ele, a unica forma de chegar ao
+    // cartao era esperar a medicao falhar, que e o que aquela lista existe
+    // para poupar.
+    return { aoFalharScript: aoFalharScript, acompanhar: vigiar,
+             cartao: mostrarCartao };
 })();

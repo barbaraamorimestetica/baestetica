@@ -359,6 +359,10 @@
 
         <!-- Antes do embed.js de proposito: o onerror precisa que o baEmbeds
              ja exista para poder chama-lo. -->
+        <!-- A lista dos posts que o Instagram recusa incorporar. Vem antes do
+             galeria.js, que a consulta antes de montar cada caixa; sem ela a
+             pagina funciona igual, so volta a descobrir sozinha. -->
+        <script src="js/sem-embed.js"></script>
         <script src="js/embeds.js"></script>
 
         <script async src="https://www.instagram.com/embed.js"
