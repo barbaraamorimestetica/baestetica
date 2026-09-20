@@ -1,6 +1,12 @@
-// QUAIS POSTS O INSTAGRAM RECUSA INCORPORAR.
+// QUAIS POSTS O INSTAGRAM RECUSA INCORPORAR **E NAO TEM FOTO**.
 //
-// GERADO pela medicao dos embeds, em 2026-09-06.
+// A linha com Link Foto preenchido NAO entra aqui, e nao e esquecimento:
+// o `temFoto` do galeria.js decide antes de olhar para esta lista, e
+// desde 20/09/2026 a medicao nem chega a perguntar ao Instagram por
+// essas linhas -- o site nunca usaria a resposta. Por-las aqui seria
+// afirmar uma coisa que ja nao se mede.
+//
+// GERADO pela medicao dos embeds, em 2026-09-20.
 // NAO EDITAR A MAO: a proxima medicao reescreve este arquivo.
 //
 // Existe para a galeria nao ter de descobrir sozinha, em cada
@@ -11,4 +17,4 @@
 // A deteccao em tempo real continua no js/embeds.js: ela cobre o
 // post que passe a nao embutir entre uma medicao e outra, e o caso
 // em que o proprio embed.js nao carrega.
-window.baSemEmbed = ["DY7UDxIkcPV", "Dc5GkZ8xZwo", "DcVwbjvEchy", "DcgebfqESKf", "DcloB3LkTUm"];
+window.baSemEmbed = [];
