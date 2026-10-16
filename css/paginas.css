@@ -819,3 +819,34 @@ html.mostra-ao-topo .ao-topo {
     color: var(--marca-forte);
     font-weight: 700;
 }
+
+/* ---------------------------------------------------------------------------
+   A chamada dos e-books na pagina inicial (index.html, #ebooks): as duas capas
+   pequenas e o texto ao lado, empilhados no telefone. As capas sao as mesmas
+   do ebooks.html, para quem clica reconhecer o que viu.
+   --------------------------------------------------------------------------- */
+.ebook-chamada {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+}
+@media (min-width: 640px) {
+    .ebook-chamada { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+.ebook-chamada-capas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+.ebook-chamada-capas img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.75rem;
+}
+.ebook-chamada-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
