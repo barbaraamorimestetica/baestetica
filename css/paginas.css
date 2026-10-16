@@ -850,3 +850,111 @@ html.mostra-ao-topo .ao-topo {
     align-items: flex-start;
     gap: 1.25rem;
 }
+
+/* ---------------------------------------------------------------------------
+   A pagina de venda de cada e-book (ebook-*.html), que e a "Pagina Externa"
+   do produto na Hotmart, gerada no outro repositorio a partir dos e-books.
+   O topo e a capa ao lado do titulo e do botao de
+   compra, empilhados no telefone; o resto sao cartoes no estilo do site.
+   --------------------------------------------------------------------------- */
+.venda-topo {
+    display: grid;
+    gap: 1.75rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+@media (min-width: 640px) {
+    .venda-topo { grid-template-columns: 1fr 1.1fr; gap: 2.5rem; }
+}
+.venda-capa {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgb(var(--marca-rgb) / 0.22);
+}
+.venda-topo-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
+.venda-secao {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+    .venda-secao { padding: 2.25rem; }
+}
+.venda-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--texto);
+    margin: 0 0 1rem;
+}
+.venda-bonus {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    background-color: var(--fundo-rosa);
+}
+.venda-previas {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+    .venda-previas { grid-template-columns: repeat(3, 1fr); }
+}
+.venda-previa { margin: 0; }
+.venda-previa img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    border: 1px solid var(--marca-borda);
+    background-color: var(--superficie);
+}
+.venda-previa figcaption {
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+.venda-autora {
+    display: grid;
+    gap: 1.25rem;
+    align-items: center;
+}
+@media (min-width: 640px) {
+    .venda-autora { grid-template-columns: 9rem 1fr; }
+}
+.venda-autora img {
+    width: 9rem;
+    height: 12rem;
+    object-fit: cover;
+    object-position: 50% 30%;
+    border-radius: 0.75rem;
+}
+.venda-duvida {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--marca-borda);
+}
+.venda-duvida:last-child { border-bottom: 0; }
+.venda-duvida dt {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--texto);
+}
+.venda-duvida dd {
+    margin: 0.3rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--texto);
+}
+
+/* O contorno dos cartoes do ebooks.html e das paginas de venda. O
+   card-shadow da pagina inicial vive no <style> dela, e aqui nao pintava --
+   o conferir-classes e que o disse. Sem o levantar ao passar o mouse: aqui
+   os cartoes sao de leitura, e nao botoes. */
+.ebook-cartao { border: 1px solid var(--marca-borda); }
