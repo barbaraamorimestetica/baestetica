@@ -46,7 +46,7 @@ window.baEmbeds = (function () {
     //
     // Esperar os 15s nesse caso e fazer a paciente olhar um retangulo branco
     // vazio por quinze segundos -- foi exatamente o que o Gabriel viu na
-    // seccao do Bioestimulador, e com razao: ele parece defeito.
+    // secao do Bioestimulador, e com razao: ele parece defeito.
     //
     // Os 2s de folga sao para o redimensionamento: o embed.js mede o conteudo
     // e manda a altura por postMessage DEPOIS do load, e medir no instante do
@@ -90,7 +90,7 @@ if (timer) { clearInterval(timer); timer = null; }
 // `.carrossel-slide { min-height: 500px }`. Antes esta linha removia uma
 // classe do Tailwind, `min-h-[500px]`, que nao esta em HTML nenhum: sobrou
 // de uma marcacao anterior. O cartao aparecia dentro de uma moldura de meio
-// metro de vazio, e a seccao parecia quebrada -- que e o oposto do que ele
+// metro de vazio, e a secao parecia quebrada -- que e o oposto do que ele
 // existe para fazer.
 caixa.classList.add('sem-embed');
 
@@ -284,13 +284,13 @@ pendentes = [];
     }
 
     // O prazo e de cada caixa, e nao da pagina: com a galeria vinda
-    // da folha (js/galeria.js) as caixas nascem quando a seccao entra
+    // da folha (js/galeria.js) as caixas nascem quando a secao entra
     // na tela, e uma caixa criada agora nao pode herdar o relogio de
     // uma que nasceu ha um minuto.
     function rodada() {
 var agora = Date.now();
 pendentes = pendentes.filter(function (caixa) {
-    if (!caixa.isConnected) { return false; }   // seccao trocada
+    if (!caixa.isConnected) { return false; }   // secao trocada
     if (temEmbedVivo(caixa)) { return false; }
     escutarCarregamento(caixa);
     // O IFRAME JA CARREGOU E CONTINUA PEQUENO: a resposta chegou, e e nao.

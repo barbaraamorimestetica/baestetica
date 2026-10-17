@@ -2,7 +2,7 @@
 //
 // POR QUE ELE FAZ FALTA AQUI, e nao nas outras paginas
 //
-// Sao dez seccoes, cada uma com descricao e uma fila de links. Quem desce ate a
+// Sao dez secoes, cada uma com descricao e uma fila de links. Quem desce ate a
 // oitava para ler sobre um procedimento tem de subir tudo outra vez para
 // escolher outro -- e o indice, que e o que serve para escolher, esta no topo.
 //

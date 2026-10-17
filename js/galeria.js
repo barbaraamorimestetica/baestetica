@@ -2,14 +2,14 @@
 // para a Barbara poder acrescentar um post sem mexer no site. Sao duas abas:
 //
 //   Links          ID, Link, Procedimento     -- um post por linha
-//   Procedimentos  Procedimento, Ordem, Descricao  -- uma seccao por linha
+//   Procedimentos  Procedimento, Ordem, Descricao  -- uma secao por linha
 //
 // O elo entre elas e o nome do procedimento escrito igual nas duas.
 //
 // ---------------------------------------------------------------------------
 // O QUE ESTA PAGINA TEM DE SOBREVIVER
 //
-// 1. A folha nao responder. A pagina ja traz duas seccoes escritas no HTML --
+// 1. A folha nao responder. A pagina ja traz duas secoes escritas no HTML --
 //    as marcadas [data-piso]. Elas so sao removidas depois de a folha chegar
 //    e ser dada como valida. Se algo falhar, ficam la: a paciente ve alguma
 //    coisa, e o Google tem texto para indexar.
@@ -37,12 +37,12 @@
         links: { nome: 'Links', cabecalho: ['ID', 'Link', 'Procedimento'] },
         procs: { nome: 'Procedimentos', cabecalho: ['Procedimento', 'Ordem', 'Descricao'] }
     };
-    // Posts que mostram mais de um procedimento vao todos para esta seccao,
-    // em vez de se repetirem numa seccao por procedimento.
+    // Posts que mostram mais de um procedimento vao todos para esta secao,
+    // em vez de se repetirem numa secao por procedimento.
     //
     // Este nome tem de existir, escrito igual, na aba Procedimentos: e o elo
     // entre as duas abas. Se nao existir, o agrupar() nao deixa os posts cair
-    // no vazio -- devolve-os as seccoes de cada procedimento, que e o
+    // no vazio -- devolve-os as secoes de cada procedimento, que e o
     // comportamento de antes desta regra. Perder quatro resultados por causa
     // de um acento seria pior do que os repetir.
     var COMBINADOS = 'Harmonização facial (mais de 1 procedimento)';
@@ -151,7 +151,7 @@
         if (!juntar) {
             console.warn('galeria: nao ha linha "' + COMBINADOS + '" na aba '
                 + 'Procedimentos. Os posts com mais de um procedimento voltam a '
-                + 'aparecer em cada seccao, para nao se perderem.');
+                + 'aparecer em cada secao, para nao se perderem.');
         }
         links.forEach(function (l) {
             if (!l.Link) { return; }
@@ -175,7 +175,7 @@
     // A FOTO DA PLANILHA, PARA QUANDO O EMBED NAO PODE ENTRAR.
     //
     // O Instagram fecha alguns posts para quem nao tem sessao iniciada, e nesses
-    // a seccao ficava so com o cartao. A coluna "Link Foto" da aba Links guarda
+    // a secao ficava so com o cartao. A coluna "Link Foto" da aba Links guarda
     // uma imagem para pôr no lugar -- a mesma do post, salva a parte.
     //
     // SO O ENDERECO DO DRIVE QUE FUNCIONA COMO IMAGEM. Medido nos tres posts:
@@ -264,7 +264,7 @@
         return caixa;
     }
 
-    // O blockquote so nasce quando a seccao entra na tela. Com 19 embeds numa
+    // O blockquote so nasce quando a secao entra na tela. Com 19 embeds numa
     // pagina, cria-los todos de uma vez sao 19 iframes com script proprio a
     // arrancar juntos -- no telefone isso trava e gasta dados da paciente.
     // Os posts que o Instagram recusa incorporar, medidos fora do site e
@@ -443,12 +443,12 @@
         return raiz;
     }
 
-    /* O id da seccao, a partir do nome do procedimento.
+    /* O id da secao, a partir do nome do procedimento.
      *
      * ESTA FUNCAO EXISTE DUAS VEZES, e tem de dar o mesmo resultado nas duas:
      * aqui e no gerador da copia estatica. Esta versao
      * substitui aquela quando a folha responde, e se os ids nao coincidirem o
-     * indice fica a apontar seccoes que deixaram de existir nesse instante.
+     * indice fica apontando secoes que deixaram de existir nesse instante.
      *
      * O algoritmo e o mais simples que serve, e por isso e facil de repetir:
      * separar os acentos, deitar fora o que sobra deles, minusculas, e tudo o
@@ -467,7 +467,7 @@
 
     /* A lista dos procedimentos, no topo, com quantos resultados ha em cada.
      *
-     * O numero poupa a viagem: ha seccoes ainda sem resultado nenhum, e tocar
+     * O numero poupa a viagem: ha secoes ainda sem resultado nenhum, e tocar
      * num nome para cair num "em breve" ensina a nao usar a lista. */
     function indiceDe(ordenados, porProc) {
         var nav = document.createElement('nav');
@@ -515,7 +515,7 @@
         // ordem que nao existe: a ordem vem da aba Procedimentos e serve para
         // arrumar a pagina, nao para classificar tratamento.
         //
-        // Tirado nos DOIS lugares que desenham esta seccao -- aqui e no
+        // Tirado nos DOIS lugares que desenham esta secao -- aqui e no
         // gerador da copia estatica, que e a que o Google le. Tirar
         // so de um faria a pagina mudar sozinha quando o JavaScript acabasse de
         // correr.
@@ -569,10 +569,10 @@
         var main = document.querySelector('[data-galeria]');
         if (!main) { throw new Error('nao achei [data-galeria]'); }
         var novo = document.createDocumentFragment();
-        // O indice PRIMEIRO, com a mesma ordem das seccoes. Ele e refeito aqui,
+        // O indice PRIMEIRO, com a mesma ordem das secoes. Ele e refeito aqui,
         // e nao aproveitado do piso: a lista do piso e a da ultima vez que o
         // gerador da copia estatica correu, e se a folha ganhou um procedimento desde
-        // entao, ficaria uma lista velha a apontar seccoes novas.
+        // entao, ficaria uma lista velha a apontar secoes novas.
         novo.appendChild(indiceDe(ordenados, porProc));
         ordenados.forEach(function (p, i) {
             novo.appendChild(secao(i + 1, p.Procedimento, p.Descricao,
@@ -588,8 +588,8 @@
 
 
     // ---- destaques da pagina inicial -------------------------------------
-    // A seccao "Acompanhe meu trabalho" tinha um reel escrito a mao no HTML.
-    // Uma seccao com esse nome a mostrar sempre o mesmo post e a promessa
+    // A secao "Acompanhe meu trabalho" tinha um reel escrito a mao no HTML.
+    // Uma secao com esse nome a mostrar sempre o mesmo post e a promessa
     // oposta ao que entrega: envelhece sozinha e ninguem da por isso. Agora
     // sai da mesma planilha, pela coluna Destaque.
     function desenharDestaques(links, alvo) {

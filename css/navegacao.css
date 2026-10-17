@@ -142,10 +142,10 @@
 
    O `aria-current="page"` está escrito no HTML e marca a PÁGINA -- e está
    certo: quem clica em "Espaço" continua na página Início. Mas para quem olha,
-   o menu ficava a dizer "Início" depois de a tela já ter descido para o Espaço.
+   o menu ficava dizendo "Início" depois de a tela já ter descido para o Espaço.
 
-   Aqui a marca passa para a secção enquanto o endereço a apontar. Sem
-   JavaScript nenhum: o `:target` é a secção que o `#` do endereço nomeia, e o
+   Aqui a marca passa para a seção enquanto o endereço a apontar. Sem
+   JavaScript nenhum: o `:target` é a seção que o `#` do endereço nomeia, e o
    `:has()` deixa o <html> reagir a ela. Isto importa porque o 404.html declara
    `script-src 'none'` -- ali não corre script nenhum, por desenho.
 
@@ -164,7 +164,7 @@ html:has(#espaco:target) .ba-menu a[aria-current="page"] {
     font-weight: 600;
 }
 
-/* ...e a secção acende no lugar dela */
+/* ...e a seção acende no lugar dela */
 html:has(#espaco:target) .ba-menu a[href$="#espaco"] {
     color: var(--marca-hover);
     border-bottom-color: var(--marca-forte);
@@ -193,7 +193,7 @@ html:has(#instagram:target) .ba-menu a[href$="#instagram"] {
 
     /* Uma barra grudada come o topo do que a âncora traz à vista: clicar em
        "Espaço" levaria o título para DEBAIXO do menu, e quem clicou veria o
-       texto a meio da secção sem saber que perdeu o cabeçalho. Esta folga é a
+       texto a meio da seção sem saber que perdeu o cabeçalho. Esta folga é a
        altura do menu, e só existe onde ele gruda. */
     #espaco,
     #instagram {

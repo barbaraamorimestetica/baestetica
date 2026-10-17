@@ -258,7 +258,7 @@ summary:focus-visible,
 
 /* --- pecas decorativas --------------------------------------------------- */
 
-/* Filete curto que separa seccoes. Era bg-roseGold com h-0.5 ou h-1. */
+/* Filete curto que separa secoes. Era bg-roseGold com h-0.5 ou h-1. */
 .filete { background-color: var(--marca-clara); }                              /* 4x */
 
 /* A faixa do topo de cada folha A4: claro nas pontas, mais forte no meio.

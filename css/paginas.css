@@ -401,7 +401,7 @@ body {
     cursor: default;
 }
 
-/* Uma seccao com um post so nao tem para onde navegar. */
+/* Uma secao com um post so nao tem para onde navegar. */
 .carrossel[data-unico] .carrossel-seta { display: none; }
 
 .carrossel-conta {
@@ -412,7 +412,7 @@ body {
     color: var(--texto-suave);
 }
 
-/* O recuo da seccao da galeria. Fica aqui, e nao como utilidade p-8 no
+/* O recuo da secao da galeria. Fica aqui, e nao como utilidade p-8 no
    HTML, porque o telefone precisa de o reduzir -- e uma classe de utilidade
    do Tailwind ganha de qualquer seletor de elemento por especificidade. */
 .secao-resultado {
@@ -493,7 +493,7 @@ body {
     transform: scale(1.25);
 }
 
-/* Uma seccao com um post so nao tem o que indicar. */
+/* Uma secao com um post so nao tem o que indicar. */
 .carrossel-conta[hidden],
 .carrossel[data-unico] .carrossel-pontos { display: none; }
 
@@ -551,7 +551,7 @@ body {
 /* ---------------------------------------------------------------------------
    O INDICE DOS PROCEDIMENTOS, no topo da galeria de resultados
 
-   Sao dez seccoes, cada uma com descricao e uma fila de links do Instagram.
+   Sao dez secoes, cada uma com descricao e uma fila de links do Instagram.
    Sem indice, quem chega nao sabe o que existe -- descobre rolando -- e para
    achar um procedimento passa por todos os outros.
 
@@ -561,8 +561,8 @@ body {
    saber o que existe.
 
    O NUMERO AO LADO DE CADA NOME e quantos resultados ha ali, e o "em breve"
-   diz que aquela seccao ainda nao tem nenhum. Sem isso, tocar num nome podia
-   levar a uma seccao vazia -- ha tres assim hoje -- e uma lista que faz perder
+   diz que aquela secao ainda nao tem nenhum. Sem isso, tocar num nome podia
+   levar a uma secao vazia -- ha tres assim hoje -- e uma lista que faz perder
    a viagem deixa de ser usada.
 
    O TELEFONE DECIDE A GRADE
@@ -632,7 +632,7 @@ body {
    couberam, entao o filete fica em todos: uma lista com o ultimo diferente
    parece defeito, e todos iguais leem-se como lista. */
 
-/* Quantos resultados ha na seccao. Fica encostado a direita, e em `auto` para
+/* Quantos resultados ha na secao. Fica encostado a direita, e em `auto` para
    nao depender de o nome ter uma ou duas linhas. */
 .galeria-indice-conta {
     margin-left: auto;
@@ -643,7 +643,7 @@ body {
     color: var(--texto-suave);
 }
 
-/* Seccao ainda sem resultado: o nome esbatido e a palavra no lugar do numero.
+/* Secao ainda sem resultado: o nome esbatido e a palavra no lugar do numero.
    Continua a ser link -- a descricao do procedimento esta la, e e ela que
    interessa a quem esta decidindo. */
 .galeria-indice-vazio {
